@@ -1,5 +1,4 @@
 import { vec3, mat4 } from "gl-matrix";
-import { normalize } from "gl-matrix/src/gl-matrix/vec3";
 import { wrapAngle } from "../../Utils/WrapAngle";
 import { limitAngle } from "../../Utils/LimitAngle";
 
