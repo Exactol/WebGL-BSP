@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 // wrap angle between 0 and 360 degrees
 function wrapAngle(angle) {
     while (angle >= 360) {

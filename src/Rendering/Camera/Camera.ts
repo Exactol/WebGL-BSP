@@ -1,28 +1,24 @@
-import { vec3, mat4 } from "gl-matrix";
+import { vec3, mat4, glMatrix } from "gl-matrix";
 import { wrapAngle } from "../../Utils/WrapAngle";
 import { limitAngle } from "../../Utils/LimitAngle";
 
-import toRadian = require("gl-matrix/src/gl-matrix/common");
-import normalize = require("gl-matrix/src/gl-matrix/vec3");
 
+// todo make into interface
 export class Camera {
 	public position: vec3;
 
 	public horizontalFov = 45;
 	public aspectRatio: number;
 
-	public originalSpeed = 50;
-	public speed = 50;
+	public originalSpeed = 5;
+	public speed = 5;
 	public mouseSensitivity = 5;
 
-	public front: vec3;
 	public up: vec3 = vec3.fromValues(0, 1, 0);
-	
-	public projectionMatrix: mat4;
-	public viewMatrix: mat4;
-	public modelMatrix: mat4 = mat4.identity(new mat4(0));
 
-	private nearClip = 10;
+	public modelMatrix: mat4 = mat4.identity(mat4.create());
+
+	private nearClip = 0.1;
 	private farClip = 1000;
 
 	private _horizontalAngle!: number;
@@ -42,6 +38,10 @@ export class Camera {
 	}
 	
 	constructor(height: number, width: number) {
+		console.log("--Initializing Camera--");
+		console.log("	Canvas Width: " + width);
+		console.log("	Canvas Height: " + height);
+
 		if (height === 0) {
 			console.log("Error, height cannot be 0");
 			this.aspectRatio = 0;
@@ -49,52 +49,132 @@ export class Camera {
 			this.aspectRatio = width / height;
 		}
 
-		this.position = vec3.create();
+		console.log("	Aspect Ratio: " + this.aspectRatio);
+
+		// start camera at world center
+		this.position = vec3.fromValues(0, 0, 0);
 
 		this.horizontalAngle = 0;
 		this.verticalAngle = 0;
 
-		
-		// calculate front vector
-		this.front = vec3.create();
-		this.GetFront();
-
 		// calculate projection matrix
-		this.projectionMatrix = mat4.create();
-		this.viewMatrix = mat4.create();
-		this.GetProjectionMatrix();
+		this.getProjectionMatrix();
 	}
-
-	public GetFront(): vec3 {
+	
+	public getFront(): vec3 {
+		const front = vec3.create();
+		
 		// x
-		this.front[0] = Math.sin(toRadian(this.verticalAngle)) * Math.cos(toRadian(this.horizontalAngle));
+		front[0] = Math.cos(glMatrix.toRadian(this.verticalAngle)) * Math.cos(glMatrix.toRadian(this.horizontalAngle));
 		// y
-		this.front[1] = Math.sin(toRadian(this.verticalAngle));
+		front[1] = Math.sin(glMatrix.toRadian(this.verticalAngle));
 		// z
-		this.front[2] = Math.cos(toRadian(this.verticalAngle)) * Math.sin(toRadian(this.horizontalAngle));
-		normalize(this.front, this.front);
-		return this.front;
+		front[2] = Math.cos(glMatrix.toRadian(this.verticalAngle)) * Math.sin(glMatrix.toRadian(this.horizontalAngle));
+		
+		vec3.normalize(front, front);
+
+		return front;
 	}
 
-	public GetProjectionMatrix(): mat4 {
-		mat4.perspective(this.projectionMatrix, 
+	public getRight(): vec3 {
+		const front = this.getFront();
+		const right = vec3.create();
+
+		vec3.cross(right, front, this.up);
+
+		vec3.normalize(right, right);
+
+		return right;
+
+	}
+
+	public getProjectionMatrix(): mat4 {
+		const projectionMatrix = mat4.create();
+
+		mat4.perspective(projectionMatrix, 
 			this.horizontalFov * (Math.PI / 180 ),
 			this.aspectRatio, this.nearClip, this.farClip);
 
 	 	// tslint:disable-next-line:align
-	 	return this.projectionMatrix;
+	 	return projectionMatrix;
 	}
 
-	public GetViewMatrix(): mat4 {
+	public getViewMatrix(): mat4 {
 		const positionPlusFront: vec3 = vec3.create();
-		vec3.add(positionPlusFront, this.position, this.front);
+		vec3.add(positionPlusFront, this.position, this.getFront());
 
-		mat4.lookAt(this.viewMatrix, this.position, positionPlusFront, this.up);
+		const viewMatrix = mat4.create();
+		mat4.lookAt(viewMatrix, this.position, positionPlusFront, this.up);
 
-		return this.viewMatrix;
+		return viewMatrix;
 	}
 
-	public GetModelMatrix(): mat4 {
+	public getModelMatrix(): mat4 {
 		return this.modelMatrix;
+	}
+
+	public updateHorizontalFov(width: number, height: number) {
+		if (height === 0) {
+			console.log("Error, height cannot be 0");
+			return;
+		}
+		
+		this.horizontalFov = width / height;
+	}
+
+	public moveForward() {
+		// get front matrix
+		const front = this.getFront();
+
+		// x
+		this.position[0] += (this.speed * front[0]);
+
+		// y
+		this.position[1] += (this.speed * front[1]);
+
+		// z
+		this.position[2] += (this.speed * front[2]);
+	}
+
+	public moveBackword() {
+		// get front matrix
+		const front = this.getFront();
+
+		// x
+		this.position[0] -= (this.speed * front[0]);
+
+		// y
+		this.position[1] -= (this.speed * front[1]);
+
+		// z
+		this.position[2] -= (this.speed * front[2]);
+	}
+
+	public moveRight() {
+		//
+		const right = this.getRight();
+
+		// x
+		this.position[0] += (this.speed * right[0] * 0.01);
+
+		// y
+		this.position[1] += (this.speed * right[1] * 0.01);
+
+		// z
+		this.position[2] += (this.speed * right[2] * 0.01);		
+	}
+
+	public moveLeft() {
+		//
+		const right = this.getRight();
+
+		// x
+		this.position[0] -= (this.speed * right[0] * 0.01);
+
+		// y
+		this.position[1] -= (this.speed * right[1] * 0.01);
+
+		// z
+		this.position[2] -= (this.speed * right[2] * 0.01);
 	}
 }

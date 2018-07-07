@@ -1,8 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const gl_matrix_1 = require("gl-matrix");
-const common_1 = require("gl-matrix/src/gl-matrix/common");
-const vec3_1 = require("gl-matrix/src/gl-matrix/vec3");
 const WrapAngle_1 = require("../../Utils/WrapAngle");
 const LimitAngle_1 = require("../../Utils/LimitAngle");
 class Camera {
@@ -47,12 +45,12 @@ class Camera {
     }
     GetFront() {
         // x
-        this.front[0] = Math.sin(common_1.toRadian(this.verticalAngle)) * Math.cos(common_1.toRadian(this.horizontalAngle));
+        this.front[0] = Math.sin(gl_matrix_1.glMatrix.toRadian(this.verticalAngle)) * Math.cos(gl_matrix_1.glMatrix.toRadian(this.horizontalAngle));
         // y
-        this.front[1] = Math.sin(common_1.toRadian(this.verticalAngle));
+        this.front[1] = Math.sin(gl_matrix_1.glMatrix.toRadian(this.verticalAngle));
         // z
-        this.front[2] = Math.cos(common_1.toRadian(this.verticalAngle)) * Math.sin(common_1.toRadian(this.horizontalAngle));
-        vec3_1.normalize(this.front, this.front);
+        this.front[2] = Math.cos(gl_matrix_1.glMatrix.toRadian(this.verticalAngle)) * Math.sin(gl_matrix_1.glMatrix.toRadian(this.horizontalAngle));
+        gl_matrix_1.vec3.normalize(this.front, this.front);
         return this.front;
     }
     GetProjectionMatrix() {

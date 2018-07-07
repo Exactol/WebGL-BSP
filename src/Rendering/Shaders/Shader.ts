@@ -1,10 +1,13 @@
 import {ShaderSource} from "./ShaderSource";
 
-export function CreateShaderProgram(gl: WebGL2RenderingContext, shadersSource: ShaderSource[]): WebGLProgram | null {
+export function CreateShaderProgram(gl: WebGL2RenderingContext, sourceShaders: ShaderSource[]): WebGLProgram | null {
+    console.log("--Initializing Shaders--");
+    console.log("   Number of shaders: " + sourceShaders.length);
+    
     const compiledShaders: WebGLShader[] = [];
 
     // compile each shader and filter out those that failed
-    shadersSource.forEach((shader) => {
+    sourceShaders.forEach((shader) => {
         const compiledShader = LoadShader(gl, shader);
         if (compiledShader != null) {
             compiledShaders.push(compiledShader);

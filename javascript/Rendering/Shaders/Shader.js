@@ -1,9 +1,11 @@
 "use strict";
-exports.__esModule = true;
-function CreateShaderProgram(gl, shadersSource) {
+Object.defineProperty(exports, "__esModule", { value: true });
+function CreateShaderProgram(gl, sourceShaders) {
+    console.log("--Initializing Shaders--");
+    console.log("   Number of shaders: " + sourceShaders.length);
     var compiledShaders = [];
     // compile each shader and filter out those that failed
-    shadersSource.forEach(function (shader) {
+    sourceShaders.forEach(function (shader) {
         var compiledShader = LoadShader(gl, shader);
         if (compiledShader != null) {
             compiledShaders.push(compiledShader);

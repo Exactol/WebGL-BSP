@@ -15,7 +15,8 @@
         "no-consecutive-blank-lines": false,
         "ordered-imports": false,
         "max-classes-per-file": false,
-        "trailing-comma": false
+        "trailing-comma": false,
+        "member-ordering": false
     },
     "rulesDirectory": []
 }

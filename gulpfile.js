@@ -6,17 +6,14 @@ var gulp        = require("gulp"),
     sourcemaps  = require("gulp-sourcemaps"),
     uglify      = require("gulp-uglify"),
 	runSequence = require("run-sequence").use(gulp),
-	clean 		= require("gulp-clean");
+	clean 		= require("gulp-clean"),
+	gutil 		= require('gulp-util');
 
-var tsProject = tsc.createProject("./tsconfig.json");
+var tsProject = tsc.createProject("tsconfig.json");
 gulp.task("build", function() {
-	return gulp.src([
-		"src/**/**/**.ts",
-		"src/**/**.ts",
-		"src/**.ts",
-		"@types/webgl2.d.ts"
-	]).pipe(tsc(tsProject()))
-	.js.pipe(gulp.dest("./javascript"));
+	return tsProject.src().
+		pipe(tsProject())
+		.js.pipe(gulp.dest("./javascript"));
 });
 
 gulp.task("bundle", function() {
@@ -37,6 +34,7 @@ gulp.task("bundle", function() {
 		.pipe(buffer())
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(uglify())
+		.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
 		.pipe(sourcemaps.write("./"))
 		.pipe(gulp.dest(outputFolder));
 });

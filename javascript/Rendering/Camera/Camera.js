@@ -1,20 +1,22 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var gl_matrix_1 = require("gl-matrix");
-var common_1 = require("gl-matrix/src/gl-matrix/common");
-var vec3_1 = require("gl-matrix/src/gl-matrix/vec3");
 var WrapAngle_1 = require("../../Utils/WrapAngle");
 var LimitAngle_1 = require("../../Utils/LimitAngle");
+// todo make into interface
 var Camera = /** @class */ (function () {
     function Camera(height, width) {
         this.horizontalFov = 45;
-        this.originalSpeed = 50;
-        this.speed = 50;
+        this.originalSpeed = 5;
+        this.speed = 5;
         this.mouseSensitivity = 5;
         this.up = gl_matrix_1.vec3.fromValues(0, 1, 0);
-        this.modelMatrix = gl_matrix_1.mat4.identity(new gl_matrix_1.mat4(0));
-        this.nearClip = 10;
+        this.modelMatrix = gl_matrix_1.mat4.identity(gl_matrix_1.mat4.create());
+        this.nearClip = 0.1;
         this.farClip = 1000;
+        console.log("--Initializing Camera--");
+        console.log("	Canvas Width: " + width);
+        console.log("	Canvas Height: " + height);
         if (height === 0) {
             console.log("Error, height cannot be 0");
             this.aspectRatio = 0;
@@ -22,16 +24,13 @@ var Camera = /** @class */ (function () {
         else {
             this.aspectRatio = width / height;
         }
-        this.position = gl_matrix_1.vec3.create();
+        console.log("	Aspect Ratio: " + this.aspectRatio);
+        // start camera at world center
+        this.position = gl_matrix_1.vec3.fromValues(0, 0, 0);
         this.horizontalAngle = 0;
         this.verticalAngle = 0;
-        // calculate front vector
-        this.front = gl_matrix_1.vec3.create();
-        this.GetFront();
         // calculate projection matrix
-        this.projectionMatrix = gl_matrix_1.mat4.create();
-        this.viewMatrix = gl_matrix_1.mat4.create();
-        this.GetProjectionMatrix();
+        this.getProjectionMatrix();
     }
     Object.defineProperty(Camera.prototype, "horizontalAngle", {
         get: function () {
@@ -53,29 +52,86 @@ var Camera = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Camera.prototype.GetFront = function () {
+    Camera.prototype.getFront = function () {
+        var front = gl_matrix_1.vec3.create();
         // x
-        this.front[0] = Math.sin(common_1.toRadian(this.verticalAngle)) * Math.cos(common_1.toRadian(this.horizontalAngle));
+        front[0] = Math.cos(gl_matrix_1.glMatrix.toRadian(this.verticalAngle)) * Math.cos(gl_matrix_1.glMatrix.toRadian(this.horizontalAngle));
         // y
-        this.front[1] = Math.sin(common_1.toRadian(this.verticalAngle));
+        front[1] = Math.sin(gl_matrix_1.glMatrix.toRadian(this.verticalAngle));
         // z
-        this.front[2] = Math.cos(common_1.toRadian(this.verticalAngle)) * Math.sin(common_1.toRadian(this.horizontalAngle));
-        vec3_1.normalize(this.front, this.front);
-        return this.front;
+        front[2] = Math.cos(gl_matrix_1.glMatrix.toRadian(this.verticalAngle)) * Math.sin(gl_matrix_1.glMatrix.toRadian(this.horizontalAngle));
+        gl_matrix_1.vec3.normalize(front, front);
+        return front;
     };
-    Camera.prototype.GetProjectionMatrix = function () {
-        gl_matrix_1.mat4.perspective(this.projectionMatrix, this.horizontalFov * (Math.PI / 180), this.aspectRatio, this.nearClip, this.farClip);
+    Camera.prototype.getRight = function () {
+        var front = this.getFront();
+        var right = gl_matrix_1.vec3.create();
+        gl_matrix_1.vec3.cross(right, front, this.up);
+        gl_matrix_1.vec3.normalize(right, right);
+        return right;
+    };
+    Camera.prototype.getProjectionMatrix = function () {
+        var projectionMatrix = gl_matrix_1.mat4.create();
+        gl_matrix_1.mat4.perspective(projectionMatrix, this.horizontalFov * (Math.PI / 180), this.aspectRatio, this.nearClip, this.farClip);
         // tslint:disable-next-line:align
-        return this.projectionMatrix;
+        return projectionMatrix;
     };
-    Camera.prototype.GetViewMatrix = function () {
+    Camera.prototype.getViewMatrix = function () {
         var positionPlusFront = gl_matrix_1.vec3.create();
-        gl_matrix_1.vec3.add(positionPlusFront, this.position, this.front);
-        gl_matrix_1.mat4.lookAt(this.viewMatrix, this.position, positionPlusFront, this.up);
-        return this.viewMatrix;
+        gl_matrix_1.vec3.add(positionPlusFront, this.position, this.getFront());
+        var viewMatrix = gl_matrix_1.mat4.create();
+        gl_matrix_1.mat4.lookAt(viewMatrix, this.position, positionPlusFront, this.up);
+        return viewMatrix;
     };
-    Camera.prototype.GetModelMatrix = function () {
+    Camera.prototype.getModelMatrix = function () {
         return this.modelMatrix;
+    };
+    Camera.prototype.updateHorizontalFov = function (width, height) {
+        if (height === 0) {
+            console.log("Error, height cannot be 0");
+            return;
+        }
+        this.horizontalFov = width / height;
+    };
+    Camera.prototype.moveForward = function () {
+        // get front matrix
+        var front = this.getFront();
+        // x
+        this.position[0] += (this.speed * front[0]);
+        // y
+        this.position[1] += (this.speed * front[1]);
+        // z
+        this.position[2] += (this.speed * front[2]);
+    };
+    Camera.prototype.moveBackword = function () {
+        // get front matrix
+        var front = this.getFront();
+        // x
+        this.position[0] -= (this.speed * front[0]);
+        // y
+        this.position[1] -= (this.speed * front[1]);
+        // z
+        this.position[2] -= (this.speed * front[2]);
+    };
+    Camera.prototype.moveRight = function () {
+        //
+        var right = this.getRight();
+        // x
+        this.position[0] += (this.speed * right[0] * 0.01);
+        // y
+        this.position[1] += (this.speed * right[1] * 0.01);
+        // z
+        this.position[2] += (this.speed * right[2] * 0.01);
+    };
+    Camera.prototype.moveLeft = function () {
+        //
+        var right = this.getRight();
+        // x
+        this.position[0] -= (this.speed * right[0] * 0.01);
+        // y
+        this.position[1] -= (this.speed * right[1] * 0.01);
+        // z
+        this.position[2] -= (this.speed * right[2] * 0.01);
     };
     return Camera;
 }());

@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 // limit angle between min and max
 function limitAngle(angle, min, max) {
     if (angle < min) {

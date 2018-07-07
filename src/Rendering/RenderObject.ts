@@ -1,5 +1,4 @@
 import { Vertex } from "../Utils/Vertex";
-import { vec3, vec4 } from "gl-matrix";
 
 const POSITION_ATTRIB_LOCATION = 0;
 const COLOR_ATTRIB_LOCATION = 1;
@@ -37,13 +36,24 @@ export class RenderObject {
 		// bind buffers
 		gl.bindBuffer(gl.ARRAY_BUFFER, this.VBO);
 
-		// buffer vertex data
-		vertices.forEach((vertex) => {
-			gl.bufferData(gl.ARRAY_BUFFER,
-				vertex.position, gl.STATIC_DRAW);
-		});
+		// allocate buffer for all vertices and store them in it
+		const vertexData = RenderObject.concatBuffers(vertices.map((a) => a.position));
 
-		// position VAO
+		// const positions = [
+		// 	0, 0, 0, 1.0,
+		// 	0, 0.5, 0, 1.0,
+		// 	0.7, 0, 0, 1.0
+		// ];
+		// this.verticeCount = 3;
+		// gl.bufferData(gl.ARRAY_BUFFER,
+		// 	new Float32Array(positions), gl.STATIC_DRAW);
+
+
+		// buffer vertex data
+		gl.bufferData(gl.ARRAY_BUFFER,
+			vertexData, gl.STATIC_DRAW);
+
+		// create vertex position VAO
 		gl.bindVertexArray(this.VAO);
 		gl.enableVertexAttribArray(POSITION_ATTRIB_LOCATION);
 		gl.vertexAttribPointer(
@@ -54,11 +64,43 @@ export class RenderObject {
 			0,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
 			0						  // offset (start at beginnng of buffer)
 		);
+
+		this.initialized = true;
 	}
 
 	public Render(gl: WebGL2RenderingContext, renderType: number) {
-		gl.bindVertexArray(this.VAO);
+		if (!this.initialized) {
+			console.log("Cannot render object, not initialized");
+			return;
+		}
 
+		gl.bindVertexArray(this.VAO);
 		gl.drawArrays(renderType, 0, this.verticeCount);
+	}
+
+	// source: https://stackoverflow.com/a/14089496
+	// tslint:disable-next-line:member-ordering
+	private static concatBuffers(buffers: Float32Array[]): Float32Array {
+		// create array of buffer lengths
+		const length = buffers.map((a) => a.length );
+
+		// add up lengths of all buffers
+		const bufOut = new Float32Array(length.reduce((a, b) => a + b, 0));
+
+		for (let i = 0; i < buffers.length; i++) {
+			// calculate offset from start
+			const offset = RenderObject.sum(length.slice(0, i));
+
+			// insert data starting at offset position
+			bufOut.set(buffers[i], offset);
+		}
+
+		return bufOut;
+	}
+
+	// tslint:disable-next-line:member-ordering
+	private static sum(array: number[]): number {
+		// tslint:disable-next-line:only-arrow-functions
+		return array.reduce((a, b) => a + b, 0);
 	}
 }
