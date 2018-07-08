@@ -1,4 +1,4 @@
-import { Vertex } from "../Utils/Vertex";
+import { Vertex } from "../Structs/Vertex";
 
 const POSITION_ATTRIB_LOCATION = 0;
 const COLOR_ATTRIB_LOCATION = 1;
@@ -38,16 +38,6 @@ export class RenderObject {
 
 		// allocate buffer for all vertices and store them in it
 		const vertexData = RenderObject.concatBuffers(vertices.map((a) => a.position));
-
-		// const positions = [
-		// 	0, 0, 0, 1.0,
-		// 	0, 0.5, 0, 1.0,
-		// 	0.7, 0, 0, 1.0
-		// ];
-		// this.verticeCount = 3;
-		// gl.bufferData(gl.ARRAY_BUFFER,
-		// 	new Float32Array(positions), gl.STATIC_DRAW);
-
 
 		// buffer vertex data
 		gl.bufferData(gl.ARRAY_BUFFER,

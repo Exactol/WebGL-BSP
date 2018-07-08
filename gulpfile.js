@@ -7,12 +7,14 @@ var gulp        = require("gulp"),
     uglify      = require("gulp-uglify"),
 	runSequence = require("run-sequence").use(gulp),
 	clean 		= require("gulp-clean"),
-	gutil 		= require('gulp-util');
+	gutil 		= require('gulp-util'),
+	cache 		= require('gulp-cached');
 
 var tsProject = tsc.createProject("tsconfig.json");
 gulp.task("build", function() {
-	return tsProject.src().
-		pipe(tsProject())
+	return tsProject.src()
+		.pipe(cache("buildCache"))
+		.pipe(tsProject())
 		.js.pipe(gulp.dest("./javascript"));
 });
 

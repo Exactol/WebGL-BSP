@@ -1,4 +1,5 @@
-import { Camera } from "./Rendering/Camera/Camera";
+import { Camera } from "../Rendering/Camera/Camera";
+import { GLRenderer } from "../Rendering/Renderer";
 
 export class KeyboardListener {
 	public listen = true;
@@ -9,7 +10,11 @@ export class KeyboardListener {
 	private sPressed = false;
 	private dPressed = false;
 
-	constructor() {
+	private renderer: GLRenderer;
+
+	constructor(rendererInstance: GLRenderer) {
+		this.renderer = rendererInstance;
+		
 		window.addEventListener("keydown", (event) => {
 			switch (event.key) {
 				case "w":
@@ -27,6 +32,9 @@ export class KeyboardListener {
 				case "z":
 					// toggle
 					this.zToggle = !this.zToggle;
+
+					// activate or deactivate camera
+					this.renderer.mouseHandler.active = this.zToggle;
 					break;
 			}
 		});
@@ -51,19 +59,27 @@ export class KeyboardListener {
 
 	public pollKeyboard(camera: Camera) {
 		if (this.wPressed) {
-			camera.moveForward();
+			if (this.zToggle) {
+				camera.moveForward();
+			}
 		}
 
 		if (this.sPressed) {
-			camera.moveBackword();
+			if (this.zToggle) {
+				camera.moveBackword();
+			}
 		}
 
 		if (this.dPressed) {
-			camera.moveRight();
+			if (this.zToggle) {
+				camera.moveRight();
+			}
 		}
 
 		if (this.aPressed) {
-			camera.moveLeft();
+			if (this.zToggle) {
+				camera.moveLeft();
+			}
 		}
 	}
 }

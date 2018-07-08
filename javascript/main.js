@@ -29,5 +29,5 @@ function initWebGL() {
     //     new Vertex(vec4.fromValues(0.5, -0.5, -1.0, 1.0), vec4.create())
     // ]));
     // start render loop
-    renderer.RenderFrame();
+    renderer.Render();
 }

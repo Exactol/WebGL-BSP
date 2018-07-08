@@ -1,6 +1,7 @@
 import { vec3, mat4, glMatrix } from "gl-matrix";
 import { wrapAngle } from "../../Utils/WrapAngle";
 import { limitAngle } from "../../Utils/LimitAngle";
+import { GLRenderer } from "../Renderer";
 
 
 // todo make into interface
@@ -10,15 +11,15 @@ export class Camera {
 	public horizontalFov = 45;
 	public aspectRatio: number;
 
-	public originalSpeed = 5;
-	public speed = 5;
+	public originalSpeed = 0.5;
+	public speed = 0.5;
 	public mouseSensitivity = 5;
 
 	public up: vec3 = vec3.fromValues(0, 1, 0);
 
 	public modelMatrix: mat4 = mat4.identity(mat4.create());
 
-	private nearClip = 0.1;
+	private nearClip = 1;
 	private farClip = 1000;
 
 	private _horizontalAngle!: number;
@@ -37,7 +38,7 @@ export class Camera {
 		this._verticalAngle = limitAngle(value, -89, 89);
 	}
 	
-	constructor(height: number, width: number) {
+	constructor(width: number, height: number) {
 		console.log("--Initializing Camera--");
 		console.log("	Canvas Width: " + width);
 		console.log("	Canvas Height: " + height);
@@ -92,7 +93,7 @@ export class Camera {
 		const projectionMatrix = mat4.create();
 
 		mat4.perspective(projectionMatrix, 
-			this.horizontalFov * (Math.PI / 180 ),
+			glMatrix.toRadian(this.horizontalFov),
 			this.aspectRatio, this.nearClip, this.farClip);
 
 	 	// tslint:disable-next-line:align
@@ -113,13 +114,13 @@ export class Camera {
 		return this.modelMatrix;
 	}
 
-	public updateHorizontalFov(width: number, height: number) {
+	public updateAspectRatio(width: number, height: number) {
 		if (height === 0) {
 			console.log("Error, height cannot be 0");
 			return;
 		}
 		
-		this.horizontalFov = width / height;
+		this.aspectRatio = width / height;
 	}
 
 	public moveForward() {
@@ -155,13 +156,13 @@ export class Camera {
 		const right = this.getRight();
 
 		// x
-		this.position[0] += (this.speed * right[0] * 0.01);
+		this.position[0] += (this.speed * right[0]);
 
 		// y
-		this.position[1] += (this.speed * right[1] * 0.01);
+		this.position[1] += (this.speed * right[1]);
 
 		// z
-		this.position[2] += (this.speed * right[2] * 0.01);		
+		this.position[2] += (this.speed * right[2]);		
 	}
 
 	public moveLeft() {
@@ -169,12 +170,20 @@ export class Camera {
 		const right = this.getRight();
 
 		// x
-		this.position[0] -= (this.speed * right[0] * 0.01);
+		this.position[0] -= (this.speed * right[0]);
 
 		// y
-		this.position[1] -= (this.speed * right[1] * 0.01);
+		this.position[1] -= (this.speed * right[1]);
 
 		// z
-		this.position[2] -= (this.speed * right[2] * 0.01);
+		this.position[2] -= (this.speed * right[2]);
+	}
+
+	public update(dX: number, dY: number, dTime: number) {
+		this.horizontalAngle += dX * dTime * this.mouseSensitivity;
+		// todo investigate jerkiness in vertical angle
+		this.verticalAngle += -dY * dTime * this.mouseSensitivity;
+		// console.log("vAngle: " + this.verticalAngle);
+		// console.log("hAngle: " + this.horizontalAngle);
 	}
 }

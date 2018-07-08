@@ -25,14 +25,6 @@ var RenderObject = /** @class */ (function () {
         gl.bindBuffer(gl.ARRAY_BUFFER, this.VBO);
         // allocate buffer for all vertices and store them in it
         var vertexData = RenderObject.concatBuffers(vertices.map(function (a) { return a.position; }));
-        // const positions = [
-        // 	0, 0, 0, 1.0,
-        // 	0, 0.5, 0, 1.0,
-        // 	0.7, 0, 0, 1.0
-        // ];
-        // this.verticeCount = 3;
-        // gl.bufferData(gl.ARRAY_BUFFER,
-        // 	new Float32Array(positions), gl.STATIC_DRAW);
         // buffer vertex data
         gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);
         // create vertex position VAO

@@ -5,14 +5,14 @@ var WrapAngle_1 = require("../../Utils/WrapAngle");
 var LimitAngle_1 = require("../../Utils/LimitAngle");
 // todo make into interface
 var Camera = /** @class */ (function () {
-    function Camera(height, width) {
+    function Camera(width, height) {
         this.horizontalFov = 45;
-        this.originalSpeed = 5;
-        this.speed = 5;
+        this.originalSpeed = 0.5;
+        this.speed = 0.5;
         this.mouseSensitivity = 5;
         this.up = gl_matrix_1.vec3.fromValues(0, 1, 0);
         this.modelMatrix = gl_matrix_1.mat4.identity(gl_matrix_1.mat4.create());
-        this.nearClip = 0.1;
+        this.nearClip = 1;
         this.farClip = 1000;
         console.log("--Initializing Camera--");
         console.log("	Canvas Width: " + width);
@@ -72,7 +72,7 @@ var Camera = /** @class */ (function () {
     };
     Camera.prototype.getProjectionMatrix = function () {
         var projectionMatrix = gl_matrix_1.mat4.create();
-        gl_matrix_1.mat4.perspective(projectionMatrix, this.horizontalFov * (Math.PI / 180), this.aspectRatio, this.nearClip, this.farClip);
+        gl_matrix_1.mat4.perspective(projectionMatrix, gl_matrix_1.glMatrix.toRadian(this.horizontalFov), this.aspectRatio, this.nearClip, this.farClip);
         // tslint:disable-next-line:align
         return projectionMatrix;
     };
@@ -86,12 +86,12 @@ var Camera = /** @class */ (function () {
     Camera.prototype.getModelMatrix = function () {
         return this.modelMatrix;
     };
-    Camera.prototype.updateHorizontalFov = function (width, height) {
+    Camera.prototype.updateAspectRatio = function (width, height) {
         if (height === 0) {
             console.log("Error, height cannot be 0");
             return;
         }
-        this.horizontalFov = width / height;
+        this.aspectRatio = width / height;
     };
     Camera.prototype.moveForward = function () {
         // get front matrix
@@ -117,21 +117,27 @@ var Camera = /** @class */ (function () {
         //
         var right = this.getRight();
         // x
-        this.position[0] += (this.speed * right[0] * 0.01);
+        this.position[0] += (this.speed * right[0]);
         // y
-        this.position[1] += (this.speed * right[1] * 0.01);
+        this.position[1] += (this.speed * right[1]);
         // z
-        this.position[2] += (this.speed * right[2] * 0.01);
+        this.position[2] += (this.speed * right[2]);
     };
     Camera.prototype.moveLeft = function () {
         //
         var right = this.getRight();
         // x
-        this.position[0] -= (this.speed * right[0] * 0.01);
+        this.position[0] -= (this.speed * right[0]);
         // y
-        this.position[1] -= (this.speed * right[1] * 0.01);
+        this.position[1] -= (this.speed * right[1]);
         // z
-        this.position[2] -= (this.speed * right[2] * 0.01);
+        this.position[2] -= (this.speed * right[2]);
+    };
+    Camera.prototype.update = function (dX, dY, dTime) {
+        this.horizontalAngle += dX * dTime * this.mouseSensitivity;
+        // this.verticalAngle += -dY * dTime * this.mouseSensitivity;
+        // console.log("vAngle: " + this.verticalAngle);
+        console.log("hAngle: " + this.horizontalAngle);
     };
     return Camera;
 }());
