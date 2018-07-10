@@ -20,13 +20,17 @@ export class BinaryReader {
 	public position: number;
 	public length: number;
 
-	constructor(input: ArrayBuffer) {
-		this.buffer = input;
+	constructor(data: ArrayBuffer, offset = 0) {
+		this.buffer = data;
 
-		// start position at 0
-		this.position = 0;
-		this.length = input.byteLength;
+		// start position at 0 by default
+		this.position = offset;
+		this.length = data.byteLength;
 	}
+
+	// public static fromInt8Array(data: Int8Array) {
+		
+	// }
 	
 	public readInt8(): number {
 		if (this.position + INT_8_SIZE > this.length) {

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Renderer_1 = require("./Rendering/Renderer");
 var MeshFactory_1 = require("./Utils/MeshFactory");
 var RenderObject_1 = require("./Rendering/RenderObject");
-var BspUtils_1 = require("./Utils/BspUtils");
+var BSP_1 = require("./BSP/BSP");
 // export function so it can be called globally
 // @ts-ignore
 window.initWebGL = initWebGL;
@@ -57,7 +57,7 @@ function openFileBtnCallback() {
         var file = fileDialog.files[0];
         console.log(file);
         if (file.name.match(/.*\.(bsp)$/gm)) {
-            var bsp = new BspUtils_1.BSP(file);
+            var bsp = new BSP_1.BSP(file);
         }
     }, false);
     fileDialog.click();

@@ -1,5 +1,6 @@
 import { BinaryReader } from "../Utils/BinaryReader";
 import { LumpEnum } from "./LumpEnums";
+import { HeaderLump } from "./Lumps/HeaderLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
 export class BSP {
@@ -9,6 +10,8 @@ export class BSP {
 
 	public ident!: string;
 	public version!: number;
+
+	public headerLumps: HeaderLump[] = [];
 
 	constructor(bsp: File) {
 		console.log("--Reading " + bsp.name + "--");
@@ -48,7 +51,15 @@ export class BSP {
 		this.version = this.bspReader.readInt32();
 		console.log("Version: " + this.version);
 
+		console.log("--Reading Header Lumps--");
 		// read header lumps
+		for (let i = 0; i < 64; i++) {
+			this.headerLumps.push(new HeaderLump(i, this.bspReader.readBytes(16)));
+		}
+
+		// this.headerLumps.forEach((Lump) => {
+		// 	console.log(Lump.toString());
+		// });
 	}
 
 	public readLump(lump: LumpEnum) {
