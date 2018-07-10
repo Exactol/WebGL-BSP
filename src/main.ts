@@ -3,6 +3,7 @@ import { MeshFactory } from "./Utils/MeshFactory";
 import { RenderObject } from "./Rendering/RenderObject";
 import { Vertex } from "./Structs/Vertex";
 import { vec4 } from "gl-matrix";
+import { BSP } from "./BSP/BSP";
 
 // export function so it can be called globally
 // @ts-ignore
@@ -27,6 +28,8 @@ function initWebGL(): void {
     console.log("WebGL Shader Language Version: " + gl.SHADING_LANGUAGE_VERSION);
 
     const renderer = new GLRenderer(gl);
+
+    setupBtnListeners();
     renderer.AddRenderObject(new RenderObject(gl, MeshFactory.createSolidCube(5)));
     // renderer.AddRenderObject(new RenderObject(gl, [
     //     new Vertex(vec4.fromValues(-0.5, 0.5, -1.0, 1.0), vec4.create()), 
@@ -37,4 +40,38 @@ function initWebGL(): void {
 
     // start render loop
     renderer.Render();
+}
+
+function setupBtnListeners() {
+    // setup button listener for open file dialog
+    const openBtn = document.getElementById("openBtn");
+    if (openBtn == null) {
+        console.log("Open button was null");
+        return;
+    }
+    openBtn.addEventListener("click", openFileBtnCallback);
+}
+
+function openFileBtnCallback() {
+    const fileDialog = document.getElementById("fileDialog") as HTMLInputElement;
+    if (fileDialog == null) {
+        console.log("fileDialog was null");
+        return;
+    } 
+
+    // event that handles when 
+    fileDialog.addEventListener("change", () => {
+        if (fileDialog.files == null) {
+            console.log("selected files were null");
+            return;
+        }
+
+        const file = fileDialog.files[0];
+        console.log(file);
+        if (file.name.match(/.*\.(bsp)$/gm)) {
+            const bsp = new BSP(file);
+        } 
+    }, false);
+
+    fileDialog.click();
 }

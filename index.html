@@ -6,9 +6,18 @@
 	<title>WebGL BSP</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<script src="javascript/WebBSP.js"></script>
 </head>
 <body>
+	<input id="fileDialog" accept=".bsp" type="file" style="display: none"/>
+	<div align="center" id="sidebarBtn">
+		<button onclick="document.getElementById('sidebar').style.display = 'block'"><i class="fas fa-bars"></i></button>
+	</div>
+	<div id="sidebar" align="center">
+		<button onclick="document.getElementById('sidebar').style.display = 'none'"><i class="fas fa-bars"></i></button>
+		<button id="openBtn"><i class="fas fa-file"></i></button>
+	</div>
 	<canvas id="canvas"/>
 	<script>initWebGL();</script>
 </body>

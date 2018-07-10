@@ -11,3 +11,47 @@ body, html {
 	margin: 0%;
 	padding: 0%;
 }
+
+#sidebar {
+	background-color: #343F49;
+	/* background: linear-gradient(to bottom, #495867 0%,#495867 100%); */
+	position: fixed;
+	display: none;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	overflow-x: hidden;
+	padding-top: 10px;
+	height: 100%;
+	width: 70px;
+	border-style: solid;
+	border-width: 0px;
+	border-right-width: 2px;
+	border-color: #FFA49E;
+	box-shadow: 0 0 10px #FFA49E;
+	vertical-align: middle;
+	align-items: center;
+}
+
+/* #sidebar: */
+
+button {
+	border: none;
+	background-color: transparent;
+	outline: none;
+	overflow: hidden;
+	color: #FE5F55;
+	cursor: pointer;
+	padding: 10px;
+	font-size: 30px
+}
+
+button:hover {
+	color: #BDD5EA
+}
+
+#sidebarBtn {
+	padding-top: 10px;
+	width: 70px;
+	position: absolute;
+}

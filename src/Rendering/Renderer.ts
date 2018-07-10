@@ -112,7 +112,7 @@ export class GLRenderer {
 		this.previousTime = currentTime;
 
 		// request another render
-		window.requestAnimationFrame(this.Render.bind(this));
+		// window.requestAnimationFrame(this.Render.bind(this));
 	}
 
 	private resize() {

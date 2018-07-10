@@ -135,9 +135,10 @@ var Camera = /** @class */ (function () {
     };
     Camera.prototype.update = function (dX, dY, dTime) {
         this.horizontalAngle += dX * dTime * this.mouseSensitivity;
-        // this.verticalAngle += -dY * dTime * this.mouseSensitivity;
+        // todo investigate jerkiness in vertical angle
+        this.verticalAngle += -dY * dTime * this.mouseSensitivity;
         // console.log("vAngle: " + this.verticalAngle);
-        console.log("hAngle: " + this.horizontalAngle);
+        // console.log("hAngle: " + this.horizontalAngle);
     };
     return Camera;
 }());

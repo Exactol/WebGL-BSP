@@ -72,7 +72,7 @@ var GLRenderer = /** @class */ (function () {
         });
         this.previousTime = currentTime;
         // request another render
-        window.requestAnimationFrame(this.Render.bind(this));
+        // window.requestAnimationFrame(this.Render.bind(this));
     };
     GLRenderer.prototype.resize = function () {
         var pixelRatio = window.devicePixelRatio || 1;
