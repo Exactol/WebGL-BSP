@@ -7,6 +7,7 @@ import { GenericLump } from "./Lumps/GenericLump";
 import { VertexLump } from "./Lumps/VertexLump";
 import { PlaneLump } from "./Lumps/PlaneLump";
 import { SurfEdgeLump } from "./Lumps/SurfEdgeLump";
+import { FaceLump } from "./Lumps/FaceLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
 export class BSP {
@@ -120,9 +121,8 @@ export class BSP {
 			// case LumpType.TexInfo:
 				
 			// 	break;		
-			// case LumpType.Faces:
-				
-			// 	break;		
+			case LumpType.Faces:
+				return FaceLump;
 			// case LumpType.Lighting:
 				
 			// 	break;		

@@ -30,7 +30,7 @@ export class PlaneLump extends Lump {
 
 	public toString(): string {
 		let retStr = super.toString();
-		retStr += `\nPlanes: \n${this.planes.join("\n")}`;
+		retStr += `\n${LumpType[this.lumpType]}: \n${this.planes.join("\n")}`;
 
 		return retStr;
 	}

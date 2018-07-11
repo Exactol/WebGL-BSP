@@ -24,7 +24,7 @@ export class EdgeLump extends Lump {
 	public toString(): string {
 		let retStr = super.toString();
 
-		retStr += `\nEdges: [${this.edges.join(", ")}]`;
+		retStr += `\n${LumpType[this.lumpType]}: [${this.edges.join(", ")}]`;
 
 		return retStr;
 	}

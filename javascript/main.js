@@ -68,6 +68,11 @@ function openFileBtnCallback() {
 }
 function readBSP(bsp) {
     // console.log(bsp.getLump(LumpType.Vertexes).toString());
-    console.log(bsp.getLump(LumpType_1.LumpType.SurfEdges).toString());
-    // bsp.printLumps();
+    bsp.getLump(LumpType_1.LumpType.Faces);
+    bsp.getLump(LumpType_1.LumpType.Vertexes);
+    bsp.getLump(LumpType_1.LumpType.Edges);
+    bsp.getLump(LumpType_1.LumpType.Planes);
+    bsp.getLump(LumpType_1.LumpType.SurfEdges);
+    // console.log(bsp.getLump(LumpType.Faces).toString());
+    bsp.printLumps();
 }

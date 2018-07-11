@@ -27,11 +27,7 @@ export class VertexLump extends Lump {
 	public toString(): string {
 		let retStr = super.toString();
 
-		if (this.initialized) {
-			retStr += `\nVertexes: [(${this.vertexes.join("), (")}]`;
-		} else {
-			retStr += "\Vertexes: []";
-		}
+		retStr += `\n${LumpType[this.lumpType]}: [(${this.vertexes.join("), (")}]`;
 
 		return retStr;
 	}

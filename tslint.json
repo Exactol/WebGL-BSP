@@ -16,7 +16,8 @@
         "ordered-imports": false,
         "max-classes-per-file": false,
         "trailing-comma": false,
-        "member-ordering": false
+        "member-ordering": false,
+        "align": false
     },
     "rulesDirectory": []
 }

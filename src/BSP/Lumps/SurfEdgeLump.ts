@@ -25,7 +25,7 @@ export class SurfEdgeLump extends Lump {
 
 	public toString(): string {
 		let retStr = super.toString();
-		retStr += `\nSurfEdges: [${this.surfEdges.join(", ")}]`;
+		retStr += `\n${LumpType[this.lumpType]}: [${this.surfEdges.join(", ")}]`;
 
 		return retStr;
 	}
