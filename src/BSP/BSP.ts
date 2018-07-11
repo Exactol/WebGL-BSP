@@ -8,6 +8,8 @@ import { VertexLump } from "./Lumps/VertexLump";
 import { PlaneLump } from "./Lumps/PlaneLump";
 import { SurfEdgeLump } from "./Lumps/SurfEdgeLump";
 import { FaceLump } from "./Lumps/FaceLump";
+import { OriginalFaceLump } from "./Lumps/OriginalFaceLump";
+import { BrushLump } from "./Lumps/BrushLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
 export class BSP {
@@ -104,56 +106,51 @@ export class BSP {
 		switch (lumpType) {
 			// case LumpType.Entities:
 			// 	// return new EntityLump()
-			// 	break;
 			case LumpType.Planes:
 				return PlaneLump;
-			// case LumpType.TexData:
-				
-			// 	break;		
+			// case LumpType.TexData:	
 			case LumpType.Vertexes:
 				return VertexLump;
-			// case LumpType.Visibility:
-				
-			// 	break;		
-			// case LumpType.Nodes:
-				
-			// 	break;		
-			// case LumpType.TexInfo:
-				
-			// 	break;		
+			// case LumpType.Visibility:	
+			// case LumpType.Nodes:	
+			// case LumpType.TexInfo:		
 			case LumpType.Faces:
 				return FaceLump;
-			// case LumpType.Lighting:
-				
-			// 	break;		
-			// case LumpType.Occlusion:
-				
-			// 	break;		
-			// case LumpType.Leafs:
-				
-			// 	break;		
+			// case LumpType.Lighting:	
+			// case LumpType.Occlusion:		
+			// case LumpType.Leafs:	
 			// case LumpType.FaceIds:
-				
-			// 	break;		
 			case LumpType.Edges:
 				return EdgeLump;
 			case LumpType.SurfEdges:
 				return SurfEdgeLump;
 			// case LumpType.Models:
-				
-			// 	break;		
 			// case LumpType.WorldLights:
-				
-			// 	break;		
 			// case LumpType.LeafFaces:
+			// case LumpType.LeafBrushes:	
+			case LumpType.Brushes:
+				return BrushLump;
+			// case LumpType.BrushSides:
+			// case LumpType.Areas:
+			// case LumpType.AreaPortals:
+			// case LumpType.Portals:
+			// case LumpType.Unused0:
+			// case LumpType.PropCollsion:
+			// case LumpType.Clusters:
+			// case LumpType.Unused1:
+			// case LumpType.PropHulls:
+			// case LumpType.PortalVerts:
+			// case LumpType.Unused2:
+			// case LumpType.PropHullVerts:
+			// case LumpType.ClusterPortals:
+			// case LumpType.Unused3:
+			// case LumpType.PropTris:
+			// case LumpType.DispInfo:
+			case LumpType.OriginalFaces:
+				return OriginalFaceLump;
+			// case LumpType.PhysDisp:
+			// case LumpType.PhysCollide:
 				
-			// 	break;		
-			// case LumpType.LeafBrushes:
-				
-			// 	break;		
-			// case LumpType.Brushes:
-				
-			// 	break;		
 			default:
 				return GenericLump;
 		}
