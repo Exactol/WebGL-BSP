@@ -1,4 +1,4 @@
-export enum LumpEnum {
+export enum LumpType {
 	Entities = 0,
 	Planes = 1,
 	TexData = 2,
@@ -84,4 +84,6 @@ export enum LumpEnum {
 	OverlaySystemLevels = 61,
 	PhysLevel = 62,
 	DispMultiBlend = 63,
+
+	Generic = -1 // placeholder lump
 }

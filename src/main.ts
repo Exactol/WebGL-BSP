@@ -4,6 +4,7 @@ import { RenderObject } from "./Rendering/RenderObject";
 import { Vertex } from "./Structs/Vertex";
 import { vec4 } from "gl-matrix";
 import { BSP } from "./BSP/BSP";
+import { LumpType } from "./BSP/Lumps/LumpType";
 
 // export function so it can be called globally
 // @ts-ignore
@@ -69,9 +70,16 @@ function openFileBtnCallback() {
         const file = fileDialog.files[0];
         console.log(file);
         if (file.name.match(/.*\.(bsp)$/gm)) {
-            const bsp = new BSP(file);
-        } 
+            const bsp = new BSP(file, readBSP);
+        } else {
+            console.log("Only BSP files are supported");
+        }
     }, false);
 
     fileDialog.click();
+}
+
+function readBSP(bsp: BSP) {
+    console.log(bsp.getLump(LumpType.Vertexes).toString());
+    bsp.printLumps();
 }

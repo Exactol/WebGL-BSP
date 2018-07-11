@@ -4,6 +4,7 @@ var Renderer_1 = require("./Rendering/Renderer");
 var MeshFactory_1 = require("./Utils/MeshFactory");
 var RenderObject_1 = require("./Rendering/RenderObject");
 var BSP_1 = require("./BSP/BSP");
+var LumpType_1 = require("./BSP/Lumps/LumpType");
 // export function so it can be called globally
 // @ts-ignore
 window.initWebGL = initWebGL;
@@ -57,8 +58,16 @@ function openFileBtnCallback() {
         var file = fileDialog.files[0];
         console.log(file);
         if (file.name.match(/.*\.(bsp)$/gm)) {
-            var bsp = new BSP_1.BSP(file);
+            var bsp = new BSP_1.BSP(file, readBSP);
+        }
+        else {
+            console.log("Only BSP files are supported");
         }
     }, false);
     fileDialog.click();
+}
+function readBSP(bsp) {
+    console.log(bsp.getLump(LumpType_1.LumpType.Vertexes).toString());
+    // console.log(bsp.getLump(LumpType.Edges).toString());
+    bsp.printLumps();
 }

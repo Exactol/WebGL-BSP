@@ -40,14 +40,14 @@ button {
 	background-color: transparent;
 	outline: none;
 	overflow: hidden;
-	color: #FE5F55;
+	color: rgb(255, 85, 73);
 	cursor: pointer;
 	padding: 10px;
 	font-size: 30px
 }
 
 button:hover {
-	color: #BDD5EA
+	color: rgb(115, 188, 252)
 }
 
 #sidebarBtn {

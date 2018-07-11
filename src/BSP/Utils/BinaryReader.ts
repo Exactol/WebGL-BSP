@@ -1,19 +1,19 @@
 // A C# style Binary Reader
 
-const INT_8_SIZE = 1;
-const INT_16_SIZE = 2;
-const INT_32_SIZE = 4;
+export const INT_8_SIZE = 1;
+export const INT_16_SIZE = 2;
+export const INT_32_SIZE = 4;
 
-const UINT_8_SIZE = 1;
-const UINT_16_SIZE = 2;
-const UINT_32_SIZE = 4;
+export const UINT_8_SIZE = 1;
+export const UINT_16_SIZE = 2;
+export const UINT_32_SIZE = 4;
 
-const FLOAT_SIZE = 4; // float32
-const DOUBLE_SIZE = 8; // float64
+export const FLOAT_SIZE = 4; // float32
+export const DOUBLE_SIZE = 8; // float64
 
-const BOOL_SIZE = 1;
+export const BOOL_SIZE = 1;
 
-const CHAR_SIZE = 1;
+export const CHAR_SIZE = 1;
 
 export class BinaryReader {
 	public buffer: ArrayBuffer;
@@ -36,7 +36,7 @@ export class BinaryReader {
 		if (this.position + INT_8_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Int8Array(this.buffer, this.position, INT_8_SIZE)[0];
+		const retVal = new Int8Array(this.buffer, this.position, 1)[0];
 
 		// move position forward
 		this.position += INT_8_SIZE;
@@ -47,7 +47,7 @@ export class BinaryReader {
 		if (this.position + INT_16_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Int16Array(this.buffer, this.position, INT_16_SIZE)[0];
+		const retVal = new Int16Array(this.buffer, this.position, 1)[0];
 
 		// move position forward
 		this.position += INT_16_SIZE;
@@ -58,7 +58,7 @@ export class BinaryReader {
 		if (this.position + INT_32_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Int32Array(this.buffer, this.position, INT_32_SIZE)[0];
+		const retVal = new Int32Array(this.buffer, this.position, 1)[0];
 
 		// move position forward
 		this.position += INT_32_SIZE;
@@ -69,7 +69,7 @@ export class BinaryReader {
 		if (this.position + UINT_8_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Uint8Array(this.buffer, this.position, UINT_8_SIZE)[0];
+		const retVal = new Uint8Array(this.buffer, this.position, 1)[0];
 
 		// move position forward
 		this.position += UINT_8_SIZE;
@@ -80,7 +80,7 @@ export class BinaryReader {
 		if (this.position + UINT_16_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Uint16Array(this.buffer, this.position, UINT_16_SIZE)[0];
+		const retVal = new Uint16Array(this.buffer, this.position, 1)[0];
 
 		// move position forward
 		this.position += UINT_16_SIZE;
@@ -91,7 +91,7 @@ export class BinaryReader {
 		if (this.position + UINT_32_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Uint32Array(this.buffer, this.position, UINT_32_SIZE)[0];
+		const retVal = new Uint32Array(this.buffer, this.position, 1)[0];
 		
 		// move position forward
 		this.position += UINT_32_SIZE;
@@ -102,7 +102,9 @@ export class BinaryReader {
 		if (this.position + FLOAT_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Float32Array(this.buffer, this.position, FLOAT_SIZE)[0];
+		// console.log(`position: ${this.position}`);
+		// console.log(`length: ${this.buffer.byteLength}`);
+		const retVal = new Float32Array(this.buffer, this.position, 1)[0];
 		
 		// move position forward
 		this.position += FLOAT_SIZE;
@@ -114,7 +116,7 @@ export class BinaryReader {
 			throw new Error("RangeError");
 		}
 		// float 64 is a double
-		const retVal = new Float64Array(this.buffer, this.position, DOUBLE_SIZE)[0];
+		const retVal = new Float64Array(this.buffer, this.position, 1)[0];
 		
 		// move position forward
 		this.position += DOUBLE_SIZE;
@@ -126,7 +128,7 @@ export class BinaryReader {
 			throw new Error("RangeError");
 		}
 		// get bool as int
-		const boolValInt = new Int8Array(this.buffer, this.position, BOOL_SIZE)[0];
+		const boolValInt = new Int8Array(this.buffer, this.position, 1)[0];
 
 		// 0 = true, so if its not 0 it must be false
 		const retVal = (boolValInt === 0);
@@ -151,7 +153,7 @@ export class BinaryReader {
 		if (this.position + CHAR_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = String.fromCharCode(new Int8Array(this.buffer, this.position, CHAR_SIZE)[0]);
+		const retVal = String.fromCharCode(new Int8Array(this.buffer, this.position, 1)[0]);
 		
 		// move position forward
 		this.position += CHAR_SIZE;
@@ -163,7 +165,7 @@ export class BinaryReader {
 		if (this.position + CHAR_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = String.fromCharCode(new Int8Array(this.buffer, this.position, CHAR_SIZE)[0]);
+		const retVal = String.fromCharCode(new Int8Array(this.buffer, this.position, 1)[0]);
 
 		return retVal;
 	}
