@@ -5,6 +5,8 @@ import { Lump } from "./Lumps/Lump";
 import { EdgeLump } from "./Lumps/EdgeLump";
 import { GenericLump } from "./Lumps/GenericLump";
 import { VertexLump } from "./Lumps/VertexLump";
+import { PlaneLump } from "./Lumps/PlaneLump";
+import { SurfEdgeLump } from "./Lumps/SurfEdgeLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
 export class BSP {
@@ -36,6 +38,7 @@ export class BSP {
 			if (callback != null) {
 				callback(this);
 			} else {
+				// todo research events more
 				const event = new Event("bspOnLoad");
 			}
 		};
@@ -64,11 +67,10 @@ export class BSP {
 		// read header lumps. Each lump is 16 bytes
 		console.log("--Reading Header Lumps--");
 		for (let i = 0; i < 64; i++) {
-			// this.headerLumps.push(new HeaderLump(i, this.bspReader.readBytes(16)));
-			this.lumps[i] = this.createLump(i, new HeaderLump(i, this.bspReader.readBytes(16)));
+			// use helper function to convert LumpEnum to lump class
+			const lumpType = this.getLumpType(i);
+			this.lumps[i] = new lumpType(new HeaderLump(i, this.bspReader.readBytes(16)), this.fileData);
 		}
-
-		// 
 	}
 
 	public getLump(lumpType: LumpType) {
@@ -77,10 +79,8 @@ export class BSP {
 			return this.lumps[lumpType];
 		}
 
-		const lType = this.getType(lumpType);
-
 		const lump = this.lumps[lumpType];
-		
+
 		// make sure lumps that this lump depends on are read first
 		lump.lumpDependencies.forEach((lumpDependency) => {
 			this.getLump(lumpDependency);
@@ -99,85 +99,18 @@ export class BSP {
 		}
 	}
 
-	private createLump(lumpType: LumpType, headerLump: HeaderLump): Lump {
+	private getLumpType(lumpType: LumpType) {
 		switch (lumpType) {
 			// case LumpType.Entities:
 			// 	// return new EntityLump()
 			// 	break;
-			// case LumpType.Planes:
-				
-			// 	break;		
+			case LumpType.Planes:
+				return PlaneLump;
 			// case LumpType.TexData:
 				
 			// 	break;		
 			case LumpType.Vertexes:
-				return new VertexLump(headerLump, this.fileData);
-				break;			
-			// case LumpType.Visibility:
-				
-			// 	break;		
-			// case LumpType.Nodes:
-				
-			// 	break;		
-			// case LumpType.TexInfo:
-				
-			// 	break;		
-			// case LumpType.Faces:
-				
-			// 	break;		
-			// case LumpType.Lighting:
-				
-			// 	break;		
-			// case LumpType.Occlusion:
-				
-			// 	break;		
-			// case LumpType.Leafs:
-				
-			// 	break;		
-			// case LumpType.FaceIds:
-				
-			// 	break;		
-			case LumpType.Edges:
-				return new EdgeLump(headerLump, this.fileData);
-				break;		
-			// case LumpType.SurfEdges:
-				
-			// 	break;		
-			// case LumpType.Models:
-				
-			// 	break;		
-			// case LumpType.WorldLights:
-				
-			// 	break;		
-			// case LumpType.LeafFaces:
-				
-			// 	break;		
-			// case LumpType.LeafBrushes:
-				
-			// 	break;		
-			// case LumpType.Brushes:
-				
-			// 	break;		
-			default:
-				return new GenericLump(headerLump, this.fileData);
-				break;
-		}
-	}
-
-	private getType(lumpType: LumpType) {
-		switch (lumpType) {
-			// case LumpType.Entities:
-			// 	// return new EntityLump()
-			// 	break;
-			// case LumpType.Planes:
-				
-			// 	break;		
-			// case LumpType.TexData:
-				
-			// 	break;		
-			// case LumpType.Vertexes:
-				
-			// 	break;		
+				return VertexLump;
 			// case LumpType.Visibility:
 				
 			// 	break;		
@@ -204,10 +137,8 @@ export class BSP {
 			// 	break;		
 			case LumpType.Edges:
 				return EdgeLump;
-				break;		
-			// case LumpType.SurfEdges:
-				
-			// 	break;		
+			case LumpType.SurfEdges:
+				return SurfEdgeLump;
 			// case LumpType.Models:
 				
 			// 	break;		
@@ -225,8 +156,7 @@ export class BSP {
 			// 	break;		
 			default:
 				return GenericLump;
-				break;
-		}		
+		}
 	}
 }
 

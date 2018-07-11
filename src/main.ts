@@ -80,6 +80,7 @@ function openFileBtnCallback() {
 }
 
 function readBSP(bsp: BSP) {
-    console.log(bsp.getLump(LumpType.Vertexes).toString());
-    bsp.printLumps();
+    // console.log(bsp.getLump(LumpType.Vertexes).toString());
+    console.log(bsp.getLump(LumpType.SurfEdges).toString());
+    // bsp.printLumps();
 }

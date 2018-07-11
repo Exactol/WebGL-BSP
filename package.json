@@ -14,6 +14,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-typescript": "^5.0.0-alpha.3",
     "gulp-uglify": "^3.0.0",
+    "gulp-cached": "1.1.1",
     "run-sequence": "^2.2.1",
     "typescript": "^2.9.2",
     "vinyl-buffer": "^1.0.1",

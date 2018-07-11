@@ -10,4 +10,11 @@ export class Plane {
 		this.dist = distance;
 		this.type = planeType;
 	}
+
+	public toString() {
+		return `Normal: ${this.normal}
+		Distance From Origin: ${this.dist}
+		Type: ${this.type}
+		`;
+	}
 }

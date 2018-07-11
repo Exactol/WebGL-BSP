@@ -67,7 +67,7 @@ function openFileBtnCallback() {
     fileDialog.click();
 }
 function readBSP(bsp) {
-    console.log(bsp.getLump(LumpType_1.LumpType.Vertexes).toString());
-    // console.log(bsp.getLump(LumpType.Edges).toString());
-    bsp.printLumps();
+    // console.log(bsp.getLump(LumpType.Vertexes).toString());
+    console.log(bsp.getLump(LumpType_1.LumpType.SurfEdges).toString());
+    // bsp.printLumps();
 }
