@@ -1,1 +1,0 @@
-{"version":3,"file":"WrapAngle.js","sourceRoot":"","sources":["WrapAngle.ts"],"names":[],"mappings":";;AAAA,uCAAuC;AACvC,mBAA0B,KAAa;IAEtC,OAAO,KAAK,IAAI,GAAG,EAAE;QACpB,KAAK,IAAI,GAAG,CAAC;KACb;IAED,OAAO,KAAK,GAAG,CAAC,EAAE;QACjB,KAAK,IAAI,GAAG,CAAC;KACb;IACD,OAAO,KAAK,CAAC;AACd,CAAC;AAVD,8BAUC"}
