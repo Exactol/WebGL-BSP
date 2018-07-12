@@ -8,14 +8,26 @@ var gulp        = require("gulp"),
 	runSequence = require("run-sequence").use(gulp),
 	clean 		= require("gulp-clean"),
 	gutil 		= require('gulp-util'),
-	cache 		= require('gulp-cached');
+	cache 		= require('gulp-cached')
+	changed		= require('gulp-changed');
 
-var tsProject = tsc.createProject("tsconfig.json");
+const src = "./src/**/*.ts";
+const typeSrc = "./@types/*.ts";
+const dest = "./javascript/";
+
+// var tsProject = tsc.createProject({
+// 	target: "es5",
+// 	module: "commonjs",
+// 	noImplicitAny: false
+// });
+
+var tsProject = tsc.createProject("./tsconfig.json");
 gulp.task("build", function() {
-	return tsProject.src()
-		.pipe(cache("buildCache"))
-		.pipe(tsProject())
-		.js.pipe(gulp.dest("./javascript"));
+	return gulp.src([src, typeSrc])
+	// .pipe(changed(src))
+	// .pipe(cache("ts"))r
+	.pipe(tsProject())
+		.js.pipe(gulp.dest(dest));
 });
 
 gulp.task("bundle", function() {
@@ -41,10 +53,23 @@ gulp.task("bundle", function() {
 		.pipe(gulp.dest(outputFolder));
 });
 
+// gulp.watch("./src/**/*.ts").on("change", () => {
+// 	runSequence("Build-and-Bundle");
+// })
+
 gulp.task("clean", function() {
 	return (gulp.src("javascript/", {read: false}).pipe(clean()));
 });
 
 gulp.task("Build-and-Bundle", function() {
-	runSequence("clean", "build", "bundle")
+	runSequence("build", "bundle")
+});
+
+gulp.task("Typescript-Watch", () => {
+	gulp.watch(src).on("change", (file) => {
+		gulp.src([file.path])
+			.pipe(debug({title: "Compiling"}))
+			.pipe(tsProject())
+			.js.pipe(gulp.dest(dest));
+	});
 });

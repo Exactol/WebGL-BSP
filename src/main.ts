@@ -68,9 +68,16 @@ function openFileBtnCallback() {
         }
 
         const file = fileDialog.files[0];
-        console.log(file);
+        // console.log(file);
         if (file.name.match(/.*\.(bsp)$/gm)) {
-            const bsp = new BSP(file, readBSP);
+            const reader = new FileReader();
+
+            reader.onload = readBSP;
+
+            reader.readAsArrayBuffer(file);
+
+
+            
         } else {
             console.log("Only BSP files are supported");
         }
@@ -79,13 +86,18 @@ function openFileBtnCallback() {
     fileDialog.click();
 }
 
-function readBSP(bsp: BSP) {
+function readBSP(e: FileReaderProgressEvent) {
+    if (e.target == null) {
+        throw new Error("BSP Read Error");
+    }
+    const bsp = new BSP(e.target.result);
+
     // console.log(bsp.getLump(LumpType.Vertexes).toString());
     // bsp.getLump(LumpType.Faces);
     // bsp.getLump(LumpType.Vertexes);
     // bsp.getLump(LumpType.Edges);
     // bsp.getLump(LumpType.Planes);
     // bsp.getLump(LumpType.SurfEdges);
-    console.log(bsp.getLump(LumpType.Nodes).toString());
+    console.log(bsp.getLump(LumpType.Leafs).toString());
     // bsp.printLumps();
 }

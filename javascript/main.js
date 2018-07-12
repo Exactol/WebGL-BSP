@@ -56,9 +56,11 @@ function openFileBtnCallback() {
             return;
         }
         var file = fileDialog.files[0];
-        console.log(file);
+        // console.log(file);
         if (file.name.match(/.*\.(bsp)$/gm)) {
-            var bsp = new BSP_1.BSP(file, readBSP);
+            var reader = new FileReader();
+            reader.onload = readBSP;
+            reader.readAsArrayBuffer(file);
         }
         else {
             console.log("Only BSP files are supported");
@@ -66,13 +68,17 @@ function openFileBtnCallback() {
     }, false);
     fileDialog.click();
 }
-function readBSP(bsp) {
+function readBSP(e) {
+    if (e.target == null) {
+        throw new Error("BSP Read Error");
+    }
+    var bsp = new BSP_1.BSP(e.target.result);
     // console.log(bsp.getLump(LumpType.Vertexes).toString());
     // bsp.getLump(LumpType.Faces);
     // bsp.getLump(LumpType.Vertexes);
     // bsp.getLump(LumpType.Edges);
     // bsp.getLump(LumpType.Planes);
     // bsp.getLump(LumpType.SurfEdges);
-    console.log(bsp.getLump(LumpType_1.LumpType.Nodes).toString());
+    console.log(bsp.getLump(LumpType_1.LumpType.Leafs).toString());
     // bsp.printLumps();
 }
