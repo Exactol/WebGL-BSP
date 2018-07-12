@@ -73,6 +73,6 @@ function readBSP(bsp) {
     // bsp.getLump(LumpType.Edges);
     // bsp.getLump(LumpType.Planes);
     // bsp.getLump(LumpType.SurfEdges);
-    console.log(bsp.getLump(LumpType_1.LumpType.Brushes).toString());
+    console.log(bsp.getLump(LumpType_1.LumpType.Nodes).toString());
     // bsp.printLumps();
 }

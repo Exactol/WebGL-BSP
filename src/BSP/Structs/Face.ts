@@ -10,8 +10,8 @@ export class Face {
 	public style: Int8Array;
 	public lightOfs: number;
 	public area: number;
-	public lightmapTextureMinsInLuxels: number[];
-	public lightmapTextureSizeInLuxels: number[];
+	public lightmapTextureMinsInLuxels: [number, number];
+	public lightmapTextureSizeInLuxels: [number, number];
 	public origFace: number;
 	public numPrims: number;
 	public firstPrimID: number;
@@ -19,7 +19,7 @@ export class Face {
 
 	constructor(planeNum: number, side: number, onNode: number, firstEdge: number, numEdges: number, 
 		texInfo: number, dispInfo: number, surfFogVolID: number, style: Int8Array, lightOfs: number,
-		area: number, lightTexMin: number[], lightTexSize: number[], origFace: number, numPrims: number, 
+		area: number, lightTexMin: [number, number], lightTexSize: [number, number], origFace: number, numPrims: number, 
 		firstPrimID: number, smoothingGroups: number) {
 			this.planeNum = planeNum;
 			this.side = side;

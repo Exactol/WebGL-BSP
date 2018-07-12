@@ -10,6 +10,9 @@ import { SurfEdgeLump } from "./Lumps/SurfEdgeLump";
 import { FaceLump } from "./Lumps/FaceLump";
 import { OriginalFaceLump } from "./Lumps/OriginalFaceLump";
 import { BrushLump } from "./Lumps/BrushLump";
+import { BrushSide } from "./Structs/BrushSide";
+import { BrushSideLump } from "./Lumps/BrushSideLump";
+import { NodeLump } from "./Lumps/NodeLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
 export class BSP {
@@ -112,7 +115,8 @@ export class BSP {
 			case LumpType.Vertexes:
 				return VertexLump;
 			// case LumpType.Visibility:	
-			// case LumpType.Nodes:	
+			case LumpType.Nodes:
+				return NodeLump;	
 			// case LumpType.TexInfo:		
 			case LumpType.Faces:
 				return FaceLump;
@@ -130,7 +134,8 @@ export class BSP {
 			// case LumpType.LeafBrushes:	
 			case LumpType.Brushes:
 				return BrushLump;
-			// case LumpType.BrushSides:
+			case LumpType.BrushSides:
+				return BrushSideLump;
 			// case LumpType.Areas:
 			// case LumpType.AreaPortals:
 			// case LumpType.Portals:
