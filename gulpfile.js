@@ -1,4 +1,4 @@
-var gulp        = require("gulp"),
+const gulp      = require("gulp"),
     browserify  = require("browserify"),
     source      = require("vinyl-source-stream"),
     buffer      = require("vinyl-buffer"),
@@ -7,26 +7,20 @@ var gulp        = require("gulp"),
     uglify      = require("gulp-uglify"),
 	runSequence = require("run-sequence").use(gulp),
 	clean 		= require("gulp-clean"),
-	gutil 		= require('gulp-util'),
-	cache 		= require('gulp-cached')
-	changed		= require('gulp-changed');
+	gutil 		= require("gulp-util"),
+	plumber		= require("gulp-plumber")
+	debug		= require("gulp-debug")
+	print		= require("gulp-print").default;
 
 const src = "./src/**/*.ts";
 const typeSrc = "./@types/*.ts";
-const dest = "./javascript/";
+const dest = "./javascript";
+const tsProject = tsc.createProject("./tsconfig.json");
 
-// var tsProject = tsc.createProject({
-// 	target: "es5",
-// 	module: "commonjs",
-// 	noImplicitAny: false
-// });
-
-var tsProject = tsc.createProject("./tsconfig.json");
 gulp.task("build", function() {
+	tsProject.options.isolatedModules = false;
 	return gulp.src([src, typeSrc])
-	// .pipe(changed(src))
-	// .pipe(cache("ts"))r
-	.pipe(tsProject())
+		.pipe(tsProject())
 		.js.pipe(gulp.dest(dest));
 });
 
@@ -53,10 +47,6 @@ gulp.task("bundle", function() {
 		.pipe(gulp.dest(outputFolder));
 });
 
-// gulp.watch("./src/**/*.ts").on("change", () => {
-// 	runSequence("Build-and-Bundle");
-// })
-
 gulp.task("clean", function() {
 	return (gulp.src("javascript/", {read: false}).pipe(clean()));
 });
@@ -66,10 +56,14 @@ gulp.task("Build-and-Bundle", function() {
 });
 
 gulp.task("Typescript-Watch", () => {
-	gulp.watch(src).on("change", (file) => {
+	tsProject.options.isolatedModules = true;
+	gulp.watch([src. typeSrc]).on("change", (file) => {
 		gulp.src([file.path])
+			.pipe(plumber())
 			.pipe(debug({title: "Compiling"}))
 			.pipe(tsProject())
-			.js.pipe(gulp.dest(dest));
+			.js.pipe(gulp.dest(dest))
+			.pipe(print((filepath) => `Built: ${filepath}`));
+		runSequence("bundle");
 	});
 });

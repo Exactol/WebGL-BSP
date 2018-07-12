@@ -13,6 +13,7 @@ export class LeafLump extends Lump {
 
 	public read() {
 		const reader = new BinaryReader(this.data);
+		const test = 5;
 
 		// each node is 56 bytes long
 		for (let i = 0; i < this.header.lumpLength; i += 56) {

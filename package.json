@@ -5,14 +5,14 @@
     "@types/gl-matrix": "^2.4.0",
     "@types/webgl-ext": "0.0.29",
     "gl-matrix": "^2.6.1",
-    "gulp-cached": "^1.1.1"
+    "gulp-print": "^5.0.0"
   },
   "devDependencies": {
     "browserify": "^16.2.2",
     "gulp": "^3.9.1",
-    "gulp-cached": "1.1.1",
-    "gulp-changed": "^3.2.0",
     "gulp-clean": "^0.4.0",
+    "gulp-debug": "^4.0.0",
+    "gulp-plumber": "^1.2.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-typescript": "^5.0.0-alpha.3",
     "gulp-uglify": "^3.0.0",
