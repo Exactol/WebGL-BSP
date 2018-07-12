@@ -16,7 +16,6 @@ import { NodeLump } from "./Lumps/NodeLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
 export class BSP {
-	public file: File;
 	public fileData!: ArrayBuffer;
 	public bspReader!: BinaryReader;
 
@@ -26,37 +25,13 @@ export class BSP {
 	public headerLumps: HeaderLump[] = [];
 	public lumps: { [lumpType: number]: Lump } = {};
 
-	constructor(bsp: File, callback?: (BSP) => void) {
-		console.log("--Reading " + bsp.name + "--");
-		this.file = bsp;
-
-		// read file contents into ArrayBuffer
-		const reader = new FileReader();
-		
-		reader.onload = (e) => {
-			if (e.target == null) {
-				throw new Error("BSP Read Error");
-			}
-			this.fileData = e.target.result;
-			
-			this.readBSP();
-
-			if (callback != null) {
-				callback(this);
-			} else {
-				// todo research events more
-				const event = new Event("bspOnLoad");
-			}
-		};
-		reader.readAsArrayBuffer(bsp);
-	}
-
-	public readBSP() {
+	constructor(bspData: ArrayBuffer) {
+		this.fileData = bspData;
 		this.bspReader = new BinaryReader(this.fileData);
 		this.readHeader();
 	}
 
-	public readHeader() {
+	private readHeader() {
 		console.log("--Header--");
 
 		// read ident
