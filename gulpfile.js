@@ -10,24 +10,42 @@ const gulp      = require("gulp"),
 	gutil 		= require("gulp-util"),
 	plumber		= require("gulp-plumber")
 	debug		= require("gulp-debug")
-	print		= require("gulp-print").default;
+	print		= require("gulp-print").default
+	watchify	= require("watchify")
+	watch		= require("gulp-watch");
 
-const src = "./src/**/*.ts";
-const typeSrc = "./@types/*.ts";
-const dest = "./javascript";
-const tsProject = tsc.createProject("./tsconfig.json");
+
+const path = {
+	src: "src/**/*.ts",
+	typeSrc: "@types/**/*.ts",
+	jsDest: ".tmp/",
+	finalDest: "dist/"
+
+}
+const tsProject = tsc.createProject("tsconfig.json");
+const tsWatchProject = tsc.createProject("tsconfig.watch.json");
+
+const libraryName = "WebBSP";
+
+var bundler = watchify(browserify({
+	debug: true,
+	standalone: libraryName,
+	detectGlobals: true,
+	cache: {},
+	packageCache: {},
+	fullPaths: true
+}));
+
+bundler.on("update", watchBundleUglify);
 
 gulp.task("build", function() {
-	tsProject.options.isolatedModules = false;
-	return gulp.src([src, typeSrc])
+	return gulp.src([path.src, path.typeSrc])
 		.pipe(tsProject())
-		.js.pipe(gulp.dest(dest));
+		.pipe(gulp.dest(path.jsDest));
 });
 
-gulp.task("bundle", function() {
-	var libraryName = "WebBSP";
-	var mainTSFilePath = "javascript/main.js";
-	var outputFolder = "javascript/";
+gulp.task("bundle-uglify", () => {
+	var mainJsFile = path.jsDest + "/main.js";
 	var outputFileName = libraryName + ".js";
 
 	var bundler = browserify({
@@ -36,7 +54,7 @@ gulp.task("bundle", function() {
 		detectGlobals: true,
 	});
 
-	return bundler.add(mainTSFilePath)
+	return bundler.add(mainJsFile)
 		.bundle()
 		.pipe(source(outputFileName))
 		.pipe(buffer())
@@ -44,26 +62,52 @@ gulp.task("bundle", function() {
 		.pipe(uglify())
 		.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
 		.pipe(sourcemaps.write("./"))
-		.pipe(gulp.dest(outputFolder));
+		.pipe(gulp.dest(path.finalDest));
 });
+
+function watchBundleUglify() {
+	var mainJsFile = path.jsDest + "/main.js";
+	var outputFileName = libraryName + ".js";
+
+	return bundler.add(mainJsFile)
+		.bundle()
+		.pipe(source(outputFileName))
+		.pipe(buffer())
+		.pipe(sourcemaps.init({loadMaps: true}))
+		.pipe(uglify())
+		.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+		.pipe(sourcemaps.write("./"))
+		.pipe(gulp.dest(path.finalDest));
+}
 
 gulp.task("clean", function() {
-	return (gulp.src("javascript/", {read: false}).pipe(clean()));
+	return (
+		gulp.src([path.jsDest, path.finalDest], {read: false})
+		.pipe(clean()));
 });
 
-gulp.task("Build-and-Bundle", function() {
-	runSequence("build", "bundle")
+gulp.task("build-and-bundle", function() {
+	runSequence("clean", "build", "bundle-uglify")
 });
 
-gulp.task("Typescript-Watch", () => {
-	tsProject.options.isolatedModules = true;
-	gulp.watch([src. typeSrc]).on("change", (file) => {
-		gulp.src([file.path])
-			.pipe(plumber())
-			.pipe(debug({title: "Compiling"}))
-			.pipe(tsProject())
-			.js.pipe(gulp.dest(dest))
-			.pipe(print((filepath) => `Built: ${filepath}`));
-		runSequence("bundle");
-	});
+gulp.task("watch", () => {
+	watch(path.src, (file) => {
+		// for some reason gulp dest will not send output file to it's subdirectory, so it needs to be calculated
+		const subPath = getSubDirPath(file.path);
+		gulp.src(file.path)
+				.pipe(plumber())
+				.pipe(debug({title: "Compiling"}))
+				.pipe(tsWatchProject())
+				.pipe(gulp.dest(path.jsDest + subPath))
+				.pipe(print((filepath) => `Built: ${filepath}`));
+		watchBundleUglify();
+		});
 });
+
+function getSubDirPath(filePath) {
+	const fileSplit = filePath.split("\\");
+	fileSplit.pop();
+	return fileSplit.join("\\").split("\\src\\").pop();
+}
+
+gulp.task("default", ["build-and-bundle"]);

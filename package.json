@@ -5,7 +5,8 @@
     "@types/gl-matrix": "^2.4.0",
     "@types/webgl-ext": "0.0.29",
     "gl-matrix": "^2.6.1",
-    "gulp-print": "^5.0.0"
+    "gulp-print": "^5.0.0",
+    "watchify": "^3.11.0"
   },
   "devDependencies": {
     "browserify": "^16.2.2",
@@ -16,6 +17,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-typescript": "^5.0.0-alpha.3",
     "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^5.0.0",
     "run-sequence": "^2.2.1",
     "typescript": "^2.9.2",
     "vinyl-buffer": "^1.0.1",
