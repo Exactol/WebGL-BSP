@@ -14,6 +14,7 @@ import { BrushSide } from "./Structs/BrushSide";
 import { BrushSideLump } from "./Lumps/BrushSideLump";
 import { NodeLump } from "./Lumps/NodeLump";
 import { LeafLump } from "./Lumps/LeafLump";
+import { LeafFaceLump } from "./Lumps/LeafFaceLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
 export class BSP {
@@ -107,7 +108,8 @@ export class BSP {
 				return SurfEdgeLump;
 			// case LumpType.Models:
 			// case LumpType.WorldLights:
-			// case LumpType.LeafFaces:
+			case LumpType.LeafFaces:
+				return LeafFaceLump;
 			// case LumpType.LeafBrushes:	
 			case LumpType.Brushes:
 				return BrushLump;

@@ -8,14 +8,13 @@ export class LeafLump extends Lump {
 	public leaves: Leaf[] = [];
 
 	constructor(header: HeaderLump, lumpData) {
-		super(LumpType.Brushes, header, lumpData);
+		super(LumpType.Leafs, header, lumpData);
 	}
 
 	public read() {
 		const reader = new BinaryReader(this.data);
-		const test = 5;
 
-		// each node is 56 bytes long
+		// each leaf is 56 bytes long
 		for (let i = 0; i < this.header.lumpLength; i += 56) {
 			this.leaves.push(new Leaf(
 				reader.readInt32(),

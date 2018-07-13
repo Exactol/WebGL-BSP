@@ -58,7 +58,7 @@ function openFileBtnCallback() {
     if (fileDialog == null) {
         console.log("fileDialog was null");
         return;
-    } 
+    }
 
     // event that handles when 
     fileDialog.addEventListener("change", () => {
@@ -98,6 +98,6 @@ function readBSP(e: FileReaderProgressEvent) {
     // bsp.getLump(LumpType.Edges);
     // bsp.getLump(LumpType.Planes);
     // bsp.getLump(LumpType.SurfEdges);
-    console.log(bsp.getLump(LumpType.Leafs).toString());
+    console.log(bsp.getLump(LumpType.LeafFaces).toString());
     // bsp.printLumps();
 }

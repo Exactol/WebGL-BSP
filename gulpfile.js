@@ -94,20 +94,32 @@ gulp.task("watch", () => {
 	watch(path.src, (file) => {
 		// for some reason gulp dest will not send output file to it's subdirectory, so it needs to be calculated
 		const subPath = getSubDirPath(file.path);
+		console.log(subPath);
 		gulp.src(file.path)
 				.pipe(plumber())
-				.pipe(debug({title: "Compiling"}))
+				.pipe(debug({title: "Compiling:"}))
 				.pipe(tsWatchProject())
+				.on("error", function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
 				.pipe(gulp.dest(path.jsDest + subPath))
-				.pipe(print((filepath) => `Built: ${filepath}`));
+				.pipe(print((filepath) => `Compiled: ${filepath}`));
 		watchBundleUglify();
 		});
 });
 
-function getSubDirPath(filePath) {
-	const fileSplit = filePath.split("\\");
+function getSubDirPath(fullFilePath) {
+	let fileSplit = fullFilePath.split("\\");
+
+	// remove file name
 	fileSplit.pop();
-	return fileSplit.join("\\").split("\\src\\").pop();
+
+	// reconstruct string and split on \src\
+	fileSplit = fileSplit.join("\\").split("\\src\\");
+
+	if (fileSplit.length == 1) {
+		// when file is not in subdirectory return nothing
+		return "";
+	}
+	return fileSplit.pop();
 }
 
 gulp.task("default", ["build-and-bundle"]);

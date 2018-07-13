@@ -8,7 +8,7 @@ export class NodeLump extends Lump {
 	public nodes: Node[] = [];
 
 	constructor(header: HeaderLump, lumpData) {
-		super(LumpType.Brushes, header, lumpData);
+		super(LumpType.Nodes, header, lumpData);
 	}
 
 	public read() {
