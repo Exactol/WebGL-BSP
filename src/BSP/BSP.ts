@@ -15,6 +15,8 @@ import { BrushSideLump } from "./Lumps/BrushSideLump";
 import { NodeLump } from "./Lumps/NodeLump";
 import { LeafLump } from "./Lumps/LeafLump";
 import { LeafFaceLump } from "./Lumps/LeafFaceLump";
+import { LeafBrushLump } from "./Lumps/LeafBrushLump";
+import { TexInfoLump } from "./Lumps/TexInfoLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
 export class BSP {
@@ -94,7 +96,8 @@ export class BSP {
 			// case LumpType.Visibility:	
 			case LumpType.Nodes:
 				return NodeLump;	
-			// case LumpType.TexInfo:		
+			case LumpType.TexInfo:
+				return TexInfoLump;		
 			case LumpType.Faces:
 				return FaceLump;
 			// case LumpType.Lighting:	
@@ -110,7 +113,8 @@ export class BSP {
 			// case LumpType.WorldLights:
 			case LumpType.LeafFaces:
 				return LeafFaceLump;
-			// case LumpType.LeafBrushes:	
+			case LumpType.LeafBrushes:
+				return LeafBrushLump;
 			case LumpType.Brushes:
 				return BrushLump;
 			case LumpType.BrushSides:
