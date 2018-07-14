@@ -4,6 +4,7 @@
   "dependencies": {
     "@types/gl-matrix": "^2.4.0",
     "@types/webgl-ext": "0.0.29",
+    "@types/webgl2": "0.0.4",
     "gl-matrix": "^2.6.1",
     "gulp-print": "^5.0.0",
     "watchify": "^3.11.0"
