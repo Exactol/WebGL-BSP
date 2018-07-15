@@ -10,7 +10,6 @@ import { SurfEdgeLump } from "./Lumps/SurfEdgeLump";
 import { FaceLump } from "./Lumps/FaceLump";
 import { OriginalFaceLump } from "./Lumps/OriginalFaceLump";
 import { BrushLump } from "./Lumps/BrushLump";
-import { BrushSide } from "./Structs/BrushSide";
 import { BrushSideLump } from "./Lumps/BrushSideLump";
 import { NodeLump } from "./Lumps/NodeLump";
 import { LeafLump } from "./Lumps/LeafLump";
@@ -26,7 +25,6 @@ import { GameLump } from "./Lumps/GameLump";
 import { CubemapLump } from "./Lumps/CubemapLump";
 import { LightingLump } from "./Lumps/LightingLump";
 import { LeafAmbientLightingLump } from "./Lumps/LeafAmbientLightingLump";
-import { LeafAmbientIndex } from "./Structs/LeafAmbientIndex";
 import { LeafAmbientIndexLump } from "./Lumps/LeafAmbientIndexLump";
 import { LeafAmbientIndexHdrLump } from "./Lumps/LeafAmbientIndexHDRLump";
 
@@ -79,9 +77,10 @@ export class BSP {
 		const lump = this.lumps[lumpType];
 
 		// make sure lumps that this lump depends on are read first
-		lump.lumpDependencies.forEach((lumpDependency) => {
-			this.getLump(lumpDependency);
-		});
+		// todo not really implemented yet
+		// lump.lumpDependencies.forEach((lumpDependency) => {
+		// 	this.getLump(lumpDependency);
+		// });
 
 		lump.read();
 		return lump;

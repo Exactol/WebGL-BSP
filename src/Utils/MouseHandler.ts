@@ -1,8 +1,8 @@
-import { Camera } from "../Rendering/Camera/Camera";
-import { GLRenderer } from "../Rendering/Renderer";
+import { ICamera } from "../Rendering/Camera/ICamera";
+import { GLRenderer } from "../Rendering/GLRenderer";
 
 export class MouseHandler {
-	public activeCamera: Camera;
+	public activeCamera: ICamera;
 
 	public deltaTime = 0;
 
@@ -21,7 +21,7 @@ export class MouseHandler {
 		return this._active;
 	}
 
-	constructor(camera: Camera) {
+	constructor(camera: ICamera) {
 		this.activeCamera = camera;
 
 		// document.addEventListener("pointerlockchange", () => {

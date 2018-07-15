@@ -1,16 +1,14 @@
 import { Vertex } from "../Structs/Vertex";
+import { IRenderable } from "./IRenderable";
+import { POSITION_ATTRIB_LOCATION } from "./UniformLocs";
 
-const POSITION_ATTRIB_LOCATION = 0;
-const COLOR_ATTRIB_LOCATION = 1;
-const NORMAL_ATTRIB_LOCATION = 2;
-
-export class RenderObject {
+export class RenderObject implements IRenderable {
 	public VAO!: WebGLVertexArrayObject;
 	public VBO!: WebGLBuffer;
 
 	private verticeCount: number;
-
 	private initialized = false;
+	private renderType = WebGL2RenderingContext.TRIANGLE_STRIP;
 
 	constructor(gl: WebGL2RenderingContext, vertices: Vertex[]) {
 		this.verticeCount = vertices.length;
@@ -58,14 +56,20 @@ export class RenderObject {
 		this.initialized = true;
 	}
 
-	public Render(gl: WebGL2RenderingContext, renderType: number) {
+	public Render(gl: WebGL2RenderingContext, renderTypeOverride?: number) {
 		if (!this.initialized) {
 			console.log("Cannot render object, not initialized");
 			return;
 		}
 
 		gl.bindVertexArray(this.VAO);
-		gl.drawArrays(renderType, 0, this.verticeCount);
+
+		if (renderTypeOverride != null) {
+			gl.drawArrays(renderTypeOverride, 0, this.verticeCount);
+		} else {
+			gl.drawArrays(this.renderType, 0, this.verticeCount);
+		}
+
 	}
 
 	// source: https://stackoverflow.com/a/14089496

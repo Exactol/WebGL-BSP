@@ -11,7 +11,7 @@ export class ShaderSource {
 export const VertShader: ShaderSource = new ShaderSource(
 `#version 300 es
 
-layout (location = 0) in vec4 aPosition;
+layout (location = 0) in vec3 aPosition;
 layout (location = 1) in vec4 aColor;
 layout (location = 2) in vec4 aNormal;
 
@@ -20,7 +20,9 @@ uniform mat4 uViewMat;
 uniform mat4 uProjectionMat;
 
 void main() {
-	gl_Position = uProjectionMat * uViewMat * uModelMat * aPosition;
+	gl_Position = uProjectionMat * uViewMat * uModelMat * vec4(aPosition, 1.0);
+	//temp
+	gl_PointSize = 10.0;
 }`, WebGLRenderingContext.VERTEX_SHADER);
 
 export const FragShader: ShaderSource = new ShaderSource(

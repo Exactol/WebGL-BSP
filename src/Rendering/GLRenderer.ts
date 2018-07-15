@@ -1,15 +1,17 @@
 import {FragShader, VertShader} from "./Shaders/ShaderSource";
 import { CreateShaderProgram } from "./Shaders/Shader";
-import {Camera} from "./Camera/Camera";
+import { ICamera} from "./Camera/ICamera";
 import { RenderObject } from "./RenderObject";
 import { KeyboardListener } from "../Utils/KeyboardListener";
 import { MouseHandler } from "../Utils/MouseHandler";
+import { IRenderable } from "./IRenderable";
+import { PerspectiveCamera } from "./Camera/PerspectiveCamera";
 
 export class GLRenderer {
 	public gl: WebGL2RenderingContext;
 
-	public cameras: Camera[];
-	public activeCamera: Camera;
+	public cameras: ICamera[];
+	public activeCamera: ICamera;
 
 
 	// temporary. todo change to support multiple instances
@@ -27,7 +29,7 @@ export class GLRenderer {
 	private defaultShaderProgram: WebGLProgram | null;
 	private defaultShaders = [FragShader, VertShader];
 
-	private renderObjects: RenderObject[] = [];
+	private renderObjects: IRenderable[] = [];
 	// private grid: RenderObject;
 
 	private uModelMatLocation!: WebGLUniformLocation | null;
@@ -52,7 +54,7 @@ export class GLRenderer {
 		this.gl.depthFunc(this.gl.LEQUAL);
 
 		// setup default camera
-		this.cameras = [new Camera(this.gl.canvas.clientWidth, this.gl.canvas.clientHeight)];
+		this.cameras = [new PerspectiveCamera(this.gl.canvas.clientWidth, this.gl.canvas.clientHeight)];
 		this.activeCamera = this.cameras[0];
 		
 		// create default shader
@@ -72,7 +74,7 @@ export class GLRenderer {
 		GLRenderer.renderer = this;
 	}
 
-	public AddRenderObject(object: RenderObject) {
+	public AddRenderableObject(object: IRenderable) {
 		this.renderObjects.push(object);
 	}
 
@@ -105,14 +107,15 @@ export class GLRenderer {
 			false, 
 			 this.activeCamera.getProjectionMatrix());
 
+		// render all objects
 		this.renderObjects.forEach((renderObject) => {
-			renderObject.Render(this.gl, this.gl.TRIANGLE_STRIP);
+			renderObject.Render(this.gl, this.gl.POINTS);
 		});
 
 		this.previousTime = currentTime;
 
-		// request another render
-		// window.requestAnimationFrame(this.Render.bind(this));
+		// request another frame
+		window.requestAnimationFrame(this.Render.bind(this));
 	}
 
 	private resize() {
