@@ -68,6 +68,10 @@ function openFileBtnCallback() {
         }
 
         const file = fileDialog.files[0];
+        if (file == null) {
+            return;
+        }
+
         // console.log(file);
         if (file.name.match(/.*\.(bsp)$/gm)) {
             const reader = new FileReader();
@@ -98,6 +102,6 @@ function readBSP(e: FileReaderProgressEvent) {
     // bsp.getLump(LumpType.Edges);
     // bsp.getLump(LumpType.Planes);
     // bsp.getLump(LumpType.SurfEdges);
-    console.log(bsp.getLump(LumpType.TexInfo).toString());
+    console.log(bsp.getLump(LumpType.TexData).toString());
     // bsp.printLumps();
 }

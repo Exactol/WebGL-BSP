@@ -12,7 +12,8 @@ const gulp      = require("gulp"),
 	debug		= require("gulp-debug")
 	print		= require("gulp-print").default
 	watchify	= require("watchify")
-	watch		= require("gulp-watch");
+	watch		= require("gulp-watch")
+	browserSync	= require("browser-sync");
 
 
 const path = {
@@ -91,6 +92,12 @@ gulp.task("build-and-bundle", function() {
 });
 
 gulp.task("watch", () => {
+	browserSync.init({
+		server: {
+			baseDir: "./",
+			injectChanges: true,
+		}
+	});
 	watch(path.src, (file) => {
 		// for some reason gulp dest will not send output file to it's subdirectory, so it needs to be calculated
 		const subPath = getSubDirPath(file.path);
@@ -103,6 +110,7 @@ gulp.task("watch", () => {
 				.pipe(gulp.dest(path.jsDest + subPath))
 				.pipe(print((filepath) => `Compiled: ${filepath}`));
 		watchBundleUglify();
+		browserSync.reload();
 		});
 });
 
