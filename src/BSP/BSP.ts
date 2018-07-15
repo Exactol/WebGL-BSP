@@ -25,6 +25,10 @@ import { EntityLump } from "./Lumps/EntityLump";
 import { GameLump } from "./Lumps/GameLump";
 import { CubemapLump } from "./Lumps/CubemapLump";
 import { LightingLump } from "./Lumps/LightingLump";
+import { LeafAmbientLightingLump } from "./Lumps/LeafAmbientLightingLump";
+import { LeafAmbientIndex } from "./Structs/LeafAmbientIndex";
+import { LeafAmbientIndexLump } from "./Lumps/LeafAmbientIndexLump";
+import { LeafAmbientIndexHdrLump } from "./Lumps/LeafAmbientIndexHDRLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
 export class BSP {
@@ -176,13 +180,16 @@ export class BSP {
 			// case LumpType.PropBlob:
 			// case LumpType.WaterOverlays:
 			// case LumpType.LightmapPages:
-			// case LumpType.LeafAmbientIndexHdr:
+			case LumpType.LeafAmbientIndexHdr:
+				return LeafAmbientIndexHdrLump;
 			// case LumpType.LightmapPageInfos:
-			// case LumpType.LeafAmbientIndex:
+			case LumpType.LeafAmbientIndex:
+				return LeafAmbientIndexLump;
 			// case LumpType.LightingHdr:
 			// case LumpType.WorldLightsHdr:
 			// case LumpType.LeafAmbientLightingHdr:
-			// case LumpType.LeafAmbientLighting:
+			case LumpType.LeafAmbientLighting:
+				return LeafAmbientLightingLump;
 			// case LumpType.XZipPackfile:
 			// case LumpType.FacesHdr:
 			// case LumpType.MapFlags:
