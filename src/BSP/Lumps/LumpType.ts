@@ -70,8 +70,8 @@ export enum LumpType {
 	LightmapPages = 51, // source 2006
 	LeafAmbientIndexHdr = 51, // source 2007
 	
-	LightmapPagesInfo = 52, // source 2006
-	LeafAmbientVertex = 52, // source 2007
+	LightmapPageInfos = 52, // source 2006
+	LeafAmbientIndex = 52, // source 2007
 
 	LightingHdr = 53,
 	WorldLightsHdr = 54,

@@ -27,10 +27,6 @@ export class BinaryReader {
 		this.position = offset;
 		this.length = data.byteLength;
 	}
-
-	// public static fromInt8Array(data: Int8Array) {
-		
-	// }
 	
 	public readInt8(): number {
 		if (this.position + INT_8_SIZE > this.length) {
@@ -168,6 +164,27 @@ export class BinaryReader {
 		const retVal = String.fromCharCode(new Int8Array(this.buffer, this.position, 1)[0]);
 
 		return retVal;
+	}
+
+	// reads null terminated string
+	public readString(err = true): string | null {
+		if (this.position + CHAR_SIZE > this.length) {
+			// optional arg to either raise error or return null
+			if (err) {
+				throw new Error("RangeError");
+			} else {
+				return null;
+			}
+		}
+		
+		let retStr = "";
+		let nextChar = this.readChar();
+		while (nextChar !== "\0" && this.position + CHAR_SIZE <= this.length) {
+			retStr += nextChar;
+			nextChar = this.readChar();
+		}
+
+		return retStr;
 	}
 
 	public seek(numBytes: number, origin: SeekOrigin) {

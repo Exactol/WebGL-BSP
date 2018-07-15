@@ -18,6 +18,8 @@ import { LeafFaceLump } from "./Lumps/LeafFaceLump";
 import { LeafBrushLump } from "./Lumps/LeafBrushLump";
 import { TexInfoLump } from "./Lumps/TexInfoLump";
 import { TexDataLump } from "./Lumps/TexDataLump";
+import { TexDataStringTableLump } from "./Lumps/TexDataStringTableLump";
+import { TexDataStringDataLump } from "./Lumps/TexDataStringDataLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
 export class BSP {
@@ -140,6 +142,45 @@ export class BSP {
 				return OriginalFaceLump;
 			// case LumpType.PhysDisp:
 			// case LumpType.PhysCollide:
+			// case LumpType.VertNormals:
+			// case LumpType.VertNormalIndices:
+			// case LumpType.DispLightmapAlphas:
+			// case LumpType.DispVerts:
+			// case LumpType.DispLightmapSamplePositions:
+			// case LumpType.GameLump:
+			// case LumpType.LeafWaterData:
+			// case LumpType.Primitives:
+			// case LumpType.PrimVerts:
+			// case LumpType.PrimIndices:
+			// case LumpType.Pakfile:
+			// case LumpType.ClipPortalVerts:
+			// case LumpType.Cubemaps:
+			case LumpType.TexDataStringData:
+				return TexDataStringDataLump;
+			case LumpType.TexDataStringTable:
+				return TexDataStringTableLump;
+			// case LumpType.Overlays:
+			// case LumpType.LeafMinDistToWater:
+			// case LumpType.FaceMacroTextureInfo:
+			// case LumpType.DispTris:
+			// case LumpType.PhysCollideSurface:
+			// case LumpType.PropBlob:
+			// case LumpType.WaterOverlays:
+			// case LumpType.LightmapPages:
+			// case LumpType.LeafAmbientIndexHdr:
+			// case LumpType.LightmapPageInfos:
+			// case LumpType.LeafAmbientIndex:
+			// case LumpType.LightingHdr:
+			// case LumpType.WorldLightsHdr:
+			// case LumpType.LeafAmbientLightingHdr:
+			// case LumpType.LeafAmbientLighting:
+			// case LumpType.XZipPackfile:
+			// case LumpType.FacesHdr:
+			// case LumpType.MapFlags:
+			// case LumpType.OverlayFades:
+			// case LumpType.OverlaySystemLevels:
+			// case LumpType.PhysLevel:
+			// case LumpType.DispMultiBlend:
 				
 			default:
 				return GenericLump;
