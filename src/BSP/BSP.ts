@@ -20,6 +20,11 @@ import { TexInfoLump } from "./Lumps/TexInfoLump";
 import { TexDataLump } from "./Lumps/TexDataLump";
 import { TexDataStringTableLump } from "./Lumps/TexDataStringTableLump";
 import { TexDataStringDataLump } from "./Lumps/TexDataStringDataLump";
+import { ModelLump } from "./Lumps/ModelLump";
+import { EntityLump } from "./Lumps/EntityLump";
+import { GameLump } from "./Lumps/GameLump";
+import { CubemapLump } from "./Lumps/CubemapLump";
+import { LightingLump } from "./Lumps/LightingLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
 export class BSP {
@@ -89,8 +94,8 @@ export class BSP {
 
 	private getLumpType(lumpType: LumpType) {
 		switch (lumpType) {
-			// case LumpType.Entities:
-			// 	// return new EntityLump()
+			case LumpType.Entities:
+				return EntityLump;
 			case LumpType.Planes:
 				return PlaneLump;
 			case LumpType.TexData:	
@@ -104,7 +109,8 @@ export class BSP {
 				return TexInfoLump;		
 			case LumpType.Faces:
 				return FaceLump;
-			// case LumpType.Lighting:	
+			case LumpType.Lighting:	
+				return LightingLump;
 			// case LumpType.Occlusion:		
 			case LumpType.Leafs:	
 				return LeafLump;
@@ -113,7 +119,8 @@ export class BSP {
 				return EdgeLump;
 			case LumpType.SurfEdges:
 				return SurfEdgeLump;
-			// case LumpType.Models:
+			case LumpType.Models:
+				return ModelLump;
 			// case LumpType.WorldLights:
 			case LumpType.LeafFaces:
 				return LeafFaceLump;
@@ -147,14 +154,16 @@ export class BSP {
 			// case LumpType.DispLightmapAlphas:
 			// case LumpType.DispVerts:
 			// case LumpType.DispLightmapSamplePositions:
-			// case LumpType.GameLump:
+			case LumpType.Game:
+				return GameLump;
 			// case LumpType.LeafWaterData:
 			// case LumpType.Primitives:
 			// case LumpType.PrimVerts:
 			// case LumpType.PrimIndices:
 			// case LumpType.Pakfile:
 			// case LumpType.ClipPortalVerts:
-			// case LumpType.Cubemaps:
+			case LumpType.Cubemaps:
+				return CubemapLump;
 			case LumpType.TexDataStringData:
 				return TexDataStringDataLump;
 			case LumpType.TexDataStringTable:

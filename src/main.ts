@@ -102,6 +102,6 @@ function readBSP(e: FileReaderProgressEvent) {
     // bsp.getLump(LumpType.Edges);
     // bsp.getLump(LumpType.Planes);
     // bsp.getLump(LumpType.SurfEdges);
-    console.log(bsp.getLump(LumpType.TexDataStringData).toString());
+    console.log(bsp.getLump(LumpType.Lighting).toString());
     // bsp.printLumps();
 }

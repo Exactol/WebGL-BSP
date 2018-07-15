@@ -47,7 +47,7 @@ export enum LumpType {
 	DispLightmapAlphas = 32,
 	DispVerts = 33,
 	DispLightmapSamplePositions = 34,
-	GameLump = 35,
+	Game = 35,
 	LeafWaterData = 36,
 	Primitives = 37,
 	PrimVerts = 38,

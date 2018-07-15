@@ -1,9 +1,7 @@
 import { Lump } from "./Lump";
-import { Plane } from "../Structs/Plane";
 import { HeaderLump } from "./HeaderLump";
 import { LumpType } from "./LumpType";
-import { BinaryReader, FLOAT_SIZE, INT_32_SIZE } from "../Utils/BinaryReader";
-import { vec3 } from "gl-matrix";
+import { BinaryReader} from "../Utils/BinaryReader";
 import { Face } from "../Structs/Face";
 
 export class FaceLump extends Lump {
