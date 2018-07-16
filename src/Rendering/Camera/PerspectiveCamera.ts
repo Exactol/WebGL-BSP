@@ -10,7 +10,7 @@ export class PerspectiveCamera implements ICamera {
 	public horizontalFov = 45;
 	public aspectRatio: number;
 
-	public speed = 5;
+	public speed = 10;
 	public mulitplier = 1.0;
 	public mouseSensitivity = 5;
 
