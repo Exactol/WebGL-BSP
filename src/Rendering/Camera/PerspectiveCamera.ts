@@ -10,7 +10,7 @@ export class PerspectiveCamera implements ICamera {
 	public horizontalFov = 45;
 	public aspectRatio: number;
 
-	public speed = 1;
+	public speed = 5;
 	public mulitplier = 1.0;
 	public mouseSensitivity = 5;
 
@@ -19,7 +19,7 @@ export class PerspectiveCamera implements ICamera {
 	public modelMatrix: mat4 = mat4.identity(mat4.create());
 
 	public nearClip = 1;
-	public farClip = 1000;
+	public farClip = 10000;
 
 	private _horizontalAngle!: number;
 	public get horizontalAngle(): number {

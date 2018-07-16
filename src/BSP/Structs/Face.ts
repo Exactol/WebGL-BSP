@@ -1,3 +1,6 @@
+import { EdgeLump } from "../Lumps/EdgeLump";
+import { VertexLump } from "../Lumps/VertexLump";
+
 export class Face {
 	public planeNum: number;
 	public side: number;

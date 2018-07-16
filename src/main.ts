@@ -1,11 +1,11 @@
 import { GLRenderer } from "./Rendering/GLRenderer";
 import { MeshFactory } from "./Utils/MeshFactory";
-import { RenderObject } from "./Rendering/RenderObject";
+import { RenderObject } from "./Rendering/RenderObjects/RenderObject";
 import { Vertex } from "./Structs/Vertex";
 import { vec4 } from "gl-matrix";
 import { BSP } from "./BSP/BSP";
 import { LumpType } from "./BSP/Lumps/LumpType";
-import { BSPObject } from "./Rendering/BSPObject";
+import { BSPObject } from "./Rendering/RenderObjects/BSPObject";
 
 // export function so it can be called globally
 // @ts-ignore
@@ -43,7 +43,7 @@ class BSPRenderer {
         // this.renderer.AddRenderableObject(new RenderObject(this.gl, MeshFactory.createSolidCube(5)));
     
         // start render loop
-        this.renderer.Render();
+        // this.renderer.Render();
     }
 
     public setupBtnListeners() {
@@ -99,5 +99,6 @@ class BSPRenderer {
             return;
         }
         this.renderer.AddRenderableObject(new BSPObject(this.gl, bsp));
+        this.renderer.Render();
     }
 }

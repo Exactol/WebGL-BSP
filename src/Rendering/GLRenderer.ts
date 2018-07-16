@@ -1,10 +1,10 @@
 import {FragShader, VertShader} from "./Shaders/ShaderSource";
 import { CreateShaderProgram } from "./Shaders/Shader";
 import { ICamera} from "./Camera/ICamera";
-import { RenderObject } from "./RenderObject";
+import { RenderObject } from "./RenderObjects/RenderObject";
 import { KeyboardListener } from "../Utils/KeyboardListener";
 import { MouseHandler } from "../Utils/MouseHandler";
-import { IRenderable } from "./IRenderable";
+import { IRenderable } from "./RenderObjects/IRenderable";
 import { PerspectiveCamera } from "./Camera/PerspectiveCamera";
 
 export class GLRenderer {
@@ -40,6 +40,7 @@ export class GLRenderer {
 	public mouseHandler!: MouseHandler;
 
 	private previousTime = 0;
+	public render = false;
 
 	constructor(_gl: WebGL2RenderingContext) {
 		console.log("--Initializing Renderer--");
@@ -109,13 +110,15 @@ export class GLRenderer {
 
 		// render all objects
 		this.renderObjects.forEach((renderObject) => {
-			renderObject.Render(this.gl, this.gl.POINTS);
+			renderObject.Render(this.gl);
 		});
 
 		this.previousTime = currentTime;
 
 		// request another frame
-		window.requestAnimationFrame(this.Render.bind(this));
+		if (this.render) {
+			window.requestAnimationFrame(this.Render.bind(this));
+		}
 	}
 
 	private resize() {

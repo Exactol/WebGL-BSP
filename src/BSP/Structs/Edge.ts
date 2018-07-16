@@ -10,6 +10,15 @@ export class Edge {
 		return new Edge(this.vertexIndices[1], this.vertexIndices[0]);
 	}
 
+	public getVertIndices(reverse = false) {
+		if (reverse) {
+			const reversedEdge = this.reverse();
+			return this.reverse().vertexIndices;
+		}
+
+		return this.vertexIndices;
+	}
+
 	public toString() {
 		return `[${this.vertexIndices[0]}, ${this.vertexIndices[1]}]`;
 	}

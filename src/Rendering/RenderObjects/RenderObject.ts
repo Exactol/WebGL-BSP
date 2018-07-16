@@ -1,4 +1,4 @@
-import { Vertex } from "../Structs/Vertex";
+import { Vertex } from "../../Structs/Vertex";
 import { IRenderable } from "./IRenderable";
 import { POSITION_ATTRIB_LOCATION } from "./UniformLocs";
 

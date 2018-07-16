@@ -81,9 +81,36 @@ export class BSP {
 		// lump.lumpDependencies.forEach((lumpDependency) => {
 		// 	this.getLump(lumpDependency);
 		// });
-
 		lump.read();
 		return lump;
+	}
+
+	public getFaceVertexIndices() {
+		const faceLump = this.getLump(LumpType.Faces) as FaceLump;
+		const edgeLump = this.getLump(LumpType.Edges) as EdgeLump;
+		const surfEdgeLump = this.getLump(LumpType.SurfEdges) as SurfEdgeLump;
+
+		const indices: number[] = [];
+
+		const addRange = (arr1, arr2) => {
+			arr2.forEach((item) => {
+				arr1.push(item);
+			});
+		};
+
+		faceLump.faces.forEach((face) => {
+			for (let i = 0; i < face.numEdges; i++) {
+				const edgeIndex = surfEdgeLump.surfEdges[i + face.firstEdge];
+				// if edge index is -, reverse order of edge vertices
+				if (edgeIndex < 0) {
+					addRange(indices, edgeLump.edges[Math.abs(edgeIndex)].getVertIndices(true));
+				} else {
+					addRange(indices, edgeLump.edges[edgeIndex].getVertIndices());
+				}
+			}
+		});
+
+		return indices;
 	}
 
 	public printLumps() {

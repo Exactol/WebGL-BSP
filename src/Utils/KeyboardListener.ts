@@ -41,6 +41,10 @@ export class KeyboardListener {
 
 					// activate or deactivate camera
 					this.renderer.mouseHandler.active = this.zToggle;
+
+					// start rendering
+					this.renderer.render = this.zToggle;
+					this.renderer.Render();
 					break;
 				case "Shift":
 					this.renderer.activeCamera.mulitplier = 5.0;
