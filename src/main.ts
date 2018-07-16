@@ -2,7 +2,7 @@ import { GLRenderer } from "./Rendering/GLRenderer";
 import { MeshFactory } from "./Utils/MeshFactory";
 import { RenderObject } from "./Rendering/RenderObjects/RenderObject";
 import { Vertex } from "./Structs/Vertex";
-import { vec4 } from "gl-matrix";
+import { vec4, vec3 } from "gl-matrix";
 import { BSP } from "./BSP/BSP";
 import { LumpType } from "./BSP/Lumps/LumpType";
 import { BSPObject } from "./Rendering/RenderObjects/BSPObject";

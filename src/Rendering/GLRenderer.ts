@@ -13,7 +13,6 @@ export class GLRenderer {
 	public cameras: ICamera[];
 	public activeCamera: ICamera;
 
-
 	// temporary. todo change to support multiple instances
 	private static _renderer: GLRenderer;
 	public static get renderer(): GLRenderer {

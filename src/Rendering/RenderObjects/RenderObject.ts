@@ -8,7 +8,7 @@ export class RenderObject implements IRenderable {
 
 	private verticeCount: number;
 	private initialized = false;
-	private renderType = WebGL2RenderingContext.TRIANGLE_STRIP;
+	private renderType = WebGL2RenderingContext.POINTS;
 
 	constructor(gl: WebGL2RenderingContext, vertices: Vertex[]) {
 		this.verticeCount = vertices.length;
@@ -46,7 +46,7 @@ export class RenderObject implements IRenderable {
 		gl.enableVertexAttribArray(POSITION_ATTRIB_LOCATION);
 		gl.vertexAttribPointer(
 			POSITION_ATTRIB_LOCATION, // attribute location
-			4,					      // size of attribute (vec4)
+			3,					      // size of attribute (vec3)
 			gl.FLOAT,				  // type of attribute is float
 			false,					  // does not need to be normalized
 			0,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
@@ -69,7 +69,6 @@ export class RenderObject implements IRenderable {
 		} else {
 			gl.drawArrays(this.renderType, 0, this.verticeCount);
 		}
-
 	}
 
 	// source: https://stackoverflow.com/a/14089496

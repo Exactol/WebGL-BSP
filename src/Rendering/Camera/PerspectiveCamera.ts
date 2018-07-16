@@ -3,6 +3,7 @@ import { wrapAngle } from "../../Utils/WrapAngle";
 import { limitAngle } from "../../Utils/LimitAngle";
 import { GLRenderer } from "../GLRenderer";
 import {ICamera} from "./ICamera";
+import { toRadian } from "gl-matrix/src/gl-matrix/common";
 
 export class PerspectiveCamera implements ICamera {
 	public position: vec3;
@@ -15,7 +16,6 @@ export class PerspectiveCamera implements ICamera {
 	public mouseSensitivity = 5;
 
 	public up: vec3 = vec3.fromValues(0, 1, 0);
-
 	public modelMatrix: mat4 = mat4.identity(mat4.create());
 
 	public nearClip = 1;
@@ -56,6 +56,9 @@ export class PerspectiveCamera implements ICamera {
 
 		this.horizontalAngle = 0;
 		this.verticalAngle = 0;
+
+		// compensate for fact that source uses Z as up axis, while openGL uses Y.
+		mat4.rotateX(this.modelMatrix, this.modelMatrix, glMatrix.toRadian(-90));
 
 		// calculate projection matrix
 		this.getProjectionMatrix();

@@ -42,6 +42,7 @@ bundler.on("update", watchBundleUglify);
 gulp.task("build", function() {
 	return gulp.src([path.src, path.typeSrc])
 		.pipe(tsProject())
+		.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
 		.pipe(gulp.dest(path.jsDest));
 });
 
