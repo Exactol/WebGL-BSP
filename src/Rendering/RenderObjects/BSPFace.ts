@@ -10,6 +10,7 @@ import { SurfEdgeLump } from "../../BSP/Lumps/SurfEdgeLump";
 import { EdgeLump } from "../../BSP/Lumps/EdgeLump";
 
 export class BSPFace implements IRenderable {
+	public hidden = false;
 	public face: Face;
 	public VAO!: WebGLVertexArrayObject;
 	public VBO!: WebGLBuffer;
@@ -86,6 +87,9 @@ export class BSPFace implements IRenderable {
 	}
 
 	public draw(gl: WebGL2RenderingContext, renderModeOverride?: number) {
+		if (this.hidden) {
+			return;
+		}
 		gl.bindVertexArray(this.VAO);
 
 		if (renderModeOverride == null) {

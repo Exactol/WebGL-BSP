@@ -16,6 +16,7 @@ import { addRange } from "../../Utils/AddRange";
 import { BSPFace } from "./BSPFace";
 
 export class BSPRenderObject implements IRenderable {
+	public hidden = false;
 	private modelCount!: number;
 	private initialized = false;
 	private renderMode = WebGL2RenderingContext.POINTS;
@@ -41,6 +42,9 @@ export class BSPRenderObject implements IRenderable {
 	public draw(gl: WebGL2RenderingContext, renderModeOverride?: number) {
 		if (!this.initialized) {
 			console.log("Cannot render object, not initialized");
+			return;
+		}
+		if (this.hidden) {
 			return;
 		}
 		

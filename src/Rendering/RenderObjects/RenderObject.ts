@@ -3,6 +3,7 @@ import { IRenderable } from "./IRenderable";
 import { POSITION_ATTRIB_LOCATION } from "./UniformLocs";
 
 export class RenderObject implements IRenderable {
+	public hidden = false;
 	public VAO!: WebGLVertexArrayObject;
 	public VBO!: WebGLBuffer;
 
@@ -59,6 +60,9 @@ export class RenderObject implements IRenderable {
 	public draw(gl: WebGL2RenderingContext, renderTypeOverride?: number) {
 		if (!this.initialized) {
 			console.log("Cannot render object, not initialized");
+			return;
+		}
+		if (this.hidden) {
 			return;
 		}
 
