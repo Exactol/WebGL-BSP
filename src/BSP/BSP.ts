@@ -27,8 +27,12 @@ import { LightingLump } from "./Lumps/LightingLump";
 import { LeafAmbientLightingLump } from "./Lumps/LeafAmbientLightingLump";
 import { LeafAmbientIndexLump } from "./Lumps/LeafAmbientIndexLump";
 import { LeafAmbientIndexHdrLump } from "./Lumps/LeafAmbientIndexHDRLump";
+import { vec3 } from "gl-matrix";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
+// todo look into 
+// tslint:disable-next-line:max-line-length
+// https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/mp/src/utils/common/bsplib.cpp
 export class BSP {
 	public fileData!: ArrayBuffer;
 	public bspReader!: BinaryReader;
@@ -113,6 +117,22 @@ export class BSP {
 		return indices;
 	}
 
+	public getFaceNormals() {
+		const faceLump = this.getLump(LumpType.Faces) as FaceLump;
+		const planeLump = this.getLump(LumpType.Planes) as PlaneLump;
+
+		const normals: vec3[] = [];
+
+		faceLump.faces.forEach((face) => {
+			const numVerts = face.numEdges * 2;
+			for (let i = 0; i < numVerts; i++) {
+				normals.push(planeLump.planes[face.planeNum].normal);
+			}
+		});
+
+		return normals;
+	}
+ 
 	public printLumps() {
 		for (const lump in this.lumps) {
 			if (this.lumps.hasOwnProperty(lump)) {

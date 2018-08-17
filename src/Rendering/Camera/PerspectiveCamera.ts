@@ -3,7 +3,6 @@ import { wrapAngle } from "../../Utils/WrapAngle";
 import { limitAngle } from "../../Utils/LimitAngle";
 import { GLRenderer } from "../GLRenderer";
 import {ICamera} from "./ICamera";
-import { toRadian } from "gl-matrix/src/gl-matrix/common";
 
 export class PerspectiveCamera implements ICamera {
 	public position: vec3;

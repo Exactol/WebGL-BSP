@@ -5,7 +5,7 @@ import { Vertex } from "./Structs/Vertex";
 import { vec4, vec3 } from "gl-matrix";
 import { BSP } from "./BSP/BSP";
 import { LumpType } from "./BSP/Lumps/LumpType";
-import { BSPObject } from "./Rendering/RenderObjects/BSPObject";
+import { BSPRenderObject } from "./Rendering/RenderObjects/BSPObject";
 
 // export function so it can be called globally
 // @ts-ignore
@@ -98,7 +98,7 @@ class BSPRenderer {
         if (this.gl == null) {
             return;
         }
-        this.renderer.AddRenderableObject(new BSPObject(this.gl, bsp));
+        this.renderer.AddRenderableObject(new BSPRenderObject(this.gl, bsp));
         this.renderer.Render();
     }
 }

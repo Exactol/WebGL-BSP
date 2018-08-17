@@ -48,10 +48,11 @@ export class GLRenderer {
 		this.gl = _gl;
 		this.gl.clearColor(0.0, 0, 0, 1.0);
 		this.gl.clearDepth(1.0);
-		this.gl.cullFace(this.gl.BACK);
-		this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
+		this.gl.enable(this.gl.CULL_FACE);
+		this.gl.cullFace(this.gl.FRONT);
 		this.gl.enable(this.gl.DEPTH_TEST);
 		this.gl.depthFunc(this.gl.LEQUAL);
+		this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 
 		// setup default camera
 		this.cameras = [new PerspectiveCamera(this.gl.canvas.clientWidth, this.gl.canvas.clientHeight)];
@@ -63,9 +64,9 @@ export class GLRenderer {
 			return;
 		}
 
-		this.uModelMatLocation = this.gl.getUniformLocation(this.defaultShaderProgram, "uModelMat");
-		this.uViewMatLocation = this.gl.getUniformLocation(this.defaultShaderProgram, "uViewMat");
-		this.uProjectionMatrixLocation = this.gl.getUniformLocation(this.defaultShaderProgram, "uProjectionMat");
+		this.uModelMatLocation = this.gl.getUniformLocation(this.defaultShaderProgram, "u_model_mat");
+		this.uViewMatLocation = this.gl.getUniformLocation(this.defaultShaderProgram, "u_view_mat");
+		this.uProjectionMatrixLocation = this.gl.getUniformLocation(this.defaultShaderProgram, "u_projection_mat");
 
 		// setup keyboard listener
 		this.keyboardListener = new KeyboardListener(this);
@@ -109,7 +110,9 @@ export class GLRenderer {
 
 		// render all objects
 		this.renderObjects.forEach((renderObject) => {
-			renderObject.Render(this.gl);
+			// renderObject.draw(this.gl);
+			// renderObject.draw(this.gl, this.gl.LINE_STRIP );
+			renderObject.draw(this.gl, this.gl.TRIANGLE_FAN );
 		});
 
 		this.previousTime = currentTime;

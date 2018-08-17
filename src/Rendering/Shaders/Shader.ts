@@ -45,7 +45,8 @@ export function LoadShader(gl: WebGL2RenderingContext, shaderSource: ShaderSourc
 
     // check for errors
     if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        console.log("Failed to compile shader: " + gl.getShaderInfoLog(shader));
+        console.log("----------Failed to compile shader----------\n" + shaderSource.source);
+        console.log("Info log: " + gl.getShaderInfoLog(shader));
         gl.deleteShader(shader);
         return null;
     }

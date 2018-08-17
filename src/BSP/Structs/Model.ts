@@ -5,15 +5,15 @@ export class Model {
 	public maxs: vec3;
 	public origin: vec3;
 	public headNode: number;
-	public firstNode: number;
+	public firstFace: number;
 	public numFaces: number;
 
-	public constructor(mins: vec3, maxs: vec3, origin: vec3, headNode: number, firstNode: number, numFaces: number) {
+	public constructor(mins: vec3, maxs: vec3, origin: vec3, headNode: number, firstFace: number, numFaces: number) {
 		this.mins = mins;
 		this.maxs = maxs;
 		this.origin = origin;
 		this.headNode = headNode;
-		this.firstNode = firstNode;
+		this.firstFace = firstFace;
 		this.numFaces = numFaces;
 	} 
 
@@ -22,7 +22,7 @@ export class Model {
 		Maxs: ${this.maxs} 
 		Origin: ${this.origin} 
 		HeadNode: ${this.headNode} 
-		FirstNode: ${this.firstNode} 
+		FirstFace: ${this.firstFace} 
 		NumFaces: ${this.numFaces} 
 		`;
 	}
