@@ -10,7 +10,7 @@ export class Face {
 	public texInfo: number;
 	public dispInfo: number;
 	public surfaceFogVolumeID: number;
-	public style: Int8Array;
+	public style: Uint8Array;
 	public lightOfs: number;
 	public area: number;
 	public lightmapTextureMinsInLuxels: [number, number];
@@ -21,7 +21,7 @@ export class Face {
 	public smoothingGroups: number;
 
 	constructor(planeNum: number, side: number, onNode: number, firstEdge: number, numEdges: number, 
-		texInfo: number, dispInfo: number, surfFogVolID: number, style: Int8Array, lightOfs: number,
+		texInfo: number, dispInfo: number, surfFogVolID: number, style: Uint8Array, lightOfs: number,
 		area: number, lightTexMin: [number, number], lightTexSize: [number, number], origFace: number, numPrims: number, 
 		firstPrimID: number, smoothingGroups: number) {
 			this.planeNum = planeNum;

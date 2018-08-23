@@ -6,6 +6,7 @@ import { KeyboardListener } from "../Utils/KeyboardListener";
 import { MouseHandler } from "../Utils/MouseHandler";
 import { IRenderable } from "./RenderObjects/IRenderable";
 import { PerspectiveCamera } from "./Camera/PerspectiveCamera";
+import { MeshFactory } from "../Utils/MeshFactory";
 
 export class GLRenderer {
 	public gl: WebGL2RenderingContext;
@@ -107,12 +108,11 @@ export class GLRenderer {
 		this.gl.uniformMatrix4fv(this.uProjectionMatrixLocation,
 			false, 
 			 this.activeCamera.getProjectionMatrix());
+		// TODO: create uniform normal buffer?
 
 		// render all objects
 		this.renderObjects.forEach((renderObject) => {
-			// renderObject.draw(this.gl);
-			// renderObject.draw(this.gl, this.gl.LINE_STRIP );
-			renderObject.draw(this.gl, this.gl.TRIANGLE_FAN );
+			renderObject.draw(this.gl, this.gl.TRIANGLES);
 		});
 
 		this.previousTime = currentTime;

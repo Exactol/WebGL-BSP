@@ -5,9 +5,9 @@ export class HeaderLump {
 	public fileOffset: number; // offset into file (bytes)
 	public lumpLength: number; // length of lump (bytes)
 	public version: number; // lump format version
-	public fourCC: Int8Array; // lump ident code
+	public fourCC: Uint8Array; // lump ident code
 
-	constructor(lType: LumpType, lumpData: Int8Array) {
+	constructor(lType: LumpType, lumpData: Uint8Array) {
 		// create a new reader at the offset of the lump location
 		const reader = new BinaryReader(lumpData.buffer, lumpData.byteOffset);
 
