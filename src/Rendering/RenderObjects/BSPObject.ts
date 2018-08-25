@@ -4,18 +4,21 @@ import { BSP } from "../../BSP/BSP";
 import { IRenderable } from "./IRenderable";
 import { LumpType } from "../../BSP/Lumps/LumpType";
 import { VertexLump } from "../../BSP/Lumps/VertexLump";
-import { POSITION_ATTRIB_LOCATION, NORMAL_ATTRIB_LOCATION } from "./UniformLocs";
+import { POSITION_ATTRIB_LOCATION, NORMAL_ATTRIB_LOCATION, COLOR_ATTRIB_LOCATION } from "./UniformLocs";
 import { FaceLump } from "../../BSP/Lumps/FaceLump";
 import { ModelLump } from "../../BSP/Lumps/ModelLump";
 import { EdgeLump } from "../../BSP/Lumps/EdgeLump";
 import { SurfEdgeLump } from "../../BSP/Lumps/SurfEdgeLump";
-import { vec3 } from "gl-matrix";
+import { vec3, vec4 } from "gl-matrix";
 import { PlaneLump } from "../../BSP/Lumps/PlaneLump";
 import { Edge } from "../../BSP/Structs/Edge";
 import { addRange } from "../../Utils/AddRange";
 import { BSPFace } from "./BSPFace";
 import { zip } from "../../Utils/ZipArray";
 import { Vertex } from "../../Structs/Vertex";
+import { TexInfoLump } from "../../BSP/Lumps/TexInfoLump";
+import { SurfFlags } from "../../BSP/Structs/TexInfo";
+import { TexDataLump } from "../../BSP/Lumps/TexDataLump";
 
 export class BSPRenderObject implements IRenderable {
 	public hidden = false;
@@ -26,20 +29,47 @@ export class BSPRenderObject implements IRenderable {
 	private initialized = false;
 	private renderMode = WebGL2RenderingContext.POINTS;
 	private bsp: BSP;
-	private verticeCount;
+	private vertexCount = 0;
 
 	// private BSPfaces: BSPFace[] = [];
 	private vertices: number[];
+	private faces: BSPFace[];
+	private indices: number[];
 
 	constructor(gl: WebGL2RenderingContext, bsp: BSP) {
 		this.bsp = bsp;
+		
 		const faceLump = bsp.getLump(LumpType.Faces) as FaceLump;
 
 		this.vertices = [];
+		this.faces = [];
+		this.indices = [];
+
+		let currentIndex = 0;
 		faceLump.faces.forEach((face) => {
-			addRange(this.vertices, this.faceToMesh(face));
+			const bspFace = new BSPFace(face, bsp);
+			this.faces.push(bspFace);
+			
+			// add vertices to mesh
+			addRange(this.vertices, bspFace.getMesh());
+			addRange(this.indices, bspFace.getTriFanIndices(currentIndex));
+
+			// calculate vertex count (each index is a vertex, so length of indexes is #vertexes)
+			if (bspFace.indices.length <= 1) {
+				console.log("Face with one or less indices (probably a hidden face)");
+				bspFace.getTriFanIndices(currentIndex, true);
+			}
+			currentIndex = bspFace.indices[bspFace.indices.length - 1] + 1;
 		});
-		this.verticeCount = this.vertices.length / 6;
+
+		this.vertexCount = this.indices.length; 
+		// console.log(this.vertexCount);
+		// this.vertexCount = this.vertices.length / 6 + 6 * 5120 - 1811;
+		// console.log(this.indices.slice(this.vertexCount - 2));
+		console.log(this.vertexCount);
+
+		console.log("indices: " + this.indices);
+		// console.log("vertices: " + this.vertices);
 			
 		// create buffers
 		const _vbo = gl.createBuffer();
@@ -84,8 +114,7 @@ export class BSPRenderObject implements IRenderable {
 		);
 		gl.enableVertexAttribArray(POSITION_ATTRIB_LOCATION);
 
-		// create normal VAO
-		// gl.bindVertexArray(this.VAO);
+		// define normal VAO
 		gl.vertexAttribPointer(
 			NORMAL_ATTRIB_LOCATION,   // attribute location
 			3,					      // size of attribute (vec3)
@@ -96,8 +125,26 @@ export class BSPRenderObject implements IRenderable {
 		);
 		gl.enableVertexAttribArray(NORMAL_ATTRIB_LOCATION);
 
+		// // define color VAO
+		// gl.vertexAttribPointer(
+		// 	COLOR_ATTRIB_LOCATION,   // attribute location
+		// 	4,					      // size of attribute (vec4)
+		// 	gl.FLOAT,				  // type of attribute is float
+		// 	false,					  // does not need to be normalized
+		// 	40,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+		// 	24						  // offset (start at beginnng of buffer)
+		// );
+		// gl.enableVertexAttribArray(COLOR_ATTRIB_LOCATION);
+
+		// create EAO
+		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.EAO);
+		gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,
+			new Uint16Array(this.indices),
+			gl.STATIC_DRAW
+		);
+
 		this.initialized = true;
-	
+
 		console.log("BSP Loaded");
 	}
 
@@ -111,73 +158,18 @@ export class BSPRenderObject implements IRenderable {
 		}
 
 		gl.bindVertexArray(this.VAO);
+		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.EAO);
 
 		if (renderModeOverride == null) {
-			gl.drawArrays(this.renderMode, 0, this.verticeCount);
+			gl.drawElements(this.renderMode, this.vertexCount, gl.UNSIGNED_SHORT, 0);
+			// gl.drawArrays(this.renderMode, 0, this.verticeCount);
 		} else {
-			gl.drawArrays(renderModeOverride, 0, this.verticeCount);
+			gl.drawElements(renderModeOverride, this.vertexCount, gl.UNSIGNED_SHORT, 0);
+			// gl.drawArrays(renderModeOverride, 0, this.verticeCount);
 		}
 		
 		// this.faces.forEach((face) => {
 		// 	face.draw(gl, renderModeOverride);
 		// });
-	}
-
-	private faceToMesh(face: Face) {
-		const normal = (this.bsp.getLump(LumpType.Planes) as PlaneLump).planes[face.planeNum].normal;
-		const vertLump = (this.bsp.getLump(LumpType.Vertexes) as VertexLump);
-
-		const vertPositions: vec3[] = [];
-
-		for (let i = face.firstEdge; i < face.firstEdge + face.numEdges; i++) {
-			const edgeIndex = (this.bsp.getLump(LumpType.SurfEdges) as SurfEdgeLump).surfEdges[i];
-			
-			const reverseEdge = (edgeIndex < 0);
-
-			// gets the vertex indexes and reverses them if they are negative;
-			const vertIndices = (this.bsp.getLump(LumpType.Edges) as EdgeLump)
-				.edges[Math.abs(edgeIndex)].getVertIndices(reverseEdge);
-
-			// remove duplicate vertices from edge
-			// if (i === face.firstEdge) {
-				vertPositions.push(vertLump.vertexes[vertIndices[0]]);
-				vertPositions.push(vertLump.vertexes[vertIndices[1]]);
-				// vertPositions.push(new Vertex(vertLump.vertexes[vertIndices[1]], normal));
-			// 	// addRange(vertLoop, vertLump.vertexes[vertIndices[0]]);
-			// 	// addRange(vertLoop, vertLump.vertexes[vertIndices[1]]);
-			// } else {
-			// 	vertLoop.push(new Vertex(vertLump.vertexes[vertIndices[1]], normal));
-			// // 	// addRange(vertLoop, vertLump.vertexes[vertIndices[1]]);
-			// }
-		}
-
-		// remove duplicate vertice positions and convert them to Vertexes
-		const vertices = Array.from(new Set(vertPositions)).map((vert) => {
-			return new Vertex(vert, normal);
-		});
-
-		const mesh: number[] = [];
-		addRange(mesh, this.loopToTriFan(vertices));
-		// console.log("mesh: " + mesh);
-		
-		return mesh;
-	}
-
-	// a modified loop to triangle fan from snake_biscuit's bsp tool
-	// manually triangulates a face's vertex loop
-	private loopToTriFan(verts: Vertex[]): number[] {
-		const out_vert = verts.slice(0, 2);
-		const vertexes = verts.slice(2);
-		vertexes.forEach((vert) => {
-			addRange(out_vert, [out_vert[0], out_vert[out_vert.length - 1], vert]);
-		});
-		out_vert.push(out_vert[0]);
-
-		const out: number[] = [];
-		out_vert.forEach((vert) => {
-			addRange(out, vert.position);
-			addRange(out, vert.normal);
-		});
-		return out;
 	}
 }

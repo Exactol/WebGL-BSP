@@ -7,7 +7,7 @@ import { TexData } from "../Structs/TexData";
 import { vec3 } from "gl-matrix";
 
 export class TexDataLump extends Lump {
-	public texInfos: TexData[] = [];
+	public texDatas: TexData[] = [];
 
 	constructor(header: HeaderLump, lumpData) {
 		super(LumpType.TexData, header, lumpData);
@@ -18,7 +18,7 @@ export class TexDataLump extends Lump {
 
 		// each texData is 32 bytes long
 		for (let i = 0; i < this.header.lumpLength; i += FLOAT_SIZE * 3 + INT_32_SIZE * 5) {
-			this.texInfos.push(new TexData(
+			this.texDatas.push(new TexData(
 				vec3.fromValues(reader.readFloat(), reader.readFloat(), reader.readFloat()),
 				reader.readInt32(),
 				reader.readInt32(),
@@ -33,7 +33,7 @@ export class TexDataLump extends Lump {
 
 	public toString(): string {
 		let retStr = super.toString();
-		retStr += `\n${LumpType[this.lumpType]}: ${this.texInfos.join("\n")}`;
+		retStr += `\n${LumpType[this.lumpType]}: ${this.texDatas.join("\n")}`;
 
 		return retStr;
 	}

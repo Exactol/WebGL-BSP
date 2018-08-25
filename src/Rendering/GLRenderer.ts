@@ -113,6 +113,7 @@ export class GLRenderer {
 		// render all objects
 		this.renderObjects.forEach((renderObject) => {
 			renderObject.draw(this.gl, this.gl.TRIANGLES);
+			renderObject.draw(this.gl);
 		});
 
 		this.previousTime = currentTime;
