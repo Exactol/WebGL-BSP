@@ -43,7 +43,17 @@ in highp vec4 v_color;
 out vec4 fragColor;
 
 void main() {
-	//fragColor = vec4(1.0, 0.0, 0.5, 1.0);
 	// fragColor = 0.5 + 0.5 * v_norm;
-	fragColor = v_color + 0.1 * v_norm;
+	vec4 lightColor = vec4(1, 1, 1, 1.0);
+
+	float ambientStrength = 0.8;
+	vec4 ambient = ambientStrength * lightColor;
+
+	float diff = max(dot(v_norm, vec4(1.0, 0, 0, 1.0)), 0.0);
+	vec4 diffuse = diff * lightColor;
+
+	vec4 result = (ambient + diffuse) * v_color;
+	fragColor = result;
+	
+	//fragColor = v_color;// + 0.1 * v_norm;
 }`, WebGLRenderingContext.FRAGMENT_SHADER);
