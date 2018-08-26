@@ -31,7 +31,6 @@ export class BSPRenderObject implements IRenderable {
 	private bsp: BSP;
 	private vertexCount = 0;
 
-	// private BSPfaces: BSPFace[] = [];
 	private vertices: number[];
 	private faces: BSPFace[];
 	private indices: number[];
@@ -51,25 +50,18 @@ export class BSPRenderObject implements IRenderable {
 			this.faces.push(bspFace);
 			
 			// add vertices to mesh
+			bspFace.calcTriFanIndices(currentIndex);
 			addRange(this.vertices, bspFace.getMesh());
-			addRange(this.indices, bspFace.getTriFanIndices(currentIndex));
+			addRange(this.indices, bspFace.indices);
 
 			// calculate vertex count (each index is a vertex, so length of indexes is #vertexes)
 			if (bspFace.indices.length <= 1) {
-				console.log("Face with one or less indices (probably a hidden face)");
-				bspFace.getTriFanIndices(currentIndex, true);
+				bspFace.calcTriFanIndices(currentIndex, true);
 			}
 			currentIndex = bspFace.indices[bspFace.indices.length - 1] + 1;
 		});
 
-		this.vertexCount = this.indices.length; 
-		// console.log(this.vertexCount);
-		// this.vertexCount = this.vertices.length / 6 + 6 * 5120 - 1811;
-		// console.log(this.indices.slice(this.vertexCount - 2));
-		console.log(this.vertexCount);
-
-		console.log("indices: " + this.indices);
-		// console.log("vertices: " + this.vertices);
+		this.vertexCount = this.indices.length;
 			
 		// create buffers
 		const _vbo = gl.createBuffer();
@@ -139,7 +131,7 @@ export class BSPRenderObject implements IRenderable {
 		// create EAO
 		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.EAO);
 		gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,
-			new Uint16Array(this.indices),
+			new Uint32Array(this.indices),
 			gl.STATIC_DRAW
 		);
 
@@ -161,15 +153,59 @@ export class BSPRenderObject implements IRenderable {
 		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.EAO);
 
 		if (renderModeOverride == null) {
-			gl.drawElements(this.renderMode, this.vertexCount, gl.UNSIGNED_SHORT, 0);
-			// gl.drawArrays(this.renderMode, 0, this.verticeCount);
+			gl.drawElements(this.renderMode, this.vertexCount, gl.UNSIGNED_INT, 0);
+			// gl.drawArrays(this.renderMode, 0, this.vertexCount);
 		} else {
-			gl.drawElements(renderModeOverride, this.vertexCount, gl.UNSIGNED_SHORT, 0);
-			// gl.drawArrays(renderModeOverride, 0, this.verticeCount);
+			gl.drawElements(renderModeOverride, this.vertexCount, gl.UNSIGNED_INT, 0);
+			// gl.drawArrays(renderModeOverride, 0, this.vertexCount);
 		}
-		
-		// this.faces.forEach((face) => {
-		// 	face.draw(gl, renderModeOverride);
-		// });
+	}
+	private faceToMesh(face: Face): Vertex[] {
+		const normal = (this.bsp.getLump(LumpType.Planes) as PlaneLump).planes[face.planeNum].normal;
+		const vertLump = (this.bsp.getLump(LumpType.Vertexes) as VertexLump);
+
+		const vertPositions: vec3[] = [];
+
+		for (let i = face.firstEdge; i < face.firstEdge + face.numEdges; i++) {
+			const edgeIndex = (this.bsp.getLump(LumpType.SurfEdges) as SurfEdgeLump).surfEdges[i];
+			
+			const reverseEdge = (edgeIndex < 0);
+
+			// gets the vertex indexes and reverses them if they are negative;
+			const vertIndices = (this.bsp.getLump(LumpType.Edges) as EdgeLump)
+				.edges[Math.abs(edgeIndex)].getVertIndices(reverseEdge);
+
+			vertPositions.push(vertLump.vertexes[vertIndices[0]]);
+			vertPositions.push(vertLump.vertexes[vertIndices[1]]);
+		}
+
+		// remove duplicate vertice positions and convert them to Vertexes
+		const vertices = Array.from(new Set(vertPositions)).map((vert) => {
+			return new Vertex(vert, normal);
+		});
+
+		return this.loopToTriFan(vertices);
+	}
+
+	// a modified loop to triangle fan from snake_biscuit's bsp tool
+	// manually triangulates a face's vertex loop
+	private loopToTriFan(verts: Vertex[]): Vertex[] {
+		const out_vert = verts.slice(0, 2);
+		const vertexes = verts.slice(2);
+		vertexes.forEach((vert) => {
+			addRange(out_vert, [out_vert[0], out_vert[out_vert.length - 1], vert]);
+		});
+		out_vert.push(out_vert[0]);
+		return out_vert;
+	}
+
+	private static verticesToBuffer(verts: Vertex[]) {
+		const out: number[] = [];
+		verts.forEach((vert) => {
+			addRange(out, vert.position);
+			addRange(out, vert.normal);
+			// addRange(out, vert.color);
+		});
+		return out;
 	}
 }

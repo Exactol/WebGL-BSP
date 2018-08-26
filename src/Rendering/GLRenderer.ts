@@ -47,6 +47,7 @@ export class GLRenderer {
 
 		// setup gl settings
 		this.gl = _gl;
+		
 		this.gl.clearColor(0.0, 0, 0, 1.0);
 		this.gl.clearDepth(1.0);
 		this.gl.enable(this.gl.CULL_FACE);
@@ -113,7 +114,7 @@ export class GLRenderer {
 		// render all objects
 		this.renderObjects.forEach((renderObject) => {
 			renderObject.draw(this.gl, this.gl.TRIANGLES);
-			renderObject.draw(this.gl);
+			// renderObject.draw(this.gl);
 		});
 
 		this.previousTime = currentTime;

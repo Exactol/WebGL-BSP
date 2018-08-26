@@ -24,17 +24,16 @@ export class BSPFace {
 	}
 
 	// calculates the indices for a triangle fan
-	public getTriFanIndices(startIndex: number, visibleOverride = false): number[] {
-		// if (this.hidden && visibleOverride === false) {
-		// 	return [];
-		// }
+	public calcTriFanIndices(startIndex: number, visibleOverride = false) {
+		if (this.hidden && visibleOverride === false) {
+			return [];
+		}
 		for (let i = 1; i < this.vertexes.length - 1; i++) {
 			addRange(this.indices, 
 				[startIndex, 
 				startIndex + i, 
 				startIndex + i + 1]);
 		}
-		return this.indices;
 	}
 
 	public getMesh(): number[] {
