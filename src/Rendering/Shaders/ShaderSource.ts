@@ -20,7 +20,7 @@ uniform mat4 u_view_mat;
 uniform mat4 u_projection_mat;
 
 out highp vec4 v_norm;
-// out highp vec4 v_color;
+out highp vec4 v_color;
 
 void main() {
 	gl_Position = u_projection_mat * u_view_mat * u_model_mat * a_position;
@@ -29,7 +29,7 @@ void main() {
 	gl_PointSize = 20.0;
 
 	v_norm = a_normal;
-	// v_color = a_color;
+	v_color = a_color;
 
 }`, WebGLRenderingContext.VERTEX_SHADER);
 
@@ -38,12 +38,12 @@ export const FragShader: ShaderSource = new ShaderSource(
 precision mediump float;
 
 in highp vec4 v_norm;
-// in highp vec4 v_color;
+in highp vec4 v_color;
 
 out vec4 fragColor;
 
 void main() {
 	//fragColor = vec4(1.0, 0.0, 0.5, 1.0);
-	fragColor = 0.5 + 0.5 * v_norm;
-	// fragColor = v_color + 0.1 * v_norm;
+	// fragColor = 0.5 + 0.5 * v_norm;
+	fragColor = v_color + 0.1 * v_norm;
 }`, WebGLRenderingContext.FRAGMENT_SHADER);

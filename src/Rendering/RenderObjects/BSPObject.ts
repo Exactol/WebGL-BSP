@@ -54,8 +54,8 @@ export class BSPRenderObject implements IRenderable {
 			addRange(this.vertices, bspFace.getMesh());
 			addRange(this.indices, bspFace.indices);
 
-			// calculate vertex count (each index is a vertex, so length of indexes is #vertexes)
-			if (bspFace.indices.length <= 1) {
+			// if face is hidden, calculate the indices for their length, but dont add them to the array
+			if (bspFace.hidden) {
 				bspFace.calcTriFanIndices(currentIndex, true);
 			}
 			currentIndex = bspFace.indices[bspFace.indices.length - 1] + 1;
@@ -101,7 +101,7 @@ export class BSPRenderObject implements IRenderable {
 			3,					      // size of attribute (vec3)
 			gl.FLOAT,				  // type of attribute is float
 			false,					  // does not need to be normalized
-			24,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+			40,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
 			0						  // offset (start at beginnng of buffer)
 		);
 		gl.enableVertexAttribArray(POSITION_ATTRIB_LOCATION);
@@ -112,21 +112,21 @@ export class BSPRenderObject implements IRenderable {
 			3,					      // size of attribute (vec3)
 			gl.FLOAT,				  // type of attribute is float
 			true,					  // does need to be normalized
-			24,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+			40,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
 			12						  // offset (start at beginnng of buffer)
 		);
 		gl.enableVertexAttribArray(NORMAL_ATTRIB_LOCATION);
 
-		// // define color VAO
-		// gl.vertexAttribPointer(
-		// 	COLOR_ATTRIB_LOCATION,   // attribute location
-		// 	4,					      // size of attribute (vec4)
-		// 	gl.FLOAT,				  // type of attribute is float
-		// 	false,					  // does not need to be normalized
-		// 	40,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
-		// 	24						  // offset (start at beginnng of buffer)
-		// );
-		// gl.enableVertexAttribArray(COLOR_ATTRIB_LOCATION);
+		// define color VAO
+		gl.vertexAttribPointer(
+			COLOR_ATTRIB_LOCATION,   // attribute location
+			4,					      // size of attribute (vec4)
+			gl.FLOAT,				  // type of attribute is float
+			false,					  // does not need to be normalized
+			40,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+			24						  // offset (start at beginnng of buffer)
+		);
+		gl.enableVertexAttribArray(COLOR_ATTRIB_LOCATION);
 
 		// create EAO
 		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.EAO);

@@ -46,29 +46,24 @@ export class BSPFace {
 		// filter out transparent meshes temporarily
 		if ( (texInfo.flags & SurfFlags.TRANS) === SurfFlags.TRANS) {
 			this.hidden = true;
-			// return [];
 		}
 		// filter out trigger brushes
 		if ( (texInfo.flags & SurfFlags.TRIGGER) === SurfFlags.TRIGGER) {
 			this.hidden = true;
-			// return [];
 		}
 		// filter out sky brushes
 		if ( (texInfo.flags & SurfFlags.SKY) === SurfFlags.SKY || 
 				(texInfo.flags & SurfFlags.SKY2D) === SurfFlags.SKY2D) {
 			this.hidden = true;
-			// return [];
 		}
 		// filter out skip and hint brushes
 		if ( (texInfo.flags & SurfFlags.SKIP) === SurfFlags.SKIP || 
 				(texInfo.flags & SurfFlags.HINT) === SurfFlags.HINT) {
 			this.hidden = true;
-			// return [];
 		}
 		// filter out hitboxes
 		if ( (texInfo.flags & SurfFlags.HITBOX) === SurfFlags.HITBOX) {
 			this.hidden = true;
-			// return [];
 		}
 
 		const normal = (bsp.getLump(LumpType.Planes) as PlaneLump).planes[this.face.planeNum].normal;
@@ -115,7 +110,7 @@ export class BSPFace {
 		verts.forEach((vert) => {
 			addRange(out, vert.position);
 			addRange(out, vert.normal);
-			// addRange(out, vert.color);
+			addRange(out, vert.color);
 		});
 		return out;
 	}
