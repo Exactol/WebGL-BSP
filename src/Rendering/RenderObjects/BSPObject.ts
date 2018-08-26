@@ -154,58 +154,8 @@ export class BSPRenderObject implements IRenderable {
 
 		if (renderModeOverride == null) {
 			gl.drawElements(this.renderMode, this.vertexCount, gl.UNSIGNED_INT, 0);
-			// gl.drawArrays(this.renderMode, 0, this.vertexCount);
 		} else {
 			gl.drawElements(renderModeOverride, this.vertexCount, gl.UNSIGNED_INT, 0);
-			// gl.drawArrays(renderModeOverride, 0, this.vertexCount);
 		}
-	}
-	private faceToMesh(face: Face): Vertex[] {
-		const normal = (this.bsp.getLump(LumpType.Planes) as PlaneLump).planes[face.planeNum].normal;
-		const vertLump = (this.bsp.getLump(LumpType.Vertexes) as VertexLump);
-
-		const vertPositions: vec3[] = [];
-
-		for (let i = face.firstEdge; i < face.firstEdge + face.numEdges; i++) {
-			const edgeIndex = (this.bsp.getLump(LumpType.SurfEdges) as SurfEdgeLump).surfEdges[i];
-			
-			const reverseEdge = (edgeIndex < 0);
-
-			// gets the vertex indexes and reverses them if they are negative;
-			const vertIndices = (this.bsp.getLump(LumpType.Edges) as EdgeLump)
-				.edges[Math.abs(edgeIndex)].getVertIndices(reverseEdge);
-
-			vertPositions.push(vertLump.vertexes[vertIndices[0]]);
-			vertPositions.push(vertLump.vertexes[vertIndices[1]]);
-		}
-
-		// remove duplicate vertice positions and convert them to Vertexes
-		const vertices = Array.from(new Set(vertPositions)).map((vert) => {
-			return new Vertex(vert, normal);
-		});
-
-		return this.loopToTriFan(vertices);
-	}
-
-	// a modified loop to triangle fan from snake_biscuit's bsp tool
-	// manually triangulates a face's vertex loop
-	private loopToTriFan(verts: Vertex[]): Vertex[] {
-		const out_vert = verts.slice(0, 2);
-		const vertexes = verts.slice(2);
-		vertexes.forEach((vert) => {
-			addRange(out_vert, [out_vert[0], out_vert[out_vert.length - 1], vert]);
-		});
-		out_vert.push(out_vert[0]);
-		return out_vert;
-	}
-
-	private static verticesToBuffer(verts: Vertex[]) {
-		const out: number[] = [];
-		verts.forEach((vert) => {
-			addRange(out, vert.position);
-			addRange(out, vert.normal);
-			// addRange(out, vert.color);
-		});
-		return out;
 	}
 }
