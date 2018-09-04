@@ -44,16 +44,31 @@ out vec4 fragColor;
 
 void main() {
 	// fragColor = 0.5 + 0.5 * v_norm;
-	vec4 lightColor = vec4(1, 1, 1, 1.0);
 
-	float ambientStrength = 0.8;
-	vec4 ambient = ambientStrength * lightColor;
+	// float ambientStrength = 0.4;
+	// vec3 ambient = ambientStrength * vec3(1.0, 1.0, 1.0);
 
-	float diff = max(dot(v_norm, vec4(1.0, 0, 0, 1.0)), 0.0);
-	vec4 diffuse = diff * lightColor;
+	vec4 color = vec4(0.2, 0.2, 0.2, 1.0);
+	vec4 ambientColor = vec4(0.6, 0.6, 0.6, 1.0);
 
-	vec4 result = (ambient + diffuse) * v_color;
-	fragColor = result;
-	
+	// vec4 lightDir = vec4(1.0, 0, 0, 1.0);
+	vec4 lightDir = vec4(0.707107, 0.707107, 0, 1.0);
+
+	float intensity = clamp(dot(v_norm, lightDir), 0.0, 1.0);
+	// float intensity = dot(v_norm, lightDir);
+	if (intensity > 0.0) {
+		color += (ambientColor * intensity);
+	}
+
+	color = clamp(color, 0.0, 1.0);
+	fragColor = color * v_color;
+	// fragColor = v_color;
+	// fragColor.rgb *= intensity + 0.2;
+
+	// float diffuse = dot(v_norm, vec4(0.707107, 0.707107, 0, 0));
+
+	// fragColor = v_color;
+	// fragColor.rgb *= (diffuse + 0.4);
+
 	//fragColor = v_color;// + 0.1 * v_norm;
 }`, WebGLRenderingContext.FRAGMENT_SHADER);

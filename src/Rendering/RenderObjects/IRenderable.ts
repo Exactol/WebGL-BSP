@@ -1,4 +1,9 @@
 export interface IRenderable {
-	hidden: boolean;
+	visibility: Visibility;
 	draw(gl: WebGL2RenderingContext, renderTypeOverride?: number): void;
+}
+
+export enum Visibility {
+	Visible,
+	Hidden,
 }

@@ -6,6 +6,11 @@ import { vec4, vec3 } from "gl-matrix";
 import { BSP } from "./BSP/BSP";
 import { LumpType } from "./BSP/Lumps/LumpType";
 import { BSPRenderObject } from "./Rendering/RenderObjects/BSPObject";
+import { DispInfoLump } from "./BSP/Lumps/DispInfoLump";
+import { FaceLump } from "./BSP/Lumps/FaceLump";
+import { DispVert } from "./BSP/Structs/DispVert";
+import { DispVertLump } from "./BSP/Lumps/DispVertLump";
+import { DispTrisLump } from "./BSP/Lumps/DispTrisLump";
 
 // export function so it can be called globally
 // @ts-ignore
@@ -40,10 +45,6 @@ class BSPRenderer {
         this.renderer = new GLRenderer(this.gl);
     
         this.setupBtnListeners();
-        // this.renderer.AddRenderableObject(new RenderObject(this.gl, MeshFactory.createSolidCube(5)));
-    
-        // start render loop
-        // this.renderer.Render();
     }
 
     public setupBtnListeners() {
@@ -53,38 +54,51 @@ class BSPRenderer {
             console.log("Open button was null");
             return;
         }
-        openBtn.addEventListener("click", this.openFileBtnCallback.bind(this));
-    }
-    
-    public openFileBtnCallback() {
+        openBtn.addEventListener("click", this.openFileBtnCallback.bind(this), false);
+
         const fileDialog = document.getElementById("fileDialog") as HTMLInputElement;
+        fileDialog.value = "";
+
+        if (!fileDialog) {
+            return;
+        }
+
         if (fileDialog == null) {
             console.log("fileDialog was null");
             return;
         }
     
-        // event that handles when 
+        // event that handles when file is selected
         fileDialog.addEventListener("change", () => {
             if (fileDialog.files == null) {
                 console.log("selected files were null");
                 return;
             }
-    
+
             const file = fileDialog.files[0];
             if (file == null) {
                 return;
             }
-    
+
             // console.log(file);
             if (file.name.match(/.*\.(bsp)$/gm)) {
                 const reader = new FileReader();
-    
+
                 reader.onload = this.readBSP.bind(this);
                 reader.readAsArrayBuffer(file);
             } else {
                 console.log("Only BSP files are supported");
             }
-        }, false);
+        }, false);        
+    }
+    
+    public openFileBtnCallback() {
+        const fileDialog = document.getElementById("fileDialog") as HTMLInputElement;
+
+        if (fileDialog == null) {
+            console.log("fileDialog was null");
+            return;
+        }
     
         fileDialog.click();
     }
@@ -98,6 +112,10 @@ class BSPRenderer {
         if (this.gl == null) {
             return;
         }
+        // const lump = bsp.readLump(LumpType.DispTris) as DispTrisLump;
+        // console.log(lump.toString());
+        // bsp.printLumps();
+        this.renderer.clearRenderObjects();
         this.renderer.AddRenderableObject(new BSPRenderObject(this.gl, bsp));
         this.renderer.Render();
     }

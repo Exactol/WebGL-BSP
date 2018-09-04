@@ -1,9 +1,9 @@
 import { Vertex } from "../../Structs/Vertex";
-import { IRenderable } from "./IRenderable";
+import { IRenderable, Visibility } from "./IRenderable";
 import { POSITION_ATTRIB_LOCATION } from "./UniformLocs";
 
 export class RenderObject implements IRenderable {
-	public hidden = false;
+	public visibility = Visibility.Visible;
 	public VAO!: WebGLVertexArrayObject;
 	public VBO!: WebGLBuffer;
 
@@ -62,7 +62,7 @@ export class RenderObject implements IRenderable {
 			console.log("Cannot render object, not initialized");
 			return;
 		}
-		if (this.hidden) {
+		if (this.visibility === Visibility.Hidden) {
 			return;
 		}
 

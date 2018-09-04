@@ -1,7 +1,7 @@
 import { RenderObject } from "./RenderObject";
 import { Face } from "../../BSP/Structs/Face";
 import { BSP } from "../../BSP/BSP";
-import { IRenderable } from "./IRenderable";
+import { IRenderable, Visibility } from "./IRenderable";
 import { LumpType } from "../../BSP/Lumps/LumpType";
 import { VertexLump } from "../../BSP/Lumps/VertexLump";
 import { POSITION_ATTRIB_LOCATION, NORMAL_ATTRIB_LOCATION, COLOR_ATTRIB_LOCATION } from "./UniformLocs";
@@ -17,17 +17,16 @@ import { BSPFace } from "./BSPFace";
 import { zip } from "../../Utils/ZipArray";
 import { Vertex } from "../../Structs/Vertex";
 import { TexInfoLump } from "../../BSP/Lumps/TexInfoLump";
-import { SurfFlags } from "../../BSP/Structs/TexInfo";
 import { TexDataLump } from "../../BSP/Lumps/TexDataLump";
 
 export class BSPRenderObject implements IRenderable {
-	public hidden = false;
+	public visibility = Visibility.Visible;
 	public VAO!: WebGLVertexArrayObject;
 	public VBO!: WebGLBuffer;
 	public EAO!: WebGLBuffer; // index buffer
 	private modelCount!: number;
 	private initialized = false;
-	private renderMode = WebGL2RenderingContext.POINTS;
+	private renderMode = WebGL2RenderingContext.TRIANGLES;
 	private bsp: BSP;
 	private vertexCount = 0;
 
@@ -35,33 +34,46 @@ export class BSPRenderObject implements IRenderable {
 	private faces: BSPFace[];
 	private indices: number[];
 
+	// private dispVertices: number[];
+	// private dispIndices: number[];
+
 	constructor(gl: WebGL2RenderingContext, bsp: BSP) {
 		this.bsp = bsp;
 		
-		const faceLump = bsp.getLump(LumpType.Faces) as FaceLump;
+		const faceLump = bsp.readLump(LumpType.Faces) as FaceLump;
 
 		this.vertices = [];
 		this.faces = [];
 		this.indices = [];
 
 		let currentIndex = 0;
-		faceLump.faces.forEach((face) => {
+		// tslint:disable-next-line:prefer-for-of
+		for (let i = 0; i < faceLump.faces.length; i++) {
+			const face = faceLump.faces[i];
 			const bspFace = new BSPFace(face, bsp);
 			this.faces.push(bspFace);
 			
 			// add vertices to mesh
-			bspFace.calcTriFanIndices(currentIndex);
+			bspFace.calcIndices(currentIndex);
 			addRange(this.vertices, bspFace.getMesh());
-			addRange(this.indices, bspFace.indices);
 
-			// if face is hidden, calculate the indices for their length, but dont add them to the array
-			if (bspFace.hidden) {
-				bspFace.calcTriFanIndices(currentIndex, true);
+			// dont add hidden faces to the indices
+			if (bspFace.visibility === Visibility.Visible) {
+				addRange(this.indices, bspFace.indices);
 			}
-			currentIndex = bspFace.indices[bspFace.indices.length - 1] + 1;
-		});
+
+			if (bspFace.dispInfo != null) {
+				// highest index of element will be it's second to last index
+				currentIndex = bspFace.indices[bspFace.indices.length - 2] + 1;
+			} else {
+				// highest index of element will be it's last index
+				currentIndex = bspFace.indices[bspFace.indices.length - 1] + 1;
+			}
+		}
 
 		this.vertexCount = this.indices.length;
+		// console.log(this.indices);
+		// console.log(this.vertices);
 			
 		// create buffers
 		const _vbo = gl.createBuffer();
@@ -145,7 +157,7 @@ export class BSPRenderObject implements IRenderable {
 			console.log("Cannot render object, not initialized");
 			return;
 		}
-		if (this.hidden) {
+		if (this.visibility === Visibility.Hidden) {
 			return;
 		}
 

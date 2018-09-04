@@ -81,6 +81,10 @@ export class GLRenderer {
 		this.renderObjects.push(object);
 	}
 
+	public clearRenderObjects() {
+		this.renderObjects = [];
+	}
+
 	public Render(currentTime = 0) {
 		// resize every frame so when user resizes canvas it is smooth
 		this.resize();
@@ -109,12 +113,11 @@ export class GLRenderer {
 		this.gl.uniformMatrix4fv(this.uProjectionMatrixLocation,
 			false, 
 			 this.activeCamera.getProjectionMatrix());
-		// TODO: create uniform normal buffer?
 
 		// render all objects
 		this.renderObjects.forEach((renderObject) => {
-			renderObject.draw(this.gl, this.gl.TRIANGLES);
-			// renderObject.draw(this.gl);
+			// renderObject.draw(this.gl, this.gl.POINTS);
+			renderObject.draw(this.gl);
 		});
 
 		this.previousTime = currentTime;

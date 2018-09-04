@@ -1,3 +1,5 @@
+import { SurfFlags } from "./Enums";
+
 export class TexInfo {
 	public textureVecs: number[][];
 	public lightmapVecs: number[][];
@@ -19,21 +21,3 @@ export class TexInfo {
 	}
 }
 
-export enum SurfFlags {
-	LIGHT = 0x1,
-	SKY2D = 0x2,
-	SKY = 0x4,
-	WARP = 0x8,
-	TRANS = 0x10,
-	NO_PORTAL = 0x20,
-	TRIGGER = 0x40,
-	NODRAW = 0x80,
-	HINT = 0x100,
-	SKIP = 0x200,
-	NO_LIGHT = 0x400,
-	BUMP_LIGHT = 0x800,
-	NO_SHADOWS = 0x1000,
-	NO_DECALS = 0x2000,
-	NO_CHOP = 0x4000,
-	HITBOX = 0x8000,
-}

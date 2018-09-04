@@ -16,12 +16,18 @@ export const BOOL_SIZE = 1;
 export const CHAR_SIZE = 1;
 
 export class BinaryReader {
-	public buffer: ArrayBuffer;
 	public position: number;
 	public length: number;
+	public isLittleEndian: boolean;
+	private dataView: DataView;
 
-	constructor(data: ArrayBuffer, offset = 0) {
-		this.buffer = data;
+	constructor(data: ArrayBuffer, offset = 0, endianness = Endianness.LittleEndian) {
+		this.dataView = new DataView(data);
+		if (endianness === Endianness.LittleEndian) {
+			this.isLittleEndian = true;
+		} else {
+			this.isLittleEndian = false;
+		}
 
 		// start position at 0 by default
 		this.position = offset;
@@ -32,7 +38,7 @@ export class BinaryReader {
 		if (this.position + INT_8_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Int8Array(this.buffer, this.position, 1)[0];
+		const retVal = this.dataView.getInt8(this.position);
 
 		// move position forward
 		this.position += INT_8_SIZE;
@@ -43,7 +49,7 @@ export class BinaryReader {
 		if (this.position + INT_16_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Int16Array(this.buffer, this.position, 1)[0];
+		const retVal = this.dataView.getInt16(this.position, this.isLittleEndian);
 
 		// move position forward
 		this.position += INT_16_SIZE;
@@ -54,7 +60,7 @@ export class BinaryReader {
 		if (this.position + INT_32_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Int32Array(this.buffer, this.position, 1)[0];
+		const retVal = this.dataView.getInt32(this.position, this.isLittleEndian);
 
 		// move position forward
 		this.position += INT_32_SIZE;
@@ -65,7 +71,7 @@ export class BinaryReader {
 		if (this.position + UINT_8_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Uint8Array(this.buffer, this.position, 1)[0];
+		const retVal = this.dataView.getUint8(this.position);
 
 		// move position forward
 		this.position += UINT_8_SIZE;
@@ -76,7 +82,7 @@ export class BinaryReader {
 		if (this.position + UINT_16_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Uint16Array(this.buffer, this.position, 1)[0];
+		const retVal = this.dataView.getUint16(this.position, this.isLittleEndian);
 
 		// move position forward
 		this.position += UINT_16_SIZE;
@@ -87,7 +93,7 @@ export class BinaryReader {
 		if (this.position + UINT_32_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Uint32Array(this.buffer, this.position, 1)[0];
+		const retVal = this.dataView.getUint16(this.position, this.isLittleEndian);
 		
 		// move position forward
 		this.position += UINT_32_SIZE;
@@ -98,9 +104,7 @@ export class BinaryReader {
 		if (this.position + FLOAT_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		// console.log(`position: ${this.position}`);
-		// console.log(`length: ${this.buffer.byteLength}`);
-		const retVal = new Float32Array(this.buffer, this.position, 1)[0];
+		const retVal = this.dataView.getFloat32(this.position, this.isLittleEndian);
 		
 		// move position forward
 		this.position += FLOAT_SIZE;
@@ -112,7 +116,7 @@ export class BinaryReader {
 			throw new Error("RangeError");
 		}
 		// float 64 is a double
-		const retVal = new Float64Array(this.buffer, this.position, 1)[0];
+		const retVal = this.dataView.getFloat64(this.position, this.isLittleEndian);
 		
 		// move position forward
 		this.position += DOUBLE_SIZE;
@@ -124,7 +128,7 @@ export class BinaryReader {
 			throw new Error("RangeError");
 		}
 		// get bool as int
-		const boolValInt = new Int8Array(this.buffer, this.position, 1)[0];
+		const boolValInt = this.dataView.getInt8(this.position);
 
 		// 0 = true, so if its not 0 it must be false
 		const retVal = (boolValInt === 0);
@@ -138,7 +142,7 @@ export class BinaryReader {
 		if (this.position + numBytes > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = new Uint8Array(this.buffer, this.position, numBytes);
+		const retVal = new Uint8Array(this.dataView.buffer, this.position, numBytes);
 		
 		// move position forward
 		this.position += numBytes;
@@ -149,7 +153,7 @@ export class BinaryReader {
 		if (this.position + CHAR_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = String.fromCharCode(new Int8Array(this.buffer, this.position, 1)[0]);
+		const retVal = String.fromCharCode(this.dataView.getInt8(this.position));
 		
 		// move position forward
 		this.position += CHAR_SIZE;
@@ -161,7 +165,7 @@ export class BinaryReader {
 		if (this.position + CHAR_SIZE > this.length) {
 			throw new Error("RangeError");
 		}
-		const retVal = String.fromCharCode(new Int8Array(this.buffer, this.position, 1)[0]);
+		const retVal = String.fromCharCode(this.dataView.getInt8(this.position));
 
 		return retVal;
 	}
@@ -218,5 +222,10 @@ export class BinaryReader {
 export enum SeekOrigin {
 	Current,
 	Beginning,
-	End
+	End,
+}
+
+export enum Endianness {
+	LittleEndian,
+	BigEndian,
 }

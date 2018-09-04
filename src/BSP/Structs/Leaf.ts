@@ -1,4 +1,4 @@
-import { BrushContent } from "./Brush";
+import { BrushContent } from "./Enums";
 
 export class Leaf {
 	public contents: BrushContent;

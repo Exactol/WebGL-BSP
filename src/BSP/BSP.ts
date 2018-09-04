@@ -27,52 +27,52 @@ import { LightingLump } from "./Lumps/LightingLump";
 import { LeafAmbientLightingLump } from "./Lumps/LeafAmbientLightingLump";
 import { LeafAmbientIndexLump } from "./Lumps/LeafAmbientIndexLump";
 import { LeafAmbientIndexHdrLump } from "./Lumps/LeafAmbientIndexHDRLump";
-import { vec3 } from "gl-matrix";
+import { DispInfoLump } from "./Lumps/DispInfoLump";
+import { DispVertLump } from "./Lumps/DispVertLump";
+import { DispTrisLump } from "./Lumps/DispTrisLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
 // todo look into 
 // tslint:disable-next-line:max-line-length
 // https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/mp/src/utils/common/bsplib.cpp
 export class BSP {
-	public fileData!: ArrayBuffer;
-	public bspReader!: BinaryReader;
+	public fileData: ArrayBuffer;
+	public reader: BinaryReader;
 
-	public ident!: string;
-	public version!: number;
+	public ident: string;
+	public version: number;
 
 	public headerLumps: HeaderLump[] = [];
 	public lumps: { [lumpType: number]: Lump } = {};
 
 	constructor(bspData: ArrayBuffer) {
 		this.fileData = bspData;
-		this.bspReader = new BinaryReader(this.fileData);
-		this.readHeader();
-	}
+		this.reader = new BinaryReader(this.fileData);
 
-	private readHeader() {
+		// read header
 		console.log("--Header--");
 
 		// read ident
 		this.ident = "";
 		for (let i = 0; i < 4; i++) {
-			this.ident += this.bspReader.readChar();
+			this.ident += this.reader.readChar();
 		}
 		console.log("Ident: " + this.ident);
 
 		// read version
-		this.version = this.bspReader.readInt32();
+		this.version = this.reader.readInt32();
 		console.log("Version: " + this.version);
 
 		// read header lumps. Each lump is 16 bytes
 		console.log("--Reading Header Lumps--");
 		for (let i = 0; i < 64; i++) {
-			// use helper function to convert LumpEnum to lump class
+			// use helper function to convert LumpEnum to lump class type
 			const lumpType = this.getLumpType(i);
-			this.lumps[i] = new lumpType(new HeaderLump(i, this.bspReader.readBytes(16)), this.fileData);
-		}
+			this.lumps[i] = new lumpType(new HeaderLump(i, this.reader.readBytes(16)), this.fileData);
+		}		
 	}
 
-	public getLump(lumpType: LumpType) {
+	public readLump(lumpType: LumpType) {
 		// check if lump has already been read
 		if (this.lumps[lumpType].initialized) {
 			return this.lumps[lumpType];
@@ -81,7 +81,7 @@ export class BSP {
 		const lump = this.lumps[lumpType];
 
 		// make sure lumps that this lump depends on are read first
-		// todo not really implemented yet
+		// TODO: not really implemented yet
 		// lump.lumpDependencies.forEach((lumpDependency) => {
 		// 	this.getLump(lumpDependency);
 		// });
@@ -93,7 +93,12 @@ export class BSP {
 		for (const lump in this.lumps) {
 			if (this.lumps.hasOwnProperty(lump)) {
 				const element = this.lumps[lump];
-				console.log(element.toString());
+				if (element.initialized) {
+					console.log(element.toString());
+				} else {
+					this.readLump(Number.parseInt(lump));
+					console.log(element);
+				}
 			}
 		}
 	}
@@ -150,7 +155,8 @@ export class BSP {
 			// case LumpType.ClusterPortals:
 			// case LumpType.Unused3:
 			// case LumpType.PropTris:
-			// case LumpType.DispInfo:
+			case LumpType.DispInfo:
+				return DispInfoLump;
 			case LumpType.OriginalFaces:
 				return OriginalFaceLump;
 			// case LumpType.PhysDisp:
@@ -158,7 +164,8 @@ export class BSP {
 			// case LumpType.VertNormals:
 			// case LumpType.VertNormalIndices:
 			// case LumpType.DispLightmapAlphas:
-			// case LumpType.DispVerts:
+			case LumpType.DispVerts:
+				return DispVertLump;
 			// case LumpType.DispLightmapSamplePositions:
 			case LumpType.Game:
 				return GameLump;
@@ -177,7 +184,8 @@ export class BSP {
 			// case LumpType.Overlays:
 			// case LumpType.LeafMinDistToWater:
 			// case LumpType.FaceMacroTextureInfo:
-			// case LumpType.DispTris:
+			case LumpType.DispTris:
+				return DispTrisLump;
 			// case LumpType.PhysCollideSurface:
 			// case LumpType.PropBlob:
 			// case LumpType.WaterOverlays:
