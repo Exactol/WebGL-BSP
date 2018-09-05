@@ -183,7 +183,7 @@ export class BSPFace {
 		for (let j = 0; j < faceVerts.length; j++) {
 			const vert = faceVerts[j];
 			
-			if (vec3.equals(vert.position, this.dispInfo.startPosition)) {
+			if (vec3.equals(vec3.round(vec3.create(), vert.position), vec3.round(vec3.create(), this.dispInfo.startPosition))) {
 				// shift the verts so the start position is the first vertex
 				const verts = faceVerts.slice(j);
 				const lastVerts = faceVerts.slice(0, j);

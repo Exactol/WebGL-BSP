@@ -61,7 +61,7 @@ void main() {
 	}
 
 	color = clamp(color, 0.0, 1.0);
-	fragColor = color * v_color;
+	fragColor = color * v_color + vec4(0.25, 0.25, 0.25, 0.0);
 	// fragColor = v_color;
 	// fragColor.rgb *= intensity + 0.2;
 
