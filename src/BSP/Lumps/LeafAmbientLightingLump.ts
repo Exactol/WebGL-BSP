@@ -1,5 +1,5 @@
 import { Lump } from "./Lump";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { LumpType } from "./LumpType";
 import { BinaryReader} from "../Utils/BinaryReader";
 import { Leaf } from "../Structs/Leaf";
@@ -11,7 +11,7 @@ import { CompressedLightCube } from "../Structs/CompressedLightCube";
 export class LeafAmbientLightingLump extends Lump {
 	public leafAmbientLighting: LeafAmbientLighting[] = [];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.LeafAmbientLighting, header, lumpData);
 	}
 

@@ -1,5 +1,5 @@
 import { Lump } from "./Lump";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { LumpType } from "./LumpType";
 import { BinaryReader} from "../Utils/BinaryReader";
 import { Node } from "../Structs/Node";
@@ -7,7 +7,7 @@ import { Node } from "../Structs/Node";
 export class NodeLump extends Lump {
 	public nodes: Node[] = [];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.Nodes, header, lumpData);
 	}
 

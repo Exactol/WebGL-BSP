@@ -1,5 +1,5 @@
 import { Lump } from "./Lump";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { LumpType } from "./LumpType";
 import { BinaryReader} from "../Utils/BinaryReader";
 import { Leaf } from "../Structs/Leaf";
@@ -9,7 +9,7 @@ import { vec3 } from "gl-matrix";
 export class ModelLump extends Lump {
 	public models: Model[] = [];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.Models, header, lumpData);
 	}
 

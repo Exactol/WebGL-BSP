@@ -1,5 +1,5 @@
 import { Lump } from "./Lump";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { Edge } from "../Structs/Edge";
 import { BinaryReader, FLOAT_SIZE } from "../Utils/BinaryReader";
 import { LumpType } from "./LumpType";
@@ -8,7 +8,7 @@ import { vec3 } from "gl-matrix";
 export class VertexLump extends Lump {
 	public vertexes!: vec3[];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.Vertexes, header, lumpData);
 	}
 

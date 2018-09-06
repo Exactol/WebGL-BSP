@@ -1,5 +1,5 @@
 import { Lump } from "./Lump";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { LumpType } from "./LumpType";
 import { BinaryReader, FLOAT_SIZE, INT_32_SIZE} from "../Utils/BinaryReader";
 import { TexInfo } from "../Structs/TexInfo";
@@ -9,7 +9,7 @@ import { vec3 } from "gl-matrix";
 export class TexDataLump extends Lump {
 	public texDatas: TexData[] = [];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.TexData, header, lumpData);
 	}
 

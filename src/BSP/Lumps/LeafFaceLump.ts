@@ -1,12 +1,12 @@
 import { Lump } from "./Lump";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { LumpType } from "./LumpType";
 import { BinaryReader, UINT_16_SIZE} from "../Utils/BinaryReader";
 
 export class LeafFaceLump extends Lump {
 	public leafFaces: number[] = [];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.LeafFaces, header, lumpData);
 	}
 

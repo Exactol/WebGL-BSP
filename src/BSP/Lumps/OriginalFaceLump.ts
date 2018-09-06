@@ -1,6 +1,6 @@
 import { Lump } from "./Lump";
 import { Plane } from "../Structs/Plane";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { LumpType } from "./LumpType";
 import { BinaryReader, FLOAT_SIZE, INT_32_SIZE } from "../Utils/BinaryReader";
 import { vec3 } from "gl-matrix";
@@ -10,7 +10,7 @@ export class OriginalFaceLump extends Lump {
 	// identical to the face lump, so the Face class can be reused
 	public faces: Face[] = [];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.OriginalFaces, header, lumpData);
 	}
 

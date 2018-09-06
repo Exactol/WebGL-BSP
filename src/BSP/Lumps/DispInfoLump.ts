@@ -1,5 +1,5 @@
 import { Lump } from "./Lump";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { LumpType } from "./LumpType";
 import { BinaryReader, SeekOrigin } from "../Utils/BinaryReader";
 import { DispInfo } from "../Structs/DispInfo";
@@ -11,7 +11,7 @@ import { DispCornerNeighbors } from "../Structs/DispCornerNeighbor";
 export class DispInfoLump extends Lump {
 	public dispInfos: DispInfo[] = [];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.DispInfo, header, lumpData);
 	}
 

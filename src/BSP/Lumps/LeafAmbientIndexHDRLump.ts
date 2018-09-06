@@ -1,5 +1,5 @@
 import { Lump } from "./Lump";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { LumpType } from "./LumpType";
 import { BinaryReader, UINT_16_SIZE} from "../Utils/BinaryReader";
 import { LeafAmbientIndex } from "../Structs/LeafAmbientIndex";
@@ -9,7 +9,7 @@ import { LeafAmbientIndex } from "../Structs/LeafAmbientIndex";
 export class LeafAmbientIndexHdrLump extends Lump {
 	public leafAmbientIndex: LeafAmbientIndex[] = [];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.LeafAmbientIndexHdr, header, lumpData);
 	}
 

@@ -1,6 +1,6 @@
 import { BinaryReader } from "./Utils/BinaryReader";
 import { LumpType } from "./Lumps/LumpType";
-import { HeaderLump } from "./Lumps/HeaderLump";
+import { LumpHeader } from "./Lumps/LumpHeader";
 import { Lump } from "./Lumps/Lump";
 import { EdgeLump } from "./Lumps/EdgeLump";
 import { GenericLump } from "./Lumps/GenericLump";
@@ -42,7 +42,7 @@ export class BSP {
 	public ident: string;
 	public version: number;
 
-	public headerLumps: HeaderLump[] = [];
+	public headerLumps: LumpHeader[] = [];
 	public lumps: { [lumpType: number]: Lump } = {};
 
 	constructor(bspData: ArrayBuffer) {
@@ -68,7 +68,7 @@ export class BSP {
 		for (let i = 0; i < 64; i++) {
 			// use helper function to convert LumpEnum to lump class type
 			const lumpType = this.getLumpType(i);
-			this.lumps[i] = new lumpType(new HeaderLump(i, this.reader.readBytes(16)), this.fileData);
+			this.lumps[i] = new lumpType(new LumpHeader(i, this.reader.readBytes(16)), this.fileData);
 		}		
 	}
 

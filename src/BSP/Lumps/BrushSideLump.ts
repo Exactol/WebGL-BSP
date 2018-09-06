@@ -1,6 +1,6 @@
 import { Lump } from "./Lump";
 import { Plane } from "../Structs/Plane";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { LumpType } from "./LumpType";
 import { BinaryReader, FLOAT_SIZE, INT_32_SIZE, INT_16_SIZE, UINT_16_SIZE } from "../Utils/BinaryReader";
 import { vec3 } from "gl-matrix";
@@ -11,7 +11,7 @@ import { BrushSide } from "../Structs/BrushSide";
 export class BrushSideLump extends Lump {
 	public brushes: BrushSide[] = [];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.BrushSides, header, lumpData);
 	}
 

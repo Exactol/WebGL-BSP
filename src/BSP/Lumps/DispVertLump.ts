@@ -1,5 +1,5 @@
 import { Lump } from "./Lump";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { BinaryReader, FLOAT_SIZE, UINT_16_SIZE } from "../Utils/BinaryReader";
 import { LumpType } from "./LumpType";
 import { DispVert } from "../Structs/DispVert";
@@ -8,7 +8,7 @@ import { vec3 } from "gl-matrix";
 export class DispVertLump extends Lump {
 	public dispVerts: DispVert[] = [];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.DispVerts, header, lumpData);
 	}
 

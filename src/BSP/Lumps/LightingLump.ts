@@ -1,5 +1,5 @@
 import { Lump } from "./Lump";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { LumpType } from "./LumpType";
 import { BinaryReader} from "../Utils/BinaryReader";
 import { Leaf } from "../Structs/Leaf";
@@ -8,7 +8,7 @@ import { ColorRGBExp32 } from "../Structs/ColorRGBExp32";
 export class LightingLump extends Lump {
 	public lightmapSamples: ColorRGBExp32[] = [];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.Lighting, header, lumpData);
 	}
 

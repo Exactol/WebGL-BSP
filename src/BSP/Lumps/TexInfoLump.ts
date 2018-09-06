@@ -1,5 +1,5 @@
 import { Lump } from "./Lump";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { LumpType } from "./LumpType";
 import { BinaryReader, INT_16_SIZE} from "../Utils/BinaryReader";
 import { TexInfo } from "../Structs/TexInfo";
@@ -7,7 +7,7 @@ import { TexInfo } from "../Structs/TexInfo";
 export class TexInfoLump extends Lump {
 	public texInfos: TexInfo[] = [];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.TexInfo, header, lumpData);
 	}
 

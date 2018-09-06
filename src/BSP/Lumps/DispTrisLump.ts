@@ -1,5 +1,5 @@
 import { Lump } from "./Lump";
-import { HeaderLump } from "./HeaderLump";
+import { LumpHeader } from "./LumpHeader";
 import { BinaryReader, FLOAT_SIZE, UINT_16_SIZE } from "../Utils/BinaryReader";
 import { LumpType } from "./LumpType";
 import { DispVert } from "../Structs/DispVert";
@@ -9,7 +9,7 @@ import { DispTags } from "../Structs/Enums";
 export class DispTrisLump extends Lump {
 	public dispTris: DispTags[] = [];
 
-	constructor(header: HeaderLump, lumpData) {
+	constructor(header: LumpHeader, lumpData) {
 		super(LumpType.DispTris, header, lumpData);
 	}
 
