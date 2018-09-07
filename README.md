@@ -3,4 +3,4 @@ A 3D Source Engine BSP renderer
 
 Currently can display faces and displacements (Needs work) with estimated colors using reflectivity data.
 
-![faces](https://cdn.discordapp.com/attachments/423212812320505869/486623434080649217/unknown.png)
+![faces](blob:https://imgur.com/96069307-efdd-45b2-a278-b55b6f5f1842)
