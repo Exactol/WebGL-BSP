@@ -6,7 +6,7 @@ import { TexInfoLump } from "../../BSP/Lumps/TexInfoLump";
 import { PlaneLump } from "../../BSP/Lumps/PlaneLump";
 import { VertexLump } from "../../BSP/Lumps/VertexLump";
 import { TexDataLump } from "../../BSP/Lumps/TexDataLump";
-import { vec4, vec3 } from "gl-matrix";
+import { vec4, vec3, vec2 } from "gl-matrix";
 import { SurfEdgeLump } from "../../BSP/Lumps/SurfEdgeLump";
 import { EdgeLump } from "../../BSP/Lumps/EdgeLump";
 import { addRange } from "../../Utils/AddRange";
@@ -16,13 +16,18 @@ import { DispTrisLump } from "../../BSP/Lumps/DispTrisLump";
 import { DispInfo } from "../../BSP/Structs/DispInfo";
 import { DispInfoLump } from "../../BSP/Lumps/DispInfoLump";
 import { Visibility } from "./IRenderable";
-
+import { TexDataStringDataLump } from "../../BSP/Lumps/TexDataStringDataLump";
+import { TexDataStringTableLump } from "../../BSP/Lumps/TexDataStringTableLump";
+import { Texture } from "../Textures/Texture";
+import { GLContext } from "../GLSingleton";
+import { TextureDictionary } from "../Textures/TextureDictionary";
 export class BSPFace {
 	public visibility: Visibility = Visibility.Visible;
 	public face: Face;
 	public indices: number[] = [];
 	public vertices: Vertex[];
-	public dispInfo: DispInfo | null = null;
+	public dispInfo?: DispInfo;
+	public texture?: Texture;
 
 	constructor(face: Face, bsp: BSP) {
 		this.face = face;
@@ -124,8 +129,14 @@ export class BSPFace {
 	private getVertices(bsp): Vertex[] {
 		const texInfoLump = bsp.readLump(LumpType.TexInfo) as TexInfoLump;
 		const texDataLump = bsp.readLump(LumpType.TexData) as TexDataLump;
-
+		const texDataStringTable = bsp.readLump(LumpType.TexDataStringTable) as TexDataStringTableLump;
+		const texDataStringDataLump = bsp.readLump(LumpType.TexDataStringData) as TexDataStringDataLump;
+		
 		const texInfo = texInfoLump.texInfos[this.face.texInfo];
+		const texData = texDataLump.texDatas[texInfo.texData];
+		const texDataStringOffset = texDataStringTable.texDataTable[texData.nameDataStringTableID];
+		const texName = texDataStringDataLump.readStringAtOffset(texDataStringOffset);
+
 		// filter out transparent meshes temporarily
 		if ( (texInfo.flags & SurfFlags.TRANS) === SurfFlags.TRANS) {
 			this.visibility = Visibility.Hidden;
@@ -156,19 +167,39 @@ export class BSPFace {
 		} else {
 			// reflectivity color gives a rough estimate of material color
 			// credit to snake_biscuit for discovering this
-			const reflectivityColor = texDataLump.texDatas[texInfo.texData].reflectivity;
+			const reflectivityColor = texData.reflectivity;
 			baseColor = vec4.fromValues(reflectivityColor[0], reflectivityColor[1], reflectivityColor[2], 1.0);
+		}
+
+		// setup texture info
+		if (texName != null) {
+			const gl = GLContext.getGLContext();
+			const texDict = TextureDictionary.getInstance();
+			if (gl === undefined) {
+				throw new Error("Failed to obtain GL context from singleton");
+				return [];
+			}
+			// reflectivity data is stored with a max value of 1, color has to be boosted to have any effect
+			const boostedBaseColor = vec4.create();
+			vec4.scale(boostedBaseColor, baseColor, 255);
+			this.texture = new Texture(gl, boostedBaseColor, 0, texName);
+			if (this.texture != null) {
+				const id = texDict.addTexture(gl, this.texture);
+				this.texture.id = id;
+			}
+		} else {
+			console.log("Failed to read texture name");
 		}
 
 		// if face is not displacement, it's dispInfo will be -1;
 		if (this.face.dispInfo === -1) {
-			return this.getFaceVertexes(bsp, baseColor);
+			return this.getFaceVertexes(bsp);
 		} else {
-			return this.getDispVertexes(bsp, baseColor);
+			return this.getDispVertexes(bsp);
 		}
 	}
 	
-	private getDispVertexes(bsp: BSP, baseColor: vec4): Vertex[] {
+	private getDispVertexes(bsp: BSP): Vertex[] {
 		const dispVertsLump = bsp.readLump(LumpType.DispVerts) as DispVertLump;
 		const dispTrisLump = bsp.readLump(LumpType.DispTris) as DispTrisLump;
 		const dispInfoLump = bsp.readLump(LumpType.DispInfo) as DispInfoLump;
@@ -177,7 +208,7 @@ export class BSPFace {
 		const rowSize = this.dispInfo.numRows();
 
 		// get the vertices of the face
-		let faceVerts = this.getFaceVertexes(bsp, baseColor, true);
+		let faceVerts = this.getFaceVertexes(bsp);
 
 		// "rotate" the vertices so that the first vertex matches the dispInfo start position 
 		for (let j = 0; j < faceVerts.length; j++) {
@@ -235,7 +266,7 @@ export class BSPFace {
 		for (let i = 0; i < rowSize; i++) {
 			const vertPos = vec3.create();
 			vec3.lerp(vertPos, vert1.position, vert2.position, i / (rowSize - 1));
-			edgeCol1.push(new Vertex(vertPos, vert1.normal, vec4.fromValues(1.0, 0, 0, 1)));
+			edgeCol1.push(new Vertex(vertPos, vert1.normal));
 		}
 
 		// linearly interpolate vertices for second row
@@ -243,7 +274,7 @@ export class BSPFace {
 			const vertPos = vec3.create();
 			// interpolate in opposite direction, otherwise vertices are placed in wrong order
 			vec3.lerp(vertPos, vert4.position, vert3.position, i / (rowSize - 1));
-			edgeCol2.push(new Vertex(vertPos, vert1.normal, vec4.fromValues(1.0, 0, 0, 1)));
+			edgeCol2.push(new Vertex(vertPos, vert1.normal));
 		}
 
 		for (let i = 0; i < edgeCol1.length; i++) {
@@ -254,7 +285,12 @@ export class BSPFace {
 			for (let j = 0; j < rowSize; j++) {
 				const vertPos = vec3.create();
 				vec3.lerp(vertPos, helperVert1.position, helperVert2.position, j / (rowSize - 1));
-				dispVerts.push(new Vertex(vertPos, vert1.normal, vert1.color)); // vec4.fromValues(1.0, 0, 0, 1)));
+				if (this.texture != null) {
+					dispVerts.push(new Vertex(vertPos, vert1.normal, vec2.fromValues(0, 0), this.texture.id));
+				} else {
+					dispVerts.push(new Vertex(vertPos, vert1.normal));
+					
+				}
 			}
 		}
 
@@ -267,7 +303,7 @@ export class BSPFace {
 		// return BSPFace.divideFace(faceVerts, rowSize);
 	}
 
-	private getFaceVertexes(bsp: BSP, baseColor: vec4, uniqueVertexes = true): Vertex[] {
+	private getFaceVertexes(bsp: BSP, uniqueVertexes = true): Vertex[] {
 		const normal = (bsp.readLump(LumpType.Planes) as PlaneLump).planes[this.face.planeNum].normal;
 		const vertLump = bsp.readLump(LumpType.Vertexes) as VertexLump;
 
@@ -289,11 +325,16 @@ export class BSPFace {
 		if (uniqueVertexes) {
 			// remove duplicate vertex positions and convert them to Vertexes
 			vertexes = Array.from(new Set(vertPositions)).map((vert) => {
-				return new Vertex(vert, normal, baseColor);
+				if (this.texture != null) {
+					// console.log(this.texture.id + 1);
+					return new Vertex(vert, normal, vec2.fromValues(0, 0), this.texture.id);
+				} else {
+					return new Vertex(vert, normal);
+				}
 			});	
 		} else {
 			vertexes = vertPositions.map((vert) => {
-				return new Vertex(vert, normal, baseColor);
+				return new Vertex(vert, normal);
 			});
 		}
 
@@ -306,7 +347,8 @@ export class BSPFace {
 		verts.forEach((vert) => {
 			addRange(out, vert.position);
 			addRange(out, vert.normal);
-			addRange(out, vert.color);
+			addRange(out, vert.texCoord);
+			out.push(vert.texIndex);
 		});
 		return out;
 	}

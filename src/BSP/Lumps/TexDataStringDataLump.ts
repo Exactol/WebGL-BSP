@@ -30,6 +30,11 @@ export class TexDataStringDataLump extends Lump {
 		return retStr;
 	}
 
+	public readStringAtOffset(offset: number){
+		const reader = new BinaryReader(this.data, offset);
+		return reader.readString();
+	}	
+
 	private readStrings(reader: BinaryReader) {
 		let retStr = "";
 		let nextChar = reader.readChar();

@@ -1,0 +1,4 @@
+export const POSITION_ATTRIB_LOCATION = 0;
+export const NORMAL_ATTRIB_LOCATION = 1;
+export const TEXCOORD_ATTRIB_LOCATION = 2;
+export const TEXINDEX_ATTRIB_LOCATION = 3;

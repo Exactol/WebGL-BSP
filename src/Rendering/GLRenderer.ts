@@ -7,6 +7,11 @@ import { MouseHandler } from "../Utils/MouseHandler";
 import { IRenderable } from "./RenderObjects/IRenderable";
 import { PerspectiveCamera } from "./Camera/PerspectiveCamera";
 import { MeshFactory } from "../Utils/MeshFactory";
+import { Texture } from "./Textures/Texture";
+import { vec4 } from "gl-matrix";
+import { UniformLocations } from "./UniformLocations";
+import { TextureDictionary } from "./Textures/TextureDictionary";
+import { GLContext } from "./GLSingleton";
 
 export class GLRenderer {
 	public gl: WebGL2RenderingContext;
@@ -32,9 +37,7 @@ export class GLRenderer {
 	private renderObjects: IRenderable[] = [];
 	// private grid: RenderObject;
 
-	private uModelMatLocation!: WebGLUniformLocation | null;
-	private uViewMatLocation!: WebGLUniformLocation | null;
-	private uProjectionMatrixLocation!: WebGLUniformLocation | null;
+	public uniformLocations!: UniformLocations;
 
 	private keyboardListener!: KeyboardListener;
 	public mouseHandler!: MouseHandler;
@@ -47,6 +50,11 @@ export class GLRenderer {
 
 		// setup gl settings
 		this.gl = _gl;
+
+		GLContext.getInstance();
+		TextureDictionary.createNewInstance(this.gl);
+
+		GLContext.updateGLContext(this.gl);
 		
 		this.gl.clearColor(0.0, 0, 0, 1.0);
 		this.gl.clearDepth(1.0);
@@ -66,10 +74,11 @@ export class GLRenderer {
 			return;
 		}
 
-		this.uModelMatLocation = this.gl.getUniformLocation(this.defaultShaderProgram, "u_model_mat");
-		this.uViewMatLocation = this.gl.getUniformLocation(this.defaultShaderProgram, "u_view_mat");
-		this.uProjectionMatrixLocation = this.gl.getUniformLocation(this.defaultShaderProgram, "u_projection_mat");
+		this.uniformLocations = new UniformLocations(this.gl, this.defaultShaderProgram);
 
+		// setup the texture array to use TEXTURE0
+		this.gl.uniform1i(this.uniformLocations.uTextureArrayLocation, 0);
+		
 		// setup keyboard listener
 		this.keyboardListener = new KeyboardListener(this);
 		this.mouseHandler = new MouseHandler(this.activeCamera);
@@ -102,17 +111,17 @@ export class GLRenderer {
 		this.gl.useProgram(this.defaultShaderProgram);
 
 		// send uniforms to gpu
-		this.gl.uniformMatrix4fv(this.uModelMatLocation,
+		this.gl.uniformMatrix4fv(this.uniformLocations.uModelMatLocation,
 			false,
 			this.activeCamera.getModelMatrix());
 
-		this.gl.uniformMatrix4fv(this.uViewMatLocation,
+		this.gl.uniformMatrix4fv(this.uniformLocations.uViewMatLocation,
 			false,
 			this.activeCamera.getViewMatrix());
 
-		this.gl.uniformMatrix4fv(this.uProjectionMatrixLocation,
+		this.gl.uniformMatrix4fv(this.uniformLocations.uProjectionMatrixLocation,
 			false, 
-			 this.activeCamera.getProjectionMatrix());
+			this.activeCamera.getProjectionMatrix());
 
 		// render all objects
 		this.renderObjects.forEach((renderObject) => {

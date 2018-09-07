@@ -1,33 +1,22 @@
-import { RenderObject } from "./RenderObject";
-import { Face } from "../../BSP/Structs/Face";
 import { BSP } from "../../BSP/BSP";
 import { IRenderable, Visibility } from "./IRenderable";
 import { LumpType } from "../../BSP/Lumps/LumpType";
-import { VertexLump } from "../../BSP/Lumps/VertexLump";
-import { POSITION_ATTRIB_LOCATION, NORMAL_ATTRIB_LOCATION, COLOR_ATTRIB_LOCATION } from "./UniformLocs";
+import { POSITION_ATTRIB_LOCATION, NORMAL_ATTRIB_LOCATION, TEXCOORD_ATTRIB_LOCATION, 
+	TEXINDEX_ATTRIB_LOCATION } from "../Shaders/UniformLocs";
 import { FaceLump } from "../../BSP/Lumps/FaceLump";
-import { ModelLump } from "../../BSP/Lumps/ModelLump";
-import { EdgeLump } from "../../BSP/Lumps/EdgeLump";
-import { SurfEdgeLump } from "../../BSP/Lumps/SurfEdgeLump";
-import { vec3, vec4 } from "gl-matrix";
-import { PlaneLump } from "../../BSP/Lumps/PlaneLump";
-import { Edge } from "../../BSP/Structs/Edge";
 import { addRange } from "../../Utils/AddRange";
 import { BSPFace } from "./BSPFace";
-import { zip } from "../../Utils/ZipArray";
-import { Vertex } from "../../Structs/Vertex";
-import { TexInfoLump } from "../../BSP/Lumps/TexInfoLump";
-import { TexDataLump } from "../../BSP/Lumps/TexDataLump";
+import { Texture } from "../Textures/Texture";
+import { UniformLocations } from "../UniformLocations";
+import { TextureDictionary } from "../Textures/TextureDictionary";
 
 export class BSPRenderObject implements IRenderable {
 	public visibility = Visibility.Visible;
 	public VAO!: WebGLVertexArrayObject;
 	public VBO!: WebGLBuffer;
 	public EAO!: WebGLBuffer; // index buffer
-	private modelCount!: number;
 	private initialized = false;
 	private renderMode = WebGL2RenderingContext.TRIANGLES;
-	private bsp: BSP;
 	private vertexCount = 0;
 
 	private vertices: number[];
@@ -38,8 +27,6 @@ export class BSPRenderObject implements IRenderable {
 	// private dispIndices: number[];
 
 	constructor(gl: WebGL2RenderingContext, bsp: BSP) {
-		this.bsp = bsp;
-		
 		const faceLump = bsp.readLump(LumpType.Faces) as FaceLump;
 
 		this.vertices = [];
@@ -55,12 +42,13 @@ export class BSPRenderObject implements IRenderable {
 			
 			// add vertices to mesh
 			bspFace.calcIndices(currentIndex);
-			addRange(this.vertices, bspFace.getMesh());
 
+			addRange(this.vertices, bspFace.getMesh());
 			// dont add hidden faces to the indices
 			if (bspFace.visibility === Visibility.Visible) {
 				addRange(this.indices, bspFace.indices);
 			}
+
 
 			if (bspFace.dispInfo != null) {
 				// highest index of element will be it's second to last index
@@ -113,7 +101,7 @@ export class BSPRenderObject implements IRenderable {
 			3,					      // size of attribute (vec3)
 			gl.FLOAT,				  // type of attribute is float
 			false,					  // does not need to be normalized
-			40,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+			36,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
 			0						  // offset (start at beginnng of buffer)
 		);
 		gl.enableVertexAttribArray(POSITION_ATTRIB_LOCATION);
@@ -124,21 +112,32 @@ export class BSPRenderObject implements IRenderable {
 			3,					      // size of attribute (vec3)
 			gl.FLOAT,				  // type of attribute is float
 			true,					  // does need to be normalized
-			40,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+			36,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
 			12						  // offset (start at beginnng of buffer)
 		);
 		gl.enableVertexAttribArray(NORMAL_ATTRIB_LOCATION);
 
-		// define color VAO
+		// define texcoord VAO
 		gl.vertexAttribPointer(
-			COLOR_ATTRIB_LOCATION,   // attribute location
-			4,					      // size of attribute (vec4)
+			TEXCOORD_ATTRIB_LOCATION,   // attribute location
+			2,					      // size of attribute (vec2)
 			gl.FLOAT,				  // type of attribute is float
 			false,					  // does not need to be normalized
-			40,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+			36,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
 			24						  // offset (start at beginnng of buffer)
 		);
-		gl.enableVertexAttribArray(COLOR_ATTRIB_LOCATION);
+		gl.enableVertexAttribArray(TEXCOORD_ATTRIB_LOCATION);
+		
+		// define texIndex VAO
+		gl.vertexAttribPointer(
+			TEXINDEX_ATTRIB_LOCATION, // attribute location
+			1,					      // size of attribute int32
+			gl.FLOAT,				  	  // type of attribute is ints
+			false,					  // does not need to be normalized
+			36,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+			32						  // offset (start at beginnng of buffer)
+		);
+		gl.enableVertexAttribArray(TEXINDEX_ATTRIB_LOCATION);
 
 		// create EAO
 		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.EAO);

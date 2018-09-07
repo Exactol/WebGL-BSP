@@ -114,9 +114,9 @@ class BSPRenderer {
         }
         // const lump = bsp.readLump(LumpType.DispTris) as DispTrisLump;
         // console.log(lump.toString());
-        bsp.printLumps();
-        // this.renderer.clearRenderObjects();
-        // this.renderer.AddRenderableObject(new BSPRenderObject(this.gl, bsp));
-        // this.renderer.Render();
+        // bsp.printLumps();
+        this.renderer.clearRenderObjects();
+        this.renderer.AddRenderableObject(new BSPRenderObject(this.gl, bsp));
+        this.renderer.Render();
     }
 }
