@@ -1,5 +1,9 @@
 import {ShaderSource} from "./ShaderSource";
 
+export class Shader {
+    
+}
+
 export function CreateShaderProgram(gl: WebGL2RenderingContext, sourceShaders: ShaderSource[]): WebGLProgram | null {
     console.log("--Initializing Shaders--");
     console.log("   Number of shaders: " + sourceShaders.length);

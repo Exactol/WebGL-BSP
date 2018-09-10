@@ -1,9 +1,12 @@
-import {ICamera} from "./ICamera";
+import {ICamera, MoveDirection} from "./ICamera";
 import { vec3, mat4 } from "gl-matrix";
 import { limitAngle } from "../../Utils/LimitAngle";
 import { wrapAngle } from "../../Utils/WrapAngle";
+import { MessageType, Message } from "../Messaging/Message";
 
 export class OrthoCamera implements ICamera {
+	public componentName = "OrthoCamera";
+	
 	public position: vec3;
 
 	public horizontalFov = 45;
@@ -93,6 +96,11 @@ export class OrthoCamera implements ICamera {
 	public update(dX: number, dY: number, dTime: number): void {
 		throw new Error("Method not implemented.");
 	}
-
+	public move(direction: MoveDirection) {
+		throw new Error("Method not implemented.");
+	}
+	public onMessage(message: Message) {
+		throw new Error("Method not implemented.");
+	}
 	
 }

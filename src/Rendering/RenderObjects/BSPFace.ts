@@ -19,8 +19,8 @@ import { Visibility } from "./IRenderable";
 import { TexDataStringDataLump } from "../../BSP/Lumps/TexDataStringDataLump";
 import { TexDataStringTableLump } from "../../BSP/Lumps/TexDataStringTableLump";
 import { Texture } from "../Textures/Texture";
-import { GLContext } from "../GLSingleton";
 import { TextureDictionary } from "../Textures/TextureDictionary";
+import { EngineCore } from "../EngineCore";
 export class BSPFace {
 	public visibility: Visibility = Visibility.Visible;
 	public face: Face;
@@ -171,25 +171,25 @@ export class BSPFace {
 			baseColor = vec4.fromValues(reflectivityColor[0], reflectivityColor[1], reflectivityColor[2], 1.0);
 		}
 
-		// setup texture info
-		if (texName != null) {
-			const gl = GLContext.getGLContext();
-			const texDict = TextureDictionary.getInstance();
-			if (gl === undefined) {
-				throw new Error("Failed to obtain GL context from singleton");
-				return [];
-			}
-			// reflectivity data is stored with a max value of 1, color has to be boosted to have any effect
-			const boostedBaseColor = vec4.create();
-			vec4.scale(boostedBaseColor, baseColor, 255);
-			this.texture = new Texture(gl, boostedBaseColor, 0, texName);
-			if (this.texture != null) {
-				const id = texDict.addTexture(gl, this.texture);
-				this.texture.id = id;
-			}
-		} else {
-			console.log("Failed to read texture name");
-		}
+		// // setup texture info
+		// if (texName != null) {
+		// 	const gl = undefined;
+		// 	const texDict = TextureDictionary.getInstance();
+		// 	if (gl === undefined) {
+		// 		throw new Error("Failed to obtain GL context from singleton");
+		// 		return [];
+		// 	}
+		// 	// reflectivity data is stored with a max value of 1, color has to be boosted to have any effect
+		// 	const boostedBaseColor = vec4.create();
+		// 	vec4.scale(boostedBaseColor, baseColor, 255);
+		// 	this.texture = new Texture(gl, boostedBaseColor, 0, texName);
+		// 	if (this.texture != null) {
+		// 		const id = texDict.addTexture(gl, this.texture);
+		// 		this.texture.id = id;
+		// 	}
+		// } else {
+		// 	console.log("Failed to read texture name");
+		// }
 
 		// if face is not displacement, it's dispInfo will be -1;
 		if (this.face.dispInfo === -1) {
@@ -286,7 +286,8 @@ export class BSPFace {
 				const vertPos = vec3.create();
 				vec3.lerp(vertPos, helperVert1.position, helperVert2.position, j / (rowSize - 1));
 				if (this.texture != null) {
-					dispVerts.push(new Vertex(vertPos, vert1.normal, vec2.fromValues(0, 0), this.texture.id));
+					dispVerts.push(new Vertex(vertPos, vert1.normal, this.texture.placeholderColor, 
+						vec2.fromValues(0, 0), this.texture.id));
 				} else {
 					dispVerts.push(new Vertex(vertPos, vert1.normal));
 					
@@ -327,7 +328,8 @@ export class BSPFace {
 			vertexes = Array.from(new Set(vertPositions)).map((vert) => {
 				if (this.texture != null) {
 					// console.log(this.texture.id + 1);
-					return new Vertex(vert, normal, vec2.fromValues(0, 0), this.texture.id);
+					return new Vertex(vert, normal, this.texture.placeholderColor,
+						 vec2.fromValues(0, 0), this.texture.id);
 				} else {
 					return new Vertex(vert, normal);
 				}

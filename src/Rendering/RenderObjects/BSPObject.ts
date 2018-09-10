@@ -151,6 +151,10 @@ export class BSPRenderObject implements IRenderable {
 		console.log("BSP Loaded");
 	}
 
+	public bind(gl: WebGL2RenderingContext) {
+		
+	}
+
 	public draw(gl: WebGL2RenderingContext, renderModeOverride?: number) {
 		if (!this.initialized) {
 			console.log("Cannot render object, not initialized");

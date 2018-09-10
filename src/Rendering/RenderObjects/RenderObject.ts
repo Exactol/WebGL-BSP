@@ -57,6 +57,10 @@ export class RenderObject implements IRenderable {
 		this.initialized = true;
 	}
 
+	public bind(gl: WebGL2RenderingContext) {
+		
+	}
+
 	public draw(gl: WebGL2RenderingContext, renderTypeOverride?: number) {
 		if (!this.initialized) {
 			console.log("Cannot render object, not initialized");

@@ -1,10 +1,13 @@
-import { vec3, mat4, glMatrix } from "gl-matrix";
+import { vec3, mat4, glMatrix, vec2 } from "gl-matrix";
 import { wrapAngle } from "../../Utils/WrapAngle";
 import { limitAngle } from "../../Utils/LimitAngle";
-import { GLRenderer } from "../GLRenderer";
-import {ICamera} from "./ICamera";
+import { EngineCore } from "../EngineCore";
+import {ICamera, MoveDirection} from "./ICamera";
+import { Message, MessageType } from "../Messaging/Message";
 
 export class PerspectiveCamera implements ICamera {
+	public componentName = "PerspectiveCamera";
+
 	public position: vec3;
 
 	public horizontalFov = 45;
@@ -124,7 +127,24 @@ export class PerspectiveCamera implements ICamera {
 		this.aspectRatio = width / height;
 	}
 
-	public moveForward() {
+	public move(direction: MoveDirection) {
+		switch (direction) {
+			case MoveDirection.forward:
+				this.moveForward();
+				break;
+			case MoveDirection.backward:
+				this.moveBackword();
+				break;
+			case MoveDirection.left:
+				this.moveLeft();
+				break;
+			case MoveDirection.right:
+				this.moveRight();
+				break;
+		}
+	}
+
+	private moveForward() {
 		// get front matrix
 		const front = this.getFront();
 
@@ -138,7 +158,7 @@ export class PerspectiveCamera implements ICamera {
 		this.position[2] += (this.speed * this.mulitplier * front[2]);
 	}
 
-	public moveBackword() {
+	private moveBackword() {
 		// get front matrix
 		const front = this.getFront();
 
@@ -152,7 +172,7 @@ export class PerspectiveCamera implements ICamera {
 		this.position[2] -= (this.speed * this.mulitplier * front[2]);
 	}
 
-	public moveRight() {
+	private moveRight() {
 		//
 		const right = this.getRight();
 
@@ -166,7 +186,7 @@ export class PerspectiveCamera implements ICamera {
 		this.position[2] += (this.speed * this.mulitplier * right[2]);		
 	}
 
-	public moveLeft() {
+	private moveLeft() {
 		//
 		const right = this.getRight();
 
@@ -186,5 +206,22 @@ export class PerspectiveCamera implements ICamera {
 		this.verticalAngle += -dY * dTime * this.mouseSensitivity;
 		// console.log("vAngle: " + this.verticalAngle);
 		// console.log("hAngle: " + this.horizontalAngle);
+	}
+
+	public onMessage(message: Message) {
+		switch (message.type) {
+			case MessageType.MoveCamera:
+				this.move(message.data);
+				break;
+
+			case MessageType.MouseMove:
+				// message data is (dx, dy, dt)
+				const vecMessage = message.data as vec3;
+				this.update(vecMessage[0], vecMessage[1], vecMessage[2]);
+				break;
+
+			default:
+				break;
+		}
 	}
 }

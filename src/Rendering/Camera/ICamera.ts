@@ -1,6 +1,7 @@
 import { vec3, mat4 } from "gl-matrix";
+import { IEngineComponent } from "../IEngineComponent";
 
-export interface ICamera {
+export interface ICamera extends IEngineComponent {
 	position: vec3;
 
 	horizontalFov: number;
@@ -29,10 +30,14 @@ export interface ICamera {
 	
 	updateAspectRatio(width: number, height: number): void;
 
-	moveForward(): void;
-	moveBackword(): void;
-	moveRight(): void;
-	moveLeft(): void;
+	move(direction: MoveDirection);
 	
 	update(dX: number, dY: number, dTime: number): void;
+}
+
+export enum MoveDirection {
+	forward,
+	backward,
+	left,
+	right,
 }

@@ -5,12 +5,15 @@ export class Vertex {
 
 	public position: vec3;
 	public normal: vec3;
+	public fallbackColor: vec4;
 	public texCoord: vec2;
 	public texIndex: number;
 
-	constructor(_pos: vec3, _norm: vec3 = vec3.create(), texCoord: vec2 = vec2.fromValues(0, 1), texIndex = 255) {
+	constructor(_pos: vec3, _norm: vec3 = vec3.create(), fallbackColor = vec4.create(), 
+			texCoord: vec2 = vec2.fromValues(0, 1), texIndex = 255) {
 		this.position = _pos;
 		this.normal = _norm;
+		this.fallbackColor = fallbackColor;
 		this.texCoord = texCoord;
 		this.texIndex = texIndex;
 	}

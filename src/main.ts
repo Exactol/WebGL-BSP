@@ -1,4 +1,4 @@
-import { GLRenderer } from "./Rendering/GLRenderer";
+import { EngineCore } from "./Rendering/EngineCore";
 import { MeshFactory } from "./Utils/MeshFactory";
 import { RenderObject } from "./Rendering/RenderObjects/RenderObject";
 import { Vertex } from "./Structs/Vertex";
@@ -22,7 +22,7 @@ function initWebGL(): void {
 
 class BSPRenderer {
     public gl!: WebGL2RenderingContext | null;
-    public renderer!: GLRenderer;
+    public renderer!: EngineCore;
 
     constructor() {
         const canvas: HTMLCanvasElement = document.getElementById("canvas") as HTMLCanvasElement;
@@ -42,7 +42,8 @@ class BSPRenderer {
         console.log("WebGL Version: " + this.gl.VERSION);
         console.log("WebGL Shader Language Version: " + this.gl.SHADING_LANGUAGE_VERSION);
     
-        this.renderer = new GLRenderer(this.gl);
+        this.renderer = new EngineCore(this.gl);
+        this.renderer.main();
     
         this.setupBtnListeners();
     }
@@ -116,7 +117,8 @@ class BSPRenderer {
         // console.log(lump.toString());
         // bsp.printLumps();
         this.renderer.clearRenderObjects();
-        this.renderer.AddRenderableObject(new BSPRenderObject(this.gl, bsp));
-        this.renderer.Render();
+        this.renderer.addRenderableObject(new BSPRenderObject(this.gl, bsp));
+        // start rendering frames
+        this.renderer.renderFrame = true;
     }
 }

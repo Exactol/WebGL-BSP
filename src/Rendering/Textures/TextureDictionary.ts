@@ -1,4 +1,5 @@
 import { Texture } from "./Texture";
+import { addRange } from "../../Utils/AddRange";
 
 // a singleton to hold all of the textures
 export class TextureDictionary {
@@ -6,8 +7,8 @@ export class TextureDictionary {
 
 	private textures: Texture[] = [];
 	private arrayTexture!: WebGLTexture;
-	private readonly height = 1;
-	private readonly width = 1;
+	private readonly height = 256;
+	private readonly width = 256;
 	private readonly internalFormat = WebGL2RenderingContext.RGBA8;
 	private currentArrayIndex: number = 0;
 
@@ -36,7 +37,7 @@ export class TextureDictionary {
 		// create the array texture that will hold all of the other textures
 		// textures are stored in the z axis of the texture
 		gl.texImage3D(gl.TEXTURE_2D_ARRAY, mipmapLevels, this.internalFormat, this.width, this.height, maxLayers, 
-			0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array(repeatArray([0, 0, 0, 255], maxLayers)));
+			0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array(repeatArray([0, 0, 0, 255], this.width * this.height * maxLayers)));
 
 		gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
 		gl.texParameteri(gl.TEXTURE_2D_ARRAY, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
@@ -53,7 +54,7 @@ export class TextureDictionary {
 				}
 			}
 		}
-
+		
 		gl.activeTexture(gl.TEXTURE0);
 		gl.bindTexture(gl.TEXTURE_2D_ARRAY, this.arrayTexture);
 
@@ -72,6 +73,17 @@ export class TextureDictionary {
 			new Uint8Array(colorArray));
 
 		texture.id = this.currentArrayIndex;
+		
+		if (texture.image != null) {
+			texture.image.onload = () => {
+				gl.texSubImage3D(gl.TEXTURE_2D, 
+					0, 
+					0, 0, texture.id, 
+					this.width, this.height, 1,
+					gl.RGBA, gl.UNSIGNED_BYTE, texture.image);
+			};
+		}
+
 		this.textures.push(texture);
 
 		this.currentArrayIndex++;
@@ -92,5 +104,9 @@ export class TextureDictionary {
 
 // from https://stackoverflow.com/a/50672288
 function repeatArray<T>(array: T[], numTimesRepeat: number): T[] {
-	return [].concat(...Array(numTimesRepeat).fill(array));
+	const retArray: T[] = [];
+	for (let i = 0; i < numTimesRepeat; i++) {
+		addRange(retArray, array);
+	}
+	return retArray;
 }
