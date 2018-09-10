@@ -2,22 +2,28 @@ import { BSP } from "../../BSP/BSP";
 import { IRenderable, Visibility } from "./IRenderable";
 import { LumpType } from "../../BSP/Lumps/LumpType";
 import { POSITION_ATTRIB_LOCATION, NORMAL_ATTRIB_LOCATION, TEXCOORD_ATTRIB_LOCATION, 
-	TEXINDEX_ATTRIB_LOCATION } from "../Shaders/UniformLocs";
+	TEXINDEX_ATTRIB_LOCATION, 
+	FALLBACK_COLOR_ATTRIB_LOCATION,
+	TEXTURE_LOADED_ATTRIB_LOCATION} from "../Shaders/LayoutLocations";
 import { FaceLump } from "../../BSP/Lumps/FaceLump";
 import { addRange } from "../../Utils/AddRange";
 import { BSPFace } from "./BSPFace";
 import { Texture } from "../Textures/Texture";
-import { UniformLocations } from "../UniformLocations";
+import { UniformLocations } from "../Shaders/UniformLocations";
 import { TextureDictionary } from "../Textures/TextureDictionary";
+import { ResourceManager } from "../ResourceManager";
 
-export class BSPRenderObject implements IRenderable {
+export class BSPMesh implements IRenderable {
 	public visibility = Visibility.Visible;
 	public VAO!: WebGLVertexArrayObject;
 	public VBO!: WebGLBuffer;
 	public EAO!: WebGLBuffer; // index buffer
+
 	private initialized = false;
 	private renderMode = WebGL2RenderingContext.TRIANGLES;
 	private vertexCount = 0;
+
+	private resourceManager: ResourceManager;
 
 	private vertices: number[];
 	private faces: BSPFace[];
@@ -28,6 +34,7 @@ export class BSPRenderObject implements IRenderable {
 
 	constructor(gl: WebGL2RenderingContext, bsp: BSP) {
 		const faceLump = bsp.readLump(LumpType.Faces) as FaceLump;
+		this.resourceManager = new ResourceManager(gl);
 
 		this.vertices = [];
 		this.faces = [];
@@ -37,7 +44,7 @@ export class BSPRenderObject implements IRenderable {
 		// tslint:disable-next-line:prefer-for-of
 		for (let i = 0; i < faceLump.faces.length; i++) {
 			const face = faceLump.faces[i];
-			const bspFace = new BSPFace(face, bsp);
+			const bspFace = new BSPFace(face, bsp, this.resourceManager);
 			this.faces.push(bspFace);
 			
 			// add vertices to mesh
@@ -101,7 +108,7 @@ export class BSPRenderObject implements IRenderable {
 			3,					      // size of attribute (vec3)
 			gl.FLOAT,				  // type of attribute is float
 			false,					  // does not need to be normalized
-			36,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+			56,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
 			0						  // offset (start at beginnng of buffer)
 		);
 		gl.enableVertexAttribArray(POSITION_ATTRIB_LOCATION);
@@ -112,10 +119,32 @@ export class BSPRenderObject implements IRenderable {
 			3,					      // size of attribute (vec3)
 			gl.FLOAT,				  // type of attribute is float
 			true,					  // does need to be normalized
-			36,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+			56,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
 			12						  // offset (start at beginnng of buffer)
 		);
 		gl.enableVertexAttribArray(NORMAL_ATTRIB_LOCATION);
+		
+		// enable fallbackColor 
+		gl.vertexAttribPointer(
+			FALLBACK_COLOR_ATTRIB_LOCATION,   // attribute location
+			4,					      // size of attribute (vec4)
+			gl.FLOAT,				  // type of attribute is float
+			false,					  // does need to be normalized
+			56,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+			24						  // offset (start at beginnng of buffer)
+		);
+		gl.enableVertexAttribArray(FALLBACK_COLOR_ATTRIB_LOCATION);
+		
+		// enable textureLoaded
+		gl.vertexAttribPointer(
+			TEXTURE_LOADED_ATTRIB_LOCATION,   // attribute location
+			1,					      // size of attribute (int)
+			gl.FLOAT,				  // type of attribute is int
+			false,					  // does need to be normalized
+			56,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+			40						  // offset (start at beginnng of buffer)
+		);
+		gl.enableVertexAttribArray(TEXTURE_LOADED_ATTRIB_LOCATION);
 
 		// define texcoord VAO
 		gl.vertexAttribPointer(
@@ -123,8 +152,8 @@ export class BSPRenderObject implements IRenderable {
 			2,					      // size of attribute (vec2)
 			gl.FLOAT,				  // type of attribute is float
 			false,					  // does not need to be normalized
-			36,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
-			24						  // offset (start at beginnng of buffer)
+			56,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+			44						  // offset (start at beginnng of buffer)
 		);
 		gl.enableVertexAttribArray(TEXCOORD_ATTRIB_LOCATION);
 		
@@ -134,8 +163,8 @@ export class BSPRenderObject implements IRenderable {
 			1,					      // size of attribute int32
 			gl.FLOAT,				  	  // type of attribute is ints
 			false,					  // does not need to be normalized
-			36,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
-			32						  // offset (start at beginnng of buffer)
+			56,						  // 0 = move forward size * sizeof(type) each iteration to get the next position
+			52						  // offset (start at beginnng of buffer)
 		);
 		gl.enableVertexAttribArray(TEXINDEX_ATTRIB_LOCATION);
 
@@ -172,5 +201,9 @@ export class BSPRenderObject implements IRenderable {
 		} else {
 			gl.drawElements(renderModeOverride, this.vertexCount, gl.UNSIGNED_INT, 0);
 		}
+	}
+
+	private getUniformLocations() {
+		
 	}
 }

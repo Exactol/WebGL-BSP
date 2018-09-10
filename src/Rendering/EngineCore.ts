@@ -9,7 +9,7 @@ import { PerspectiveCamera } from "./Camera/PerspectiveCamera";
 import { MeshFactory } from "../Utils/MeshFactory";
 import { Texture } from "./Textures/Texture";
 import { vec4, vec3 } from "gl-matrix";
-import { UniformLocations } from "./UniformLocations";
+import { UniformLocations } from "./Shaders/UniformLocations";
 import { TextureDictionary } from "./Textures/TextureDictionary";
 import { MessageQueue } from "./Messaging/MessageQueue";
 import { IEngineComponent } from "./IEngineComponent";

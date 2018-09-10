@@ -5,7 +5,7 @@ import { Vertex } from "./Structs/Vertex";
 import { vec4, vec3 } from "gl-matrix";
 import { BSP } from "./BSP/BSP";
 import { LumpType } from "./BSP/Lumps/LumpType";
-import { BSPRenderObject } from "./Rendering/RenderObjects/BSPObject";
+import { BSPMesh } from "./Rendering/RenderObjects/BSPMesh";
 import { DispInfoLump } from "./BSP/Lumps/DispInfoLump";
 import { FaceLump } from "./BSP/Lumps/FaceLump";
 import { DispVert } from "./BSP/Structs/DispVert";
@@ -117,7 +117,7 @@ class BSPRenderer {
         // console.log(lump.toString());
         // bsp.printLumps();
         this.renderer.clearRenderObjects();
-        this.renderer.addRenderableObject(new BSPRenderObject(this.gl, bsp));
+        this.renderer.addRenderableObject(new BSPMesh(this.gl, bsp));
         // start rendering frames
         this.renderer.renderFrame = true;
     }

@@ -13,16 +13,21 @@ export const VertShader: ShaderSource = new ShaderSource(
 
 layout (location = 0) in vec4 a_position;
 layout (location = 1) in vec4 a_normal;
-layout (location = 2) in vec2 a_texCoord;
-layout (location = 3) in float a_texIndex;
+layout (location = 2) in vec4 a_fallbackColor;
+layout (location = 3) in float a_textureLoaded;
+layout (location = 4) in vec2 a_texCoord;
+layout (location = 5) in float a_texIndex;
 
 uniform mat4 u_model_mat;
 uniform mat4 u_view_mat;
 uniform mat4 u_projection_mat;
 
 out highp vec4 v_norm;
+out highp vec4 v_fallbackColor;
 out highp vec2 v_uv;
+
 flat out int v_texIndex;
+flat out int v_textureLoaded;
 
 void main() {
 	gl_Position = u_projection_mat * u_view_mat * u_model_mat * a_position;
@@ -31,6 +36,8 @@ void main() {
 	gl_PointSize = 20.0;
 
 	v_norm = a_normal;
+	v_fallbackColor = a_fallbackColor;
+	v_textureLoaded = int(a_textureLoaded);
 	v_uv = a_texCoord;
 	v_texIndex = int(a_texIndex);
 
@@ -43,8 +50,12 @@ precision mediump float;
 uniform highp sampler2DArray u_texture_array;
 
 in highp vec4 v_norm;
+in highp vec4 v_fallbackColor;
 in highp vec2 v_uv;
+
+
 flat in int v_texIndex;
+flat in int v_textureLoaded;
 
 out vec4 fragColor;
 
@@ -60,7 +71,14 @@ void main() {
 	}
 
 	color = clamp(color, 0.0, 1.0);
+	fragColor = v_fallbackColor + color;
 
-	// z index of sampler2DArray is the layer
-	fragColor = texture(u_texture_array, vec3(v_uv, v_texIndex)) + color;
+	// if (v_textureLoaded > 0) {
+	// 	fragColor = vec4(1, 0, 0, 1);
+	// 	// z index of sampler2DArray is the layer
+	// 	// fragColor = texture(u_texture_array, vec3(v_uv, v_texIndex)) + color;
+	// } else {
+	// 	fragColor = vec4(0, 0, 1, 1);
+	// 	// fragColor = v_fallbackColor + color;
+	// }
 }`, WebGLRenderingContext.FRAGMENT_SHADER);

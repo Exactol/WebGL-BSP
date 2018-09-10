@@ -1,11 +1,14 @@
 import { Shader } from "./Shaders/Shader";
-import { UniformLocations } from "./UniformLocations";
+import { UniformLocations } from "./Shaders/UniformLocations";
+import { TextureDictionary } from "./Textures/TextureDictionary";
 
 export class ResourceManager {
 	private gl: WebGL2RenderingContext;
+	private textureDictionary: TextureDictionary;
 
 	constructor(gl: WebGL2RenderingContext) {
 		this.gl = gl;
+		this.textureDictionary = new TextureDictionary(this.gl);
 	}
 
 	public getGLContext() {
@@ -13,5 +16,9 @@ export class ResourceManager {
 	}
 	public setGLContext(newContext: WebGL2RenderingContext) {
 		this.gl = newContext;
+	}
+
+	public getTextureDictionary() {
+		return this.textureDictionary;
 	}
 }

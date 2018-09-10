@@ -1,6 +1,6 @@
 import { Vertex } from "../../Structs/Vertex";
 import { IRenderable, Visibility } from "./IRenderable";
-import { POSITION_ATTRIB_LOCATION } from "../Shaders/UniformLocs";
+import { POSITION_ATTRIB_LOCATION } from "../Shaders/LayoutLocations";
 
 export class RenderObject implements IRenderable {
 	public visibility = Visibility.Visible;

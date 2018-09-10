@@ -1,6 +1,6 @@
 import { Face } from "../../BSP/Structs/Face";
 import { BSP } from "../../BSP/BSP";
-import { Vertex } from "../../Structs/Vertex";
+import { Vertex, FALSE, TRUE } from "../../Structs/Vertex";
 import { LumpType } from "../../BSP/Lumps/LumpType";
 import { TexInfoLump } from "../../BSP/Lumps/TexInfoLump";
 import { PlaneLump } from "../../BSP/Lumps/PlaneLump";
@@ -21,6 +21,7 @@ import { TexDataStringTableLump } from "../../BSP/Lumps/TexDataStringTableLump";
 import { Texture } from "../Textures/Texture";
 import { TextureDictionary } from "../Textures/TextureDictionary";
 import { EngineCore } from "../EngineCore";
+import { ResourceManager } from "../ResourceManager";
 export class BSPFace {
 	public visibility: Visibility = Visibility.Visible;
 	public face: Face;
@@ -29,9 +30,9 @@ export class BSPFace {
 	public dispInfo?: DispInfo;
 	public texture?: Texture;
 
-	constructor(face: Face, bsp: BSP) {
+	constructor(face: Face, bsp: BSP, resourceManager: ResourceManager) {
 		this.face = face;
-		this.vertices = this.getVertices(bsp);
+		this.vertices = this.getVertices(bsp, resourceManager);
 	}
 
 	public calcIndices(startIndex: number) {
@@ -126,7 +127,7 @@ export class BSPFace {
 		return BSPFace.verticesToBuffer(this.vertices);
 	}
 
-	private getVertices(bsp): Vertex[] {
+	private getVertices(bsp, resourceManager: ResourceManager): Vertex[] {
 		const texInfoLump = bsp.readLump(LumpType.TexInfo) as TexInfoLump;
 		const texDataLump = bsp.readLump(LumpType.TexData) as TexDataLump;
 		const texDataStringTable = bsp.readLump(LumpType.TexDataStringTable) as TexDataStringTableLump;
@@ -171,25 +172,22 @@ export class BSPFace {
 			baseColor = vec4.fromValues(reflectivityColor[0], reflectivityColor[1], reflectivityColor[2], 1.0);
 		}
 
-		// // setup texture info
-		// if (texName != null) {
-		// 	const gl = undefined;
-		// 	const texDict = TextureDictionary.getInstance();
-		// 	if (gl === undefined) {
-		// 		throw new Error("Failed to obtain GL context from singleton");
-		// 		return [];
-		// 	}
-		// 	// reflectivity data is stored with a max value of 1, color has to be boosted to have any effect
-		// 	const boostedBaseColor = vec4.create();
-		// 	vec4.scale(boostedBaseColor, baseColor, 255);
-		// 	this.texture = new Texture(gl, boostedBaseColor, 0, texName);
-		// 	if (this.texture != null) {
-		// 		const id = texDict.addTexture(gl, this.texture);
-		// 		this.texture.id = id;
-		// 	}
-		// } else {
-		// 	console.log("Failed to read texture name");
-		// }
+		// setup texture info
+		if (texName != null) {
+			const gl = resourceManager.getGLContext();
+			const texDict = resourceManager.getTextureDictionary();
+			if (gl === undefined) {
+				throw new Error("Failed to obtain GL context from singleton");
+				return [];
+			}
+			this.texture = new Texture(gl, baseColor, 0, texName);
+			if (this.texture != null) {
+				const id = texDict.addTexture(gl, this.texture);
+				this.texture.id = id;
+			}
+		} else {
+			console.log("Failed to read texture name");
+		}
 
 		// if face is not displacement, it's dispInfo will be -1;
 		if (this.face.dispInfo === -1) {
@@ -286,11 +284,10 @@ export class BSPFace {
 				const vertPos = vec3.create();
 				vec3.lerp(vertPos, helperVert1.position, helperVert2.position, j / (rowSize - 1));
 				if (this.texture != null) {
-					dispVerts.push(new Vertex(vertPos, vert1.normal, this.texture.placeholderColor, 
+					dispVerts.push(new Vertex(vertPos, vert1.normal, this.texture.placeholderColor, FALSE,
 						vec2.fromValues(0, 0), this.texture.id));
 				} else {
 					dispVerts.push(new Vertex(vertPos, vert1.normal));
-					
 				}
 			}
 		}
@@ -328,7 +325,7 @@ export class BSPFace {
 			vertexes = Array.from(new Set(vertPositions)).map((vert) => {
 				if (this.texture != null) {
 					// console.log(this.texture.id + 1);
-					return new Vertex(vert, normal, this.texture.placeholderColor,
+					return new Vertex(vert, normal, this.texture.placeholderColor, FALSE,
 						 vec2.fromValues(0, 0), this.texture.id);
 				} else {
 					return new Vertex(vert, normal);
@@ -349,6 +346,8 @@ export class BSPFace {
 		verts.forEach((vert) => {
 			addRange(out, vert.position);
 			addRange(out, vert.normal);
+			addRange(out, vert.fallbackColor);
+			out.push(vert.textureLoaded);
 			addRange(out, vert.texCoord);
 			out.push(vert.texIndex);
 		});
