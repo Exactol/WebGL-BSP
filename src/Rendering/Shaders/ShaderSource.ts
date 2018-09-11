@@ -6,6 +6,24 @@ export class ShaderSource {
 		this.source = _source;
 		this.type = _type;
 	}
+
+	public compileShader(gl: WebGL2RenderingContext) {
+		const shader = gl.createShader(this.type);
+
+		// compile shader
+		gl.shaderSource(shader, this.source);
+		gl.compileShader(shader);
+	
+		// check for errors
+		if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+			console.log("----------Failed to compile shader----------\n" + this.source);
+			console.log("Info log: " + gl.getShaderInfoLog(shader));
+			gl.deleteShader(shader);
+			throw new Error("Failed to compile shader");
+		}
+	
+		return shader;
+	}
 }
 
 export const VertShader: ShaderSource = new ShaderSource(

@@ -4,6 +4,7 @@ import { limitAngle } from "../../Utils/LimitAngle";
 import { EngineCore } from "../EngineCore";
 import {ICamera, MoveDirection} from "./ICamera";
 import { Message, MessageType } from "../Messaging/Message";
+import { CameraState } from "./CameraState";
 
 export class PerspectiveCamera implements ICamera {
 	public componentName = "PerspectiveCamera";
@@ -206,6 +207,10 @@ export class PerspectiveCamera implements ICamera {
 		this.verticalAngle += -dY * dTime * this.mouseSensitivity;
 		// console.log("vAngle: " + this.verticalAngle);
 		// console.log("hAngle: " + this.horizontalAngle);
+	}
+
+	public getCameraState() {
+		return new CameraState(this.position, this.getModelMatrix(), this.getProjectionMatrix(), this.getViewMatrix());
 	}
 
 	public onMessage(message: Message) {

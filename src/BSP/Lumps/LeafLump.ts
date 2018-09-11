@@ -13,21 +13,45 @@ export class LeafLump extends Lump {
 
 	public read() {
 		const reader = new BinaryReader(this.data);
-
+		
 		// each leaf is 56 bytes long
-		for (let i = 0; i < this.header.lumpLength; i += 56) {
+		// version 20 leaf is 32 bytes long
+		// TODO: per version lump parsing
+		for (let i = 0; i < this.header.lumpLength; i += 32) {
+			const contents = reader.readInt32();
+			const cluster = reader.readInt16();
+	
+			// todo ivestigate if this is the right way
+			const bitfield = reader.readInt16();
+			const area = bitfield & 0xFF80 >> 7;
+			const flags = bitfield & 0x007F;
+	
+			const mins: [number, number, number] = [reader.readInt16(), reader.readInt16(), reader.readInt16()];
+			const maxs: [number, number, number] = [reader.readInt16(), reader.readInt16(), reader.readInt16()];
+			
+			const firstLeafFace = reader.readUInt16();
+			const numLeafFaces = reader.readUInt16();
+			
+			const firstLeafBrush = reader.readUInt16();
+			const numLeafBrushes = reader.readUInt16();
+			
+			const leafWaterDataID = reader.readInt16();
+
+			// padding? TODO: investigate why there are 2 missing bytes
+			reader.readInt16();
+			
 			this.leaves.push(new Leaf(
-				reader.readInt32(),
-				reader.readInt16(),
-				reader.readInt16() & 0xFF80 >> 7, // todo ivestigate if this is the right way
-				reader.readInt16() & 0x007F,
-				[reader.readInt16(), reader.readInt16(), reader.readInt16()],
-				[reader.readInt16(), reader.readInt16(), reader.readInt16()],
-				reader.readUInt16(),
-				reader.readUInt16(),
-				reader.readUInt16(),
-				reader.readUInt16(),
-				reader.readInt16(),
+				contents,
+				cluster,
+				area,
+				flags,
+				mins,
+				maxs,
+				firstLeafFace,
+				numLeafFaces,
+				firstLeafBrush,
+				numLeafBrushes,
+				leafWaterDataID,
 			));
 		}
 

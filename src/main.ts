@@ -5,12 +5,13 @@ import { Vertex } from "./Structs/Vertex";
 import { vec4, vec3 } from "gl-matrix";
 import { BSP } from "./BSP/BSP";
 import { LumpType } from "./BSP/Lumps/LumpType";
-import { BSPMesh } from "./Rendering/RenderObjects/BSPMesh";
+import { BSPMesh } from "./Rendering/RenderObjects/BSP/BSPMesh";
 import { DispInfoLump } from "./BSP/Lumps/DispInfoLump";
 import { FaceLump } from "./BSP/Lumps/FaceLump";
 import { DispVert } from "./BSP/Structs/DispVert";
 import { DispVertLump } from "./BSP/Lumps/DispVertLump";
 import { DispTrisLump } from "./BSP/Lumps/DispTrisLump";
+import { LeafLump } from "./BSP/Lumps/LeafLump";
 
 // export function so it can be called globally
 // @ts-ignore
@@ -113,7 +114,7 @@ class BSPRenderer {
         if (this.gl == null) {
             return;
         }
-        // const lump = bsp.readLump(LumpType.DispTris) as DispTrisLump;
+        // const lump = bsp.readLump(LumpType.Leafs) as LeafLump;
         // console.log(lump.toString());
         // bsp.printLumps();
         this.renderer.clearRenderObjects();

@@ -1,5 +1,6 @@
 import { vec3, mat4 } from "gl-matrix";
 import { IEngineComponent } from "../IEngineComponent";
+import { CameraState } from "./CameraState";
 
 export interface ICamera extends IEngineComponent {
 	position: vec3;
@@ -33,6 +34,8 @@ export interface ICamera extends IEngineComponent {
 	move(direction: MoveDirection);
 	
 	update(dX: number, dY: number, dTime: number): void;
+
+	getCameraState(): CameraState;
 }
 
 export enum MoveDirection {

@@ -38,13 +38,8 @@ export class EngineCore implements IEngineComponent {
 	public gridSize = 15;
 	public drawGrid = true;
 
-	private defaultShaderProgram: WebGLProgram | null;
-	private defaultShaders = [FragShader, VertShader];
-
 	private renderObjects: IRenderable[] = [];
 	// private grid: RenderObject;
-
-	public uniformLocations!: UniformLocations;
 
 	public keyboardListener!: KeyboardListener;
 	public mouseHandler!: MouseHandler;
@@ -72,17 +67,6 @@ export class EngineCore implements IEngineComponent {
 		// setup default camera
 		this.cameras = [new PerspectiveCamera(this.gl.canvas.clientWidth, this.gl.canvas.clientHeight)];
 		this.activeCamera = this.cameras[0];
-		
-		// create default shader
-		this.defaultShaderProgram = CreateShaderProgram(this.gl, this.defaultShaders);
-		if (this.defaultShaderProgram == null || this.defaultShaderProgram === undefined) {
-			return;
-		}
-
-		this.uniformLocations = new UniformLocations(this.gl, this.defaultShaderProgram);
-
-		// setup the texture array to use TEXTURE0
-		this.gl.uniform1i(this.uniformLocations.uTextureArrayLocation, 0);
 		
 		// setup keyboard listener
 		this.keyboardListener = new KeyboardListener(this);
@@ -120,30 +104,16 @@ export class EngineCore implements IEngineComponent {
 	public render() {
 		// resize every frame so when user resizes canvas it is smooth
 		this.resize();
-		this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight);
 
+		// prepare frame for rendering
+		this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight);
 		this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 
-		// use default shader
-		this.gl.useProgram(this.defaultShaderProgram);
-
-		// send uniforms to gpu
-		this.gl.uniformMatrix4fv(this.uniformLocations.uModelMatLocation,
-			false,
-			this.activeCamera.getModelMatrix());
-
-		this.gl.uniformMatrix4fv(this.uniformLocations.uViewMatLocation,
-			false,
-			this.activeCamera.getViewMatrix());
-
-		this.gl.uniformMatrix4fv(this.uniformLocations.uProjectionMatrixLocation,
-			false, 
-			this.activeCamera.getProjectionMatrix());
-
 		// render all objects
+		const cameraState = this.activeCamera.getCameraState();
 		this.renderObjects.forEach((renderObject) => {
 			// renderObject.draw(this.gl, this.gl.POINTS);
-			renderObject.draw(this.gl);
+			renderObject.draw(this.gl, cameraState);
 		});
 	}
 

@@ -1,27 +1,27 @@
-import { Face } from "../../BSP/Structs/Face";
-import { BSP } from "../../BSP/BSP";
-import { Vertex, FALSE, TRUE } from "../../Structs/Vertex";
-import { LumpType } from "../../BSP/Lumps/LumpType";
-import { TexInfoLump } from "../../BSP/Lumps/TexInfoLump";
-import { PlaneLump } from "../../BSP/Lumps/PlaneLump";
-import { VertexLump } from "../../BSP/Lumps/VertexLump";
-import { TexDataLump } from "../../BSP/Lumps/TexDataLump";
+import { Face } from "../../../BSP/Structs/Face";
+import { BSP } from "../../../BSP/BSP";
+import { Vertex, FALSE, TRUE } from "../../../Structs/Vertex";
+import { LumpType } from "../../../BSP/Lumps/LumpType";
+import { TexInfoLump } from "../../../BSP/Lumps/TexInfoLump";
+import { PlaneLump } from "../../../BSP/Lumps/PlaneLump";
+import { VertexLump } from "../../../BSP/Lumps/VertexLump";
+import { TexDataLump } from "../../../BSP/Lumps/TexDataLump";
 import { vec4, vec3, vec2 } from "gl-matrix";
-import { SurfEdgeLump } from "../../BSP/Lumps/SurfEdgeLump";
-import { EdgeLump } from "../../BSP/Lumps/EdgeLump";
-import { addRange } from "../../Utils/AddRange";
-import { SurfFlags } from "../../BSP/Structs/Enums";
-import { DispVertLump } from "../../BSP/Lumps/DispVertLump";
-import { DispTrisLump } from "../../BSP/Lumps/DispTrisLump";
-import { DispInfo } from "../../BSP/Structs/DispInfo";
-import { DispInfoLump } from "../../BSP/Lumps/DispInfoLump";
-import { Visibility } from "./IRenderable";
-import { TexDataStringDataLump } from "../../BSP/Lumps/TexDataStringDataLump";
-import { TexDataStringTableLump } from "../../BSP/Lumps/TexDataStringTableLump";
-import { Texture } from "../Textures/Texture";
-import { TextureDictionary } from "../Textures/TextureDictionary";
-import { EngineCore } from "../EngineCore";
-import { ResourceManager } from "../ResourceManager";
+import { SurfEdgeLump } from "../../../BSP/Lumps/SurfEdgeLump";
+import { EdgeLump } from "../../../BSP/Lumps/EdgeLump";
+import { addRange } from "../../../Utils/AddRange";
+import { SurfFlags } from "../../../BSP/Structs/Enums";
+import { DispVertLump } from "../../../BSP/Lumps/DispVertLump";
+import { DispTrisLump } from "../../../BSP/Lumps/DispTrisLump";
+import { DispInfo } from "../../../BSP/Structs/DispInfo";
+import { DispInfoLump } from "../../../BSP/Lumps/DispInfoLump";
+import { Visibility } from "../IRenderable";
+import { TexDataStringDataLump } from "../../../BSP/Lumps/TexDataStringDataLump";
+import { TexDataStringTableLump } from "../../../BSP/Lumps/TexDataStringTableLump";
+import { Texture } from "../../Textures/Texture";
+import { TextureDictionary } from "../../Textures/TextureDictionary";
+import { EngineCore } from "../../EngineCore";
+import { BSPResourceManager } from "../BSPResourceManager";
 export class BSPFace {
 	public visibility: Visibility = Visibility.Visible;
 	public face: Face;
@@ -30,7 +30,7 @@ export class BSPFace {
 	public dispInfo?: DispInfo;
 	public texture?: Texture;
 
-	constructor(face: Face, bsp: BSP, resourceManager: ResourceManager) {
+	constructor(face: Face, bsp: BSP, resourceManager: BSPResourceManager) {
 		this.face = face;
 		this.vertices = this.getVertices(bsp, resourceManager);
 	}
@@ -124,10 +124,10 @@ export class BSPFace {
 	}
 
 	public getMesh(): number[] {
-		return BSPFace.verticesToBuffer(this.vertices);
+		return BSPFace.verticesToMesh(this.vertices);
 	}
 
-	private getVertices(bsp, resourceManager: ResourceManager): Vertex[] {
+	private getVertices(bsp, resourceManager: BSPResourceManager): Vertex[] {
 		const texInfoLump = bsp.readLump(LumpType.TexInfo) as TexInfoLump;
 		const texDataLump = bsp.readLump(LumpType.TexData) as TexDataLump;
 		const texDataStringTable = bsp.readLump(LumpType.TexDataStringTable) as TexDataStringTableLump;
@@ -176,10 +176,7 @@ export class BSPFace {
 		if (texName != null) {
 			const gl = resourceManager.getGLContext();
 			const texDict = resourceManager.getTextureDictionary();
-			if (gl === undefined) {
-				throw new Error("Failed to obtain GL context from singleton");
-				return [];
-			}
+
 			this.texture = new Texture(gl, baseColor, 0, texName);
 			if (this.texture != null) {
 				const id = texDict.addTexture(gl, this.texture);
@@ -193,13 +190,14 @@ export class BSPFace {
 		if (this.face.dispInfo === -1) {
 			return this.getFaceVertexes(bsp);
 		} else {
+			console.log("disp");
 			return this.getDispVertexes(bsp);
 		}
 	}
 	
 	private getDispVertexes(bsp: BSP): Vertex[] {
 		const dispVertsLump = bsp.readLump(LumpType.DispVerts) as DispVertLump;
-		const dispTrisLump = bsp.readLump(LumpType.DispTris) as DispTrisLump;
+		// const dispTrisLump = bsp.readLump(LumpType.DispTris) as DispTrisLump;
 		const dispInfoLump = bsp.readLump(LumpType.DispInfo) as DispInfoLump;
 
 		this.dispInfo = dispInfoLump.dispInfos[this.face.dispInfo];
@@ -341,7 +339,7 @@ export class BSPFace {
 	}
 
 	// combines all vertex data into one number array
-	private static verticesToBuffer(verts: Vertex[]) {
+	public static verticesToMesh(verts: Vertex[]) {
 		const out: number[] = [];
 		verts.forEach((vert) => {
 			addRange(out, vert.position);

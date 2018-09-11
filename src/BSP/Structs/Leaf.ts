@@ -4,7 +4,7 @@ export class Leaf {
 	public contents: BrushContent;
 	public cluster: number;
 
-	// area and flags share a 16 bit bitbuffer
+	// area and flags share a 16 bit bitfield
 	public area: number; // 9 bits
 	public flags: number; // 7 bits
 
@@ -40,18 +40,18 @@ export class Leaf {
 		this.leafWaterDataID = leafWaterDataID;
 	} 
 
-		public toString() {
-			return `Contents: ${this.contents} 
-			Cluster: ${this.cluster}
-			Area: ${this.area}
-			Flags: ${this.flags}
-			Mins: ${this.mins}
-			Maxs: ${this.maxs}
-			FirstLeafBrush: ${this.firstLeafBrush}
-			NumLeafFaces: ${this.numLeafFaces}
-			FirstLeafBrush: ${this.firstLeafBrush}
-			NumLeafBrushes: ${this.numLeafBrushes}
-			LeafWaterDataID: ${this.leafWaterDataID}
-			`;
-		}
+	public toString() {
+		return `Contents: ${this.contents} 
+		Cluster: ${this.cluster}
+		Area: ${this.area}
+		Flags: ${this.flags}
+		Mins: ${this.mins}
+		Maxs: ${this.maxs}
+		FirstLeafFace: ${this.firstLeafFace}
+		NumLeafFaces: ${this.numLeafFaces}
+		FirstLeafBrush: ${this.firstLeafBrush}
+		NumLeafBrushes: ${this.numLeafBrushes}
+		LeafWaterDataID: ${this.leafWaterDataID}
+		`;
+	}
 }

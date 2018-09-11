@@ -1,75 +1,127 @@
-import { BSP } from "../../BSP/BSP";
-import { IRenderable, Visibility } from "./IRenderable";
-import { LumpType } from "../../BSP/Lumps/LumpType";
-import { POSITION_ATTRIB_LOCATION, NORMAL_ATTRIB_LOCATION, TEXCOORD_ATTRIB_LOCATION, 
-	TEXINDEX_ATTRIB_LOCATION, 
-	FALLBACK_COLOR_ATTRIB_LOCATION,
-	TEXTURE_LOADED_ATTRIB_LOCATION} from "../Shaders/LayoutLocations";
-import { FaceLump } from "../../BSP/Lumps/FaceLump";
-import { addRange } from "../../Utils/AddRange";
-import { BSPFace } from "./BSPFace";
-import { Texture } from "../Textures/Texture";
-import { UniformLocations } from "../Shaders/UniformLocations";
-import { TextureDictionary } from "../Textures/TextureDictionary";
-import { ResourceManager } from "../ResourceManager";
+import { IBSPTree } from "./IBSPTree";
+import { Leaf } from "../../../../BSP/Structs/Leaf";
+import { BSP } from "../../../../BSP/BSP";
+import { Visibility } from "../../IRenderable";
+import { BSPResourceManager } from "../../BSPResourceManager";
+import { Vertex } from "../../../../Structs/Vertex";
+import { BSPFace } from "../BSPFace";
+import { addRange } from "../../../../Utils/AddRange";
+import { LumpType } from "../../../../BSP/Lumps/LumpType";
+import { FaceLump } from "../../../../BSP/Lumps/FaceLump";
+import { LeafFaceLump } from "../../../../BSP/Lumps/LeafFaceLump";
+import { 
+	POSITION_ATTRIB_LOCATION, NORMAL_ATTRIB_LOCATION, FALLBACK_COLOR_ATTRIB_LOCATION, 
+	TEXTURE_LOADED_ATTRIB_LOCATION, TEXCOORD_ATTRIB_LOCATION, TEXINDEX_ATTRIB_LOCATION 
+} from "../../../Shaders/LayoutLocations";
+import { CameraState } from "../../../Camera/CameraState";
+import { VertShader, FragShader } from "../../../Shaders/ShaderSource";
+import { mat4 } from "gl-matrix";
 
-export class BSPMesh implements IRenderable {
+export class BSPLeaf implements IBSPTree {
+	public isNode = false;
 	public visibility = Visibility.Visible;
+	public leaf: Leaf;
+
+	public resourceManager: BSPResourceManager;
+	private shaderIndex: number;
+
+	private vertices: Vertex[] = [];
+	private indices: number[] = [];
+	private faces: BSPFace[] = [];
+
 	public VAO!: WebGLVertexArrayObject;
 	public VBO!: WebGLBuffer;
 	public EAO!: WebGLBuffer; // index buffer
-
-	private initialized = false;
 	private renderMode = WebGL2RenderingContext.TRIANGLES;
-	private vertexCount = 0;
 
-	private resourceManager: ResourceManager;
+	private indexCount: number;
+	private initialized = false;
+	private modelMat: mat4;
 
-	private vertices: number[];
-	private faces: BSPFace[];
-	private indices: number[];
+	constructor(leaf: Leaf, resourceManager: BSPResourceManager, modelMat: mat4) {
+		this.leaf = leaf;
+		this.modelMat = modelMat;
 
-	// private dispVertices: number[];
-	// private dispIndices: number[];
+		this.resourceManager = resourceManager;
+		this.shaderIndex = this.resourceManager.createShaderProgram();
+		this.resourceManager.addShaders(this.shaderIndex, [VertShader, FragShader]);
 
-	constructor(gl: WebGL2RenderingContext, bsp: BSP) {
+		// calculate the vertices and indices of the leaf
+		const bsp = resourceManager.getBSP();
 		const faceLump = bsp.readLump(LumpType.Faces) as FaceLump;
-		this.resourceManager = new ResourceManager(gl);
-
-		this.vertices = [];
-		this.faces = [];
-		this.indices = [];
+		const leafFaceLump = bsp.readLump(LumpType.LeafFaces) as LeafFaceLump;
 
 		let currentIndex = 0;
-		// tslint:disable-next-line:prefer-for-of
-		for (let i = 0; i < faceLump.faces.length; i++) {
-			const face = faceLump.faces[i];
+		for (let i = leaf.firstLeafFace; i < leaf.numLeafFaces + leaf.firstLeafFace; i++) {
+			const leafFace = leafFaceLump.leafFaces[i];
+			const face = faceLump.faces[leafFace];
 			const bspFace = new BSPFace(face, bsp, this.resourceManager);
 			this.faces.push(bspFace);
-			
+
 			// add vertices to mesh
 			bspFace.calcIndices(currentIndex);
 
-			addRange(this.vertices, bspFace.getMesh());
+			addRange(this.vertices, bspFace.vertices);
 			// dont add hidden faces to the indices
 			if (bspFace.visibility === Visibility.Visible) {
 				addRange(this.indices, bspFace.indices);
 			}
 
-
 			if (bspFace.dispInfo != null) {
-				// highest index of element will be it's second to last index
+				// highest index of displacement will be it's second to last index
 				currentIndex = bspFace.indices[bspFace.indices.length - 2] + 1;
 			} else {
-				// highest index of element will be it's last index
+				// highest index of face will be it's last index
 				currentIndex = bspFace.indices[bspFace.indices.length - 1] + 1;
 			}
 		}
 
-		this.vertexCount = this.indices.length;
-		// console.log(this.indices);
-		// console.log(this.vertices);
-			
+		this.indexCount = this.indices.length;
+		// if leaf is empty we dont need to render it
+		if (this.indexCount < 1) {
+			return;
+		}
+		this.bufferData();
+		this.initialized = true;
+	}
+
+	public draw(gl: WebGL2RenderingContext, cameraState: CameraState, renderModeOverride?: number) {
+		if (this.visibility === Visibility.Hidden || !this.initialized) {
+			return;
+		}
+		
+		// enable this leaf's shader
+		gl.useProgram(this.resourceManager.getShaderProgram(this.shaderIndex));
+		
+		const uniformLocations = this.resourceManager.getUniformLocations(this.shaderIndex);
+
+		// upload uniforms
+		gl.uniformMatrix4fv(uniformLocations.uModelMatLocation,
+			false,
+			cameraState.modelMatrix);
+
+		gl.uniformMatrix4fv(uniformLocations.uViewMatLocation,
+			false,
+			cameraState.viewMatrix);
+
+		gl.uniformMatrix4fv(uniformLocations.uProjectionMatrixLocation,
+			false, 
+			cameraState.projectionMatrix);
+
+		gl.bindVertexArray(this.VAO);
+		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.EAO);
+
+		if (renderModeOverride == null) {
+			gl.drawElements(this.renderMode, this.indexCount, gl.UNSIGNED_INT, 0);
+		} else {
+			gl.drawElements(renderModeOverride, this.indexCount, gl.UNSIGNED_INT, 0);
+		}
+	}
+
+	// uploads leaf data to gpu
+	private bufferData() {
+		const gl = this.resourceManager.getGLContext();
+		
 		// create buffers
 		const _vbo = gl.createBuffer();
 		const _vao = gl.createVertexArray();
@@ -97,9 +149,10 @@ export class BSPMesh implements IRenderable {
 		// bind buffers
 		gl.bindBuffer(gl.ARRAY_BUFFER, this.VBO);
 
+		const mesh = BSPFace.verticesToMesh(this.vertices);
 		// buffer vertex data
 		gl.bufferData(gl.ARRAY_BUFFER,
-			new Float32Array(this.vertices), gl.STATIC_DRAW);
+			new Float32Array(mesh), gl.STATIC_DRAW);
 
 		// create vertex position VAO
 		gl.bindVertexArray(this.VAO);
@@ -174,36 +227,9 @@ export class BSPMesh implements IRenderable {
 			new Uint32Array(this.indices),
 			gl.STATIC_DRAW
 		);
-
-		this.initialized = true;
-
-		console.log("BSP Loaded");
 	}
 
-	public bind(gl: WebGL2RenderingContext) {
-		
-	}
+	// public toString(indent = ""): string {
 
-	public draw(gl: WebGL2RenderingContext, renderModeOverride?: number) {
-		if (!this.initialized) {
-			console.log("Cannot render object, not initialized");
-			return;
-		}
-		if (this.visibility === Visibility.Hidden) {
-			return;
-		}
-
-		gl.bindVertexArray(this.VAO);
-		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.EAO);
-
-		if (renderModeOverride == null) {
-			gl.drawElements(this.renderMode, this.vertexCount, gl.UNSIGNED_INT, 0);
-		} else {
-			gl.drawElements(renderModeOverride, this.vertexCount, gl.UNSIGNED_INT, 0);
-		}
-	}
-
-	private getUniformLocations() {
-		
-	}
+	// }
 }
