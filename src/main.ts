@@ -12,6 +12,7 @@ import { DispVert } from "./BSP/Structs/DispVert";
 import { DispVertLump } from "./BSP/Lumps/DispVertLump";
 import { DispTrisLump } from "./BSP/Lumps/DispTrisLump";
 import { LeafLump } from "./BSP/Lumps/LeafLump";
+import { VisibilityLump } from "./BSP/Lumps/VisibilityLump";
 
 // export function so it can be called globally
 // @ts-ignore
@@ -114,8 +115,8 @@ class BSPRenderer {
         if (this.gl == null) {
             return;
         }
-        // const lump = bsp.readLump(LumpType.Leafs) as LeafLump;
-        // console.log(lump.toString());
+        const lump = bsp.readLump(LumpType.Visibility) as VisibilityLump;
+        console.log(lump.toString());
         // bsp.printLumps();
         this.renderer.clearRenderObjects();
         this.renderer.addRenderableObject(new BSPMesh(this.gl, bsp));

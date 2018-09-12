@@ -26,6 +26,8 @@ export class ShaderSource {
 	}
 }
 
+// TODO: convert shader from https://gist.github.com/Kink3d/7d7a8da1a8a67d808f74a3f824d8a294
+
 export const VertShader: ShaderSource = new ShaderSource(
 `#version 300 es
 

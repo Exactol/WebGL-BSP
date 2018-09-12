@@ -159,7 +159,7 @@ export class BSPLeaf implements IBSPTree {
 		// buffer vertex data
 		gl.bufferData(gl.ARRAY_BUFFER,
 			new Float32Array(mesh), gl.STATIC_DRAW);
-
+		
 		// create vertex position VAO
 		gl.bindVertexArray(this.VAO);
 		gl.vertexAttribPointer(

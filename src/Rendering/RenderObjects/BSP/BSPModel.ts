@@ -46,6 +46,7 @@ export class BSPModel implements IRenderable {
 		if (this.visibility === Visibility.Hidden) {
 			return;
 		}
+		// TODO: upload uniform world matrix here?
 		// recursively walk the bsp tree and draw at every leaf
 		this.tree.draw(gl, cameraState, renderModeOverride);
 	}

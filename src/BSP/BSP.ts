@@ -30,6 +30,7 @@ import { LeafAmbientIndexHdrLump } from "./Lumps/LeafAmbientIndexHDRLump";
 import { DispInfoLump } from "./Lumps/DispInfoLump";
 import { DispVertLump } from "./Lumps/DispVertLump";
 import { DispTrisLump } from "./Lumps/DispTrisLump";
+import { VisibilityLump } from "./Lumps/VisibilityLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
 // todo look into 
@@ -113,7 +114,8 @@ export class BSP {
 				return TexDataLump;
 			case LumpType.Vertexes:
 				return VertexLump;
-			// case LumpType.Visibility: TODO: parse	
+			case LumpType.Visibility:
+				return VisibilityLump;	
 			case LumpType.Nodes:
 				return NodeLump;	
 			case LumpType.TexInfo:
