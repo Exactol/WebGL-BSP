@@ -85,12 +85,12 @@ export class EngineCore implements IEngineComponent {
 
 	public main(currentTime = 0) {
 		window.requestAnimationFrame(this.main.bind(this));
+		
+		// poll keyboard 
+		this.keyboardListener.pollKeyboard(this);
 
 		// dispatch messages
 		this.messageQueue.dispatch();
-
-		// poll keyboard 
-		this.keyboardListener.pollKeyboard(this);
 
 		// convert dTime to seconds
 		this.deltaTime = (currentTime - this.previousTime) / 1000;

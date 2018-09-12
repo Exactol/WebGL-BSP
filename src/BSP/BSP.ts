@@ -113,7 +113,7 @@ export class BSP {
 				return TexDataLump;
 			case LumpType.Vertexes:
 				return VertexLump;
-			// case LumpType.Visibility:	
+			// case LumpType.Visibility: TODO: parse	
 			case LumpType.Nodes:
 				return NodeLump;	
 			case LumpType.TexInfo:

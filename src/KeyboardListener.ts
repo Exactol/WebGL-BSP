@@ -57,14 +57,6 @@ export class KeyboardListener implements IEngineComponent {
 							MessagePriority.High)
 					);
 					break;
-				case "Escape":
-					this.zToggle = false;
-					console.log("escape");
-					coreEngine.messageQueue.add(
-						new Message(coreEngine, this, MessageType.Keypress, 
-							new KeyPress(Key.Escape))
-					);
-					break;
 			}
 		});
 

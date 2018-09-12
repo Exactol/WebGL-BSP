@@ -23,10 +23,11 @@ export class BSPLeaf implements IBSPTree {
 	public leaf: Leaf;
 
 	public resourceManager: BSPResourceManager;
-	private shaderIndex: number;
+	private shaderIndex: number = 0;
 
-	private vertices: Vertex[] = [];
+	private indexCount: number = 0;
 	private indices: number[] = [];
+	private vertices: Vertex[] = [];
 	private faces: BSPFace[] = [];
 
 	public VAO!: WebGLVertexArrayObject;
@@ -34,25 +35,30 @@ export class BSPLeaf implements IBSPTree {
 	public EAO!: WebGLBuffer; // index buffer
 	private renderMode = WebGL2RenderingContext.TRIANGLES;
 
-	private indexCount: number;
-	private initialized = false;
 	private modelMat: mat4;
-
+	private initialized = false;
+	
 	constructor(leaf: Leaf, resourceManager: BSPResourceManager, modelMat: mat4) {
 		this.leaf = leaf;
 		this.modelMat = modelMat;
 
 		this.resourceManager = resourceManager;
+		
+		// TODO: doesnt really seem to do anything?
+		this.load();
+	}
+
+	private async load() {
 		this.shaderIndex = this.resourceManager.createShaderProgram();
 		this.resourceManager.addShaders(this.shaderIndex, [VertShader, FragShader]);
 
 		// calculate the vertices and indices of the leaf
-		const bsp = resourceManager.getBSP();
+		const bsp = this.resourceManager.getBSP();
 		const faceLump = bsp.readLump(LumpType.Faces) as FaceLump;
 		const leafFaceLump = bsp.readLump(LumpType.LeafFaces) as LeafFaceLump;
 
 		let currentIndex = 0;
-		for (let i = leaf.firstLeafFace; i < leaf.numLeafFaces + leaf.firstLeafFace; i++) {
+		for (let i = this.leaf.firstLeafFace; i < this.leaf.numLeafFaces + this.leaf.firstLeafFace; i++) {
 			const leafFace = leafFaceLump.leafFaces[i];
 			const face = faceLump.faces[leafFace];
 			const bspFace = new BSPFace(face, bsp, this.resourceManager);

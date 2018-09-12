@@ -1,6 +1,7 @@
 import { Vertex } from "../../Structs/Vertex";
 import { IRenderable, Visibility } from "./IRenderable";
 import { POSITION_ATTRIB_LOCATION } from "../Shaders/LayoutLocations";
+import { CameraState } from "../Camera/CameraState";
 
 export class RenderObject implements IRenderable {
 	public visibility = Visibility.Visible;
@@ -61,7 +62,7 @@ export class RenderObject implements IRenderable {
 		
 	}
 
-	public draw(gl: WebGL2RenderingContext, renderTypeOverride?: number) {
+	public draw(gl: WebGL2RenderingContext, cameraState?: CameraState, renderTypeOverride?: number) {
 		if (!this.initialized) {
 			console.log("Cannot render object, not initialized");
 			return;
