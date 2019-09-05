@@ -9,13 +9,16 @@ import { addRange } from "../../../../Utils/AddRange";
 import { LumpType } from "../../../../BSP/Lumps/LumpType";
 import { FaceLump } from "../../../../BSP/Lumps/FaceLump";
 import { LeafFaceLump } from "../../../../BSP/Lumps/LeafFaceLump";
-import { 
-	POSITION_ATTRIB_LOCATION, NORMAL_ATTRIB_LOCATION, FALLBACK_COLOR_ATTRIB_LOCATION, 
-	TEXTURE_LOADED_ATTRIB_LOCATION, TEXCOORD_ATTRIB_LOCATION, TEXINDEX_ATTRIB_LOCATION 
+import {
+	POSITION_ATTRIB_LOCATION, NORMAL_ATTRIB_LOCATION, FALLBACK_COLOR_ATTRIB_LOCATION,
+	TEXTURE_LOADED_ATTRIB_LOCATION, TEXCOORD_ATTRIB_LOCATION, TEXINDEX_ATTRIB_LOCATION
 } from "../../../Shaders/LayoutLocations";
 import { CameraState } from "../../../Camera/CameraState";
 import { VertShader, FragShader } from "../../../Shaders/ShaderSource";
-import { mat4 } from "gl-matrix";
+import { mat4, vec3, vec4 } from "gl-matrix";
+import { VisibilityLump } from "../../../../BSP/Lumps/VisibilityLump";
+import { LeafLump } from "../../../../BSP/Lumps/LeafLump";
+import { arrayToVec3 } from "../../../../Utils/vec3Utils";
 
 export class BSPLeaf implements IBSPTree {
 	public isNode = false;
@@ -37,13 +40,13 @@ export class BSPLeaf implements IBSPTree {
 
 	private modelMat: mat4;
 	private initialized = false;
-	
+
 	constructor(leaf: Leaf, resourceManager: BSPResourceManager, modelMat: mat4) {
 		this.leaf = leaf;
 		this.modelMat = modelMat;
 
 		this.resourceManager = resourceManager;
-		
+
 		// TODO: doesnt really seem to do anything?
 		this.load();
 	}
@@ -91,14 +94,19 @@ export class BSPLeaf implements IBSPTree {
 		this.initialized = true;
 	}
 
-	public draw(gl: WebGL2RenderingContext, cameraState: CameraState, renderModeOverride?: number) {
+	public draw(gl: WebGL2RenderingContext, cameraState: CameraState, vis: number[], renderModeOverride?: number) {
 		if (this.visibility === Visibility.Hidden || !this.initialized) {
 			return;
 		}
-		
+
+		// not visible from current cluster
+		if (this.leaf.cluster !== -1 && vis[this.leaf.cluster] !== 1) {
+			return;
+		}
+
 		// enable this leaf's shader
 		gl.useProgram(this.resourceManager.getShaderProgram(this.shaderIndex));
-		
+
 		const uniformLocations = this.resourceManager.getUniformLocations(this.shaderIndex);
 
 		// upload uniforms
@@ -111,23 +119,34 @@ export class BSPLeaf implements IBSPTree {
 			cameraState.viewMatrix);
 
 		gl.uniformMatrix4fv(uniformLocations.uProjectionMatrixLocation,
-			false, 
+			false,
 			cameraState.projectionMatrix);
 
 		gl.bindVertexArray(this.VAO);
 		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.EAO);
 
-		if (renderModeOverride == null) {
-			gl.drawElements(this.renderMode, this.indexCount, gl.UNSIGNED_INT, 0);
-		} else {
+		if (renderModeOverride) {
 			gl.drawElements(renderModeOverride, this.indexCount, gl.UNSIGNED_INT, 0);
+		} else {
+			gl.drawElements(this.renderMode, this.indexCount, gl.UNSIGNED_INT, 0);
 		}
+	}
+
+	public getCurrentCluster(cameraState: CameraState) {
+		// check that camera is inside cluster by determining if point is within bounding box formed by mins and maxs
+		if ((cameraState.position[0] >= this.leaf.mins[0] && cameraState.position[0] <= this.leaf.maxs[0]) &&
+			(cameraState.position[1] >= this.leaf.mins[1] && cameraState.position[1] <= this.leaf.maxs[1]) &&
+			(cameraState.position[2] >= this.leaf.mins[2] && cameraState.position[2] <= this.leaf.maxs[2])) {
+				return this.leaf.cluster;
+		}
+
+		return null;
 	}
 
 	// uploads leaf data to gpu
 	private bufferData() {
 		const gl = this.resourceManager.getGLContext();
-		
+
 		// create buffers
 		const _vbo = gl.createBuffer();
 		const _vao = gl.createVertexArray();
@@ -138,12 +157,12 @@ export class BSPLeaf implements IBSPTree {
 			console.log("Failed to generate VBO");
 			return;
 		}
-		
+
 		if (_vao == null) {
 			console.log("Failed to generate VAO");
 			return;
 		}
-		
+
 		if (_eao == null) {
 			console.log("Failed to generate EAO");
 			return;
@@ -159,7 +178,7 @@ export class BSPLeaf implements IBSPTree {
 		// buffer vertex data
 		gl.bufferData(gl.ARRAY_BUFFER,
 			new Float32Array(mesh), gl.STATIC_DRAW);
-		
+
 		// create vertex position VAO
 		gl.bindVertexArray(this.VAO);
 		gl.vertexAttribPointer(
@@ -182,8 +201,8 @@ export class BSPLeaf implements IBSPTree {
 			12						  // offset (start at beginnng of buffer)
 		);
 		gl.enableVertexAttribArray(NORMAL_ATTRIB_LOCATION);
-		
-		// enable fallbackColor 
+
+		// enable fallbackColor
 		gl.vertexAttribPointer(
 			FALLBACK_COLOR_ATTRIB_LOCATION,   // attribute location
 			4,					      // size of attribute (vec4)
@@ -193,7 +212,7 @@ export class BSPLeaf implements IBSPTree {
 			24						  // offset (start at beginnng of buffer)
 		);
 		gl.enableVertexAttribArray(FALLBACK_COLOR_ATTRIB_LOCATION);
-		
+
 		// enable textureLoaded
 		gl.vertexAttribPointer(
 			TEXTURE_LOADED_ATTRIB_LOCATION,   // attribute location
@@ -215,7 +234,7 @@ export class BSPLeaf implements IBSPTree {
 			44						  // offset (start at beginnng of buffer)
 		);
 		gl.enableVertexAttribArray(TEXCOORD_ATTRIB_LOCATION);
-		
+
 		// define texIndex VAO
 		gl.vertexAttribPointer(
 			TEXINDEX_ATTRIB_LOCATION, // attribute location
@@ -233,6 +252,37 @@ export class BSPLeaf implements IBSPTree {
 			new Uint32Array(this.indices),
 			gl.STATIC_DRAW
 		);
+	}
+
+	public getClusters(depth: number, clusterNums?: number[], targetDepth?: number) {
+		if (clusterNums && !clusterNums.includes(this.leaf.cluster)) {
+			return [];
+		}
+
+		if (targetDepth && depth !== targetDepth) {
+			return [];
+		}
+
+		console.log(this.leaf.cluster);
+		console.log(this.leaf.mins);
+		console.log(this.leaf.maxs);
+		// create bounding box cube by interpolating values from min and max
+		const v1 = new Vertex(arrayToVec3(this.leaf.mins));
+
+		const v2 = new Vertex(vec3.fromValues(this.leaf.maxs[0], this.leaf.mins[1], this.leaf.mins[2]));
+		const v3 = new Vertex(vec3.fromValues(this.leaf.mins[0], this.leaf.maxs[1], this.leaf.mins[2]));
+
+		const v4 = new Vertex(vec3.fromValues(this.leaf.maxs[0], this.leaf.maxs[1], this.leaf.mins[2]));
+		const v5 = new Vertex(vec3.fromValues(this.leaf.mins[0], this.leaf.mins[1], this.leaf.maxs[2]));
+
+		const v6 = new Vertex(vec3.fromValues(this.leaf.maxs[0], this.leaf.mins[1], this.leaf.maxs[2]));
+		const v7 = new Vertex(vec3.fromValues(this.leaf.mins[0], this.leaf.maxs[1], this.leaf.maxs[2]));
+
+		const v8 = new Vertex(arrayToVec3(this.leaf.maxs));
+
+		// order was found manually
+		return [v1, v2, v1, v3, v3, v4, v4, v2,
+				v1, v5, v5, v6, v2, v6, v5, v7, v7, v8, v6, v8, v3, v7, v8, v4];
 	}
 
 	// public toString(indent = ""): string {

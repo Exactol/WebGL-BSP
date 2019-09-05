@@ -1,3 +1,9 @@
+:root {
+	--primary: #755cf1;
+	--light: #988adf;
+	--bg: #2c2d36;
+}
+
 canvas {
 	width: 100vw;
 	height: 100vh;
@@ -13,7 +19,7 @@ body, html {
 }
 
 #sidebar {
-	background-color: #343F49;
+	background-color: var(--bg);
 	/* background: linear-gradient(to bottom, #495867 0%,#495867 100%); */
 	position: fixed;
 	display: none;
@@ -27,8 +33,8 @@ body, html {
 	border-style: solid;
 	border-width: 0px;
 	border-right-width: 2px;
-	border-color: #FFA49E;
-	box-shadow: 0 0 10px #FFA49E;
+	border-color: var(--primary);
+	box-shadow: 0 0 10px 2px var(--primary);
 	vertical-align: middle;
 	align-items: center;
 }
@@ -40,10 +46,12 @@ button {
 	background-color: transparent;
 	outline: none;
 	overflow: hidden;
-	color: rgb(255, 85, 73);
+	color: var(--primary);
 	cursor: pointer;
 	padding: 10px;
-	font-size: 30px
+	font-size: 30px;
+
+	transition: color .3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 button:hover {
@@ -54,4 +62,33 @@ button:hover {
 	padding-top: 10px;
 	width: 70px;
 	position: absolute;
+}
+
+.debug {
+	right: 20px;
+	top: 10px;
+	position: absolute;
+	width: auto;
+	margin: 10;
+}
+
+.debug div {
+	margin: 5px;
+	width: auto;
+	background-color: var(--bg);
+	opacity: 40%;
+	border-radius: 3px;
+	padding: 2px;
+}
+
+.debugText {
+	/* color: rgb(255, 85, 73); */
+	color: var(--light);
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 10px;
+}
+
+span {
+	font-weight: normal;
 }

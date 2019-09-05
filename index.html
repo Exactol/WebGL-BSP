@@ -8,6 +8,21 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<script src="dist/WebBSP.js"></script>
+
+	<script>
+		window.addEventListener("fpsUpdate", (e) => document.getElementById("fps").innerText = e.detail);
+		window.addEventListener("clusterUpdate", (e) => document.getElementById("cluster").innerText = e.detail);
+
+		window.addEventListener("camUpdate", (e) => {
+			const pos = e.detail.position;
+			document.getElementById("cam_pos").innerText = `${pos[0].toFixed(2)}, ${pos[1].toFixed(2)}, ${pos[2].toFixed(2)}`;
+		});
+
+		let engine;
+		window.addEventListener("DOMContentLoaded", () => {
+			engine = new BSPRenderer("canvas");
+		});
+	</script>
 </head>
 <body>
 	<input id="fileDialog" accept=".bsp" type="file" style="display: none"/>
@@ -18,7 +33,22 @@
 		<button onclick="document.getElementById('sidebar').style.display = 'none'"><i class="fas fa-bars"></i></button>
 		<button id="openBtn"><i class="fas fa-file"></i></button>
 	</div>
-	<canvas id="canvas"/>
-	<script>initWebGL();</script>
+
+	<div class="debug">
+		<div id="debug-general">
+			<h1 class="debugText">FPS: <span id="fps"></span></h1>
+		</div>
+		<div id="debug-pvs">
+			<h1 class="debugText">Pos: <span id="cam_pos">0, 0, 0</span></h1>
+			<h1 class="debugText">Cluster: <span id="cluster"></span></h1>
+			<h1 class="debugText">Area: <span id="area"></span></h1>
+			<div>
+				<label class="debugText" for="draw-leaves">Draw Leaves</label>
+				<input id="draw-leaves" type="checkbox">
+			</div>
+			<input type="range" min="0">
+		</div>
+	</div>
+	<canvas id="canvas"></canvas>
 </body>
 </html>

@@ -13,7 +13,7 @@ export class Vertex {
 	public texCoord: vec2;
 	public texIndex: number;
 
-	constructor(_pos: vec3, _norm: vec3 = vec3.create(), fallbackColor = vec4.create(), 
+	constructor(_pos: vec3, _norm: vec3 = vec3.create(), fallbackColor = vec4.create(),
 			textureLoaded = FALSE, texCoord: vec2 = vec2.fromValues(0, 1), texIndex = 255) {
 		this.position = _pos;
 		this.normal = _norm;

@@ -33,8 +33,7 @@ import { DispTrisLump } from "./Lumps/DispTrisLump";
 import { VisibilityLump } from "./Lumps/VisibilityLump";
 
 // https://developer.valvesoftware.com/wiki/Source_BSP_File_Format
-// todo look into 
-// tslint:disable-next-line:max-line-length
+// todo look into
 // https://github.com/ValveSoftware/source-sdk-2013/blob/0d8dceea4310fde5706b3ce1c70609d72a38efdf/mp/src/utils/common/bsplib.cpp
 export class BSP {
 	public fileData: ArrayBuffer;
@@ -70,7 +69,7 @@ export class BSP {
 			// use helper function to convert LumpEnum to lump class type
 			const lumpType = this.getLumpType(i);
 			this.lumps[i] = new lumpType(new LumpHeader(i, this.reader.readBytes(16)), this.fileData);
-		}		
+		}
 	}
 
 	public readLump(lumpType: LumpType) {
@@ -89,7 +88,7 @@ export class BSP {
 		lump.read();
 		return lump;
 	}
- 
+
 	public printLumps() {
 		for (const lump in this.lumps) {
 			if (this.lumps.hasOwnProperty(lump)) {
@@ -110,22 +109,22 @@ export class BSP {
 				return EntityLump;
 			case LumpType.Planes:
 				return PlaneLump;
-			case LumpType.TexData:	
+			case LumpType.TexData:
 				return TexDataLump;
 			case LumpType.Vertexes:
 				return VertexLump;
 			case LumpType.Visibility:
-				return VisibilityLump;	
+				return VisibilityLump;
 			case LumpType.Nodes:
-				return NodeLump;	
+				return NodeLump;
 			case LumpType.TexInfo:
-				return TexInfoLump;		
+				return TexInfoLump;
 			case LumpType.Faces:
 				return FaceLump;
-			case LumpType.Lighting:	
+			case LumpType.Lighting:
 				return LightingLump;
-			// case LumpType.Occlusion:		
-			case LumpType.Leafs:	
+			// case LumpType.Occlusion:
+			case LumpType.Leafs:
 				return LeafLump;
 			// case LumpType.FaceIds:
 			case LumpType.Edges:
@@ -209,7 +208,7 @@ export class BSP {
 			// case LumpType.OverlaySystemLevels:
 			// case LumpType.PhysLevel:
 			// case LumpType.DispMultiBlend:
-				
+
 			default:
 				return GenericLump;
 		}

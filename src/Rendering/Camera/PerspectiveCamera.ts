@@ -39,7 +39,7 @@ export class PerspectiveCamera implements ICamera {
 	public set verticalAngle(value: number) {
 		this._verticalAngle = limitAngle(value, -89, 89);
 	}
-	
+
 	constructor(width: number, height: number) {
 		console.log("--Initializing Perspective Camera--");
 		console.log("	Canvas Width: " + width);
@@ -66,17 +66,17 @@ export class PerspectiveCamera implements ICamera {
 		// calculate projection matrix
 		this.getProjectionMatrix();
 	}
-	
+
 	public getFront(): vec3 {
 		const front = vec3.create();
-		
+
 		// x
 		front[0] = Math.cos(glMatrix.toRadian(this.verticalAngle)) * Math.cos(glMatrix.toRadian(this.horizontalAngle));
 		// y
 		front[1] = Math.sin(glMatrix.toRadian(this.verticalAngle));
 		// z
 		front[2] = Math.cos(glMatrix.toRadian(this.verticalAngle)) * Math.sin(glMatrix.toRadian(this.horizontalAngle));
-		
+
 		vec3.normalize(front, front);
 
 		return front;
@@ -97,7 +97,7 @@ export class PerspectiveCamera implements ICamera {
 	public getProjectionMatrix(): mat4 {
 		const projectionMatrix = mat4.create();
 
-		mat4.perspective(projectionMatrix, 
+		mat4.perspective(projectionMatrix,
 			glMatrix.toRadian(this.horizontalFov),
 			this.aspectRatio, this.nearClip, this.farClip);
 
@@ -124,7 +124,7 @@ export class PerspectiveCamera implements ICamera {
 			console.log("Error, height cannot be 0");
 			return;
 		}
-		
+
 		this.aspectRatio = width / height;
 	}
 
@@ -149,55 +149,33 @@ export class PerspectiveCamera implements ICamera {
 		// get front matrix
 		const front = this.getFront();
 
-		// x
-		this.position[0] += (this.speed * this.mulitplier * front[0]);
-
-		// y
-		this.position[1] += (this.speed * this.mulitplier * front[1]);
-
-		// z
-		this.position[2] += (this.speed * this.mulitplier * front[2]);
+		this.position[0] += (this.speed * this.mulitplier * front[0]); // x
+		this.position[1] += (this.speed * this.mulitplier * front[1]); // y
+		this.position[2] += (this.speed * this.mulitplier * front[2]); // z
 	}
 
 	private moveBackword() {
 		// get front matrix
 		const front = this.getFront();
 
-		// x
 		this.position[0] -= (this.speed * this.mulitplier * front[0]);
-
-		// y
 		this.position[1] -= (this.speed * this.mulitplier * front[1]);
-
-		// z
 		this.position[2] -= (this.speed * this.mulitplier * front[2]);
 	}
 
 	private moveRight() {
-		//
 		const right = this.getRight();
 
-		// x
 		this.position[0] += (this.speed * this.mulitplier * right[0]);
-
-		// y
 		this.position[1] += (this.speed * this.mulitplier * right[1]);
-
-		// z
-		this.position[2] += (this.speed * this.mulitplier * right[2]);		
+		this.position[2] += (this.speed * this.mulitplier * right[2]);
 	}
 
 	private moveLeft() {
-		//
 		const right = this.getRight();
 
-		// x
 		this.position[0] -= (this.speed * this.mulitplier * right[0]);
-
-		// y
 		this.position[1] -= (this.speed * this.mulitplier * right[1]);
-
-		// z
 		this.position[2] -= (this.speed * this.mulitplier * right[2]);
 	}
 

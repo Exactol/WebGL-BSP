@@ -20,7 +20,7 @@ export class MouseHandler implements IEngineComponent {
 		} else {
 			document.exitPointerLock();
 		}
-		
+
 		this._active = value;
 	}
 	public get active() {
@@ -42,7 +42,7 @@ export class MouseHandler implements IEngineComponent {
 		}
 	}
 
-	public pointerLockChanged(coreEngine: EngineCore, e: MouseEvent) {
+	public pointerLockChanged(coreEngine: EngineCore, e: Event) {
 		// pointer locked
 		if (document.pointerLockElement !== document.getElementById("canvas")) {
 			coreEngine.messageQueue.add(
@@ -56,7 +56,7 @@ export class MouseHandler implements IEngineComponent {
 			case MessageType.ToggleCameraActive:
 				this.active = message.data;
 				break;
-		
+
 			default:
 				break;
 		}

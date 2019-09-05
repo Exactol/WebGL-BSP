@@ -1,0 +1,1448 @@
+{
+  "program": {
+    "fileInfos": {
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es6.d.ts": {
+        "version": "c180f01a2aaac7d733001fa1db20f881dc83cf33096b674a1546ca26762e69da",
+        "signature": "c180f01a2aaac7d733001fa1db20f881dc83cf33096b674a1546ca26762e69da"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es5.d.ts": {
+        "version": "1f753cee573dea40df8a9dc873fef5566957b19ad513874f6643d8dfb14842d0",
+        "signature": "1f753cee573dea40df8a9dc873fef5566957b19ad513874f6643d8dfb14842d0"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.d.ts": {
+        "version": "7994d44005046d1413ea31d046577cdda33b8b2470f30281fd9c8b3c99fe2d96",
+        "signature": "7994d44005046d1413ea31d046577cdda33b8b2470f30281fd9c8b3c99fe2d96"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.dom.d.ts": {
+        "version": "cc3cbd583b6d3faa6dc73bf3900dbcfee4c70df9a8dbe73cdef0ec1dea6c4685",
+        "signature": "cc3cbd583b6d3faa6dc73bf3900dbcfee4c70df9a8dbe73cdef0ec1dea6c4685"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.dom.iterable.d.ts": {
+        "version": "eb843da29336c7d5840bb439b24cf68a4a1652fd01c6e4e66ec74d8b136e944a",
+        "signature": "eb843da29336c7d5840bb439b24cf68a4a1652fd01c6e4e66ec74d8b136e944a"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.webworker.importscripts.d.ts": {
+        "version": "fe4e59403e34c7ff747abe4ff6abbc7718229556d7c1a5b93473fb53156c913b",
+        "signature": "fe4e59403e34c7ff747abe4ff6abbc7718229556d7c1a5b93473fb53156c913b"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.scripthost.d.ts": {
+        "version": "b9faa17292f17d2ad75e34fac77dd63a6403af1dba02d39cd0cbb9ffdf3de8b9",
+        "signature": "b9faa17292f17d2ad75e34fac77dd63a6403af1dba02d39cd0cbb9ffdf3de8b9"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.core.d.ts": {
+        "version": "2a0390a665763bcc90f0670e43c587928d8fefe2a94a11209c1e22cba7b09f52",
+        "signature": "2a0390a665763bcc90f0670e43c587928d8fefe2a94a11209c1e22cba7b09f52"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.collection.d.ts": {
+        "version": "dd94d8ef48c562389eb58af8df3a3a34d11367f7c818192aa5f16470d469e3f0",
+        "signature": "dd94d8ef48c562389eb58af8df3a3a34d11367f7c818192aa5f16470d469e3f0"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.generator.d.ts": {
+        "version": "828413486bdcaa342558e8e4570b1b287b776cb61b4b70b0214bd10c5d9a94c3",
+        "signature": "828413486bdcaa342558e8e4570b1b287b776cb61b4b70b0214bd10c5d9a94c3"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.iterable.d.ts": {
+        "version": "6c9f73334f8bf47aea685ca5b46a8f7e992a223e96fbceb030f26a4d2324ba21",
+        "signature": "6c9f73334f8bf47aea685ca5b46a8f7e992a223e96fbceb030f26a4d2324ba21"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.promise.d.ts": {
+        "version": "e6b8ff2798f8ebd7a1c7afd8671f2cb67ee1901c422f5964d74b0b34c6574ea2",
+        "signature": "e6b8ff2798f8ebd7a1c7afd8671f2cb67ee1901c422f5964d74b0b34c6574ea2"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.proxy.d.ts": {
+        "version": "5e72f949a89717db444e3bd9433468890068bb21a5638d8ab15a1359e05e54fe",
+        "signature": "5e72f949a89717db444e3bd9433468890068bb21a5638d8ab15a1359e05e54fe"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.reflect.d.ts": {
+        "version": "f5b242136ae9bfb1cc99a5971cccc44e99947ae6b5ef6fd8aa54b5ade553b976",
+        "signature": "f5b242136ae9bfb1cc99a5971cccc44e99947ae6b5ef6fd8aa54b5ade553b976"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.symbol.d.ts": {
+        "version": "9ae2860252d6b5f16e2026d8a2c2069db7b2a3295e98b6031d01337b96437230",
+        "signature": "9ae2860252d6b5f16e2026d8a2c2069db7b2a3295e98b6031d01337b96437230"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts": {
+        "version": "3e0a459888f32b42138d5a39f706ff2d55d500ab1031e0988b5568b0f67c2303",
+        "signature": "3e0a459888f32b42138d5a39f706ff2d55d500ab1031e0988b5568b0f67c2303"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts": {
+        "version": "4a0f0317476f6801c0e19b8ba226ccaf5970a598e6439e6facd1054b59b078e0",
+        "signature": "4a0f0317476f6801c0e19b8ba226ccaf5970a598e6439e6facd1054b59b078e0"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts": {
+        "version": "ffbe0c0c8b1f53c3dbc6edb1e939548db00f5f3f1d8262c94656df990754c0e7",
+        "signature": "3be4d9bdc81cb6029c6aa594fc1a5a033f5430747ca0400b7216a371602fcb72"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts": {
+        "version": "e4e3f493602f84b83bbd1a2d59e6c9b12eab2cc6b83e242e9815612d3bcd1d73",
+        "signature": "04f5b0c42d2aac49f7dbe615a9160a8bce41fe83120ebb6632751ac2f3a8fdd6"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts": {
+        "version": "c8f53a315f1b524df560e2295538380c2cac0fbe360020bd9232d14dd041925f",
+        "signature": "9ab554f544f1b8868f5b8ec04a2fefed71799d328c5e0a0c709fe9199ae9f667"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/icamera.ts": {
+        "version": "99577f9837c2f0b36f6d74f4c5d16976a85e382cab675d4aad33cd7933cfb18b",
+        "signature": "600462159def06fd2e892e52708820c10594080aaaccd31d82a2d4156e152e5b"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shadersource.ts": {
+        "version": "6f24a499b7afdcb4bb5d9a55cef574cb400ee58f7f7e48edbfe947b7fb33496c",
+        "signature": "ac435bd9907199fe84fb838d6407bd50fad4e12286af3d6dfd109783957c86c4"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shader.ts": {
+        "version": "56e4500e039448ad6d30bbe8b31a3f027b7249595082bbb9519acc66ad2de9d9",
+        "signature": "bbee6e972ff87b8d89ac5a107b6d11005f0e9285ae2729a4757d8d2c0b7a7d90"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/structs/vertex.ts": {
+        "version": "f2cad53bb62a2b4441b27412d6e9552525f39db8c8964e5be9f1c4edb4644f4d",
+        "signature": "8c2f584468bb566042efc16a285849a8365a38420cfca326fb9ec3e3dad5c823"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts": {
+        "version": "e059642d2e82dfece26c149302cc2865de43be8bfa10bf1d0bf0c8fbfb48dd69",
+        "signature": "2a832c630a31ad31d5b4fe3a58922515a14f65bdcacd8f507dc7ed042ef87660"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/layoutlocations.ts": {
+        "version": "a98ec966de0d69e3b0207174ffdc95534ea6d0c4a61510bc71a2d56c7893ad90",
+        "signature": "c4813ba3067a7451636109abed103108291b01aab2ec47f798e7cf612293dcda"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/renderobject.ts": {
+        "version": "65a18495a7872bef9c50e88cec07d5efb237700b57ae45bace4b9b54f48ffc70",
+        "signature": "53299bf23e214bc57d85e76ede228c793acab33ea7bd4dc32df1039399eb7a44"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/keypress.ts": {
+        "version": "66fd94812dcf38b6d6fb732e3a1e1816ffec31b56d89273040818b49253e3e1a",
+        "signature": "fbd3f0f370c4d96d8adc98160d3bdb9d6049bffee27a9ec7d1b79716b18f79d5"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/mousehandler.ts": {
+        "version": "beccaed448cb549b92662763a5825cbe138d5fa8d9ce2d329ec64266d7f2f1b3",
+        "signature": "09d52ef10173385c5a1eaf063138df93531e264847d691f81ef539a56e37c529"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/wrapangle.ts": {
+        "version": "94073257b665767adb0ac326b7f06be486d8555a3899acb50c077a11af8c0eb5",
+        "signature": "0c9fb53efa4a8dcc3b5d4ae9f4b116237bfb2a011b955b0d451d10bb005808e6"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/limitangle.ts": {
+        "version": "d10af7caf9ed3339dab7b883c1edacbb949d032524b095fb9f6394bdfc07fd75",
+        "signature": "b1793a4053de7d28e408a71398d6ea126c8f1577763c9efd5838c5e5c0c7d76e"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/perspectivecamera.ts": {
+        "version": "97d79447338d1c0c48d5a6e4f61155fc608e90941faf7206eb6fbe76bbd74073",
+        "signature": "4bfdf9076a243ef2b33fe044bd0c25f96d48b369af6dd0803f6357e161fdfa9d"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/meshfactory.ts": {
+        "version": "8ae31780094467ac4e7eec7816f4798ebc69840f012ce12baa782205d46ff338",
+        "signature": "4d3b58e2fdffde8c2da31be1636b8e733a543827f41fa8e30120a7cf19e7f99b"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texture.ts": {
+        "version": "1f9a7a9f7c9611640963e0eac506e5e6ec4c2fac3764e5f17717f22d21a90018",
+        "signature": "94789b677739e723ae82a26e10ea4fbbb5a6cf211ee9544d3b5acd716068488c"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/uniformlocations.ts": {
+        "version": "402bddafc1d532c50adfcc02fde15986c26d255bb8574f5d839b23088e244ce0",
+        "signature": "6335998908f5091b51feac20ed20a53121d38dc1e7b45c970fb46f93e36a8c19"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/addrange.ts": {
+        "version": "6835199b705b4df52082b1fbea474ead1f8027b6d5ce25bb2a20047c25fefce9",
+        "signature": "7b6c28b408785a574c0643db7f8a425cb1ffb838531b75530f7dcf07a9dd6631"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texturedictionary.ts": {
+        "version": "c6f0839bcce2e01feabb0bde80eeb1f2b726a9f101bfe30a9ad551fe32b38c18",
+        "signature": "46b4dfb0d8603a841ec1a69e7c43bfe61feab9661fb97752953df37a89fd5868"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/messagequeue.ts": {
+        "version": "02d7d819386ec642aaf9643bc0915c1206f022e98702083967bf232c9e5a5e47",
+        "signature": "abed97e4f96cd67f126a81d8e7bd54f4c3a73af91fce4a5d4df5955a43be7162"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginecore.ts": {
+        "version": "c4f4fd381b8add643ce9587c9fa1eae66a0f339d8033df57ec79ae4cd6f93f0f",
+        "signature": "655ca080fd181f92df9b1ea35dfdf52a54fdbabc3eaf5895edb1ef39a0feee9a"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/keyboardlistener.ts": {
+        "version": "093fe0ac1a856666bfcd6840927faba91584e1b927d3102b1e5f40f4a20b9a77",
+        "signature": "791cb89aaf9fb788637bc7052ce81319cbfcd02e7b4ef2ed28dff64fad930203"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts": {
+        "version": "cae395ed0c3fd9eab301fec64521bb5a8802f2a36b38536181a7ac1c9e848af4",
+        "signature": "17096883a7efa1de553727ef582c063f987d5b5bdeddcc9d8c8f9eb384ef9ceb"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts": {
+        "version": "e331200beed1a6451cd2743d984b81900b55e03ef83f2213da5632f269fd3160",
+        "signature": "ff18c163c35573a32fc0e7bd5d0df99ff65a0113657a4a301190bd30edb3464b"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts": {
+        "version": "dd62a6a6251544678544f50ba6b4a2e0259c48919682a8d275b71ed1d81ceb23",
+        "signature": "93370b17f23869dd068ba151be463c4d513eb065fffd3cefe0973d959de435c7"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts": {
+        "version": "96c9f0ce1066c622df4dff52c3d483a773a06397d697a868a65e3ac684253cc0",
+        "signature": "13bf657e570ef0f4ca780980adb44ac7539b5f7a094e8482070042e270a3d26c"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/edge.ts": {
+        "version": "51659f6ed070172187129683014fbf7fa036a8f636c877579bdd48945b2421b8",
+        "signature": "59577b59dd930cac9b4506e180c0d9846d71766423564a46dbb12dfb4ff22431"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/edgelump.ts": {
+        "version": "fe1dec328f5033fa4a19b1aae8857b097b7983c66a410aba1f64a4ea3e2aa68a",
+        "signature": "359d495587d3bd7dbb03fdefa54d57780dc6c009cee1c73f91fa7599950d36f4"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/genericlump.ts": {
+        "version": "3ac72a774637211d9f7a45dd294f187876fa1753be30a5340e8d6eb5be5e6bc8",
+        "signature": "b7eadf1a8356917f11f4e7682fbb837ec872ed5a10664fbe94e968c6aa13fc77"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/vertexlump.ts": {
+        "version": "c7c0eaedacabe3c6042bd26e4c0c33157b9939a856cc1e80ab333e78984d3b2e",
+        "signature": "6167ffd19e5f585d7514d984df7699677d4f0066d607fc9c25c5d64028ca1bc0"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts": {
+        "version": "db797ff10eae692dfeb7722cc27bc6b8457232e70f085b4494e9b312b8231a8b",
+        "signature": "69d16bd260f4c1f3697e6fa7e43b3eaea616952f170dc16e2bdbf30631781bb1"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/planelump.ts": {
+        "version": "a03466ba6d2d5e6b5b526c4db3dc4f15921cfdfd6e8c49b72bb6910c81bd2611",
+        "signature": "ba12f6266d6a2a211915425aa204d35dc31641ab4a5067a6ec4246d1697a3b10"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/surfedgelump.ts": {
+        "version": "8d8ad8b3e8588b545a8bc8488f8f256ddbe2e28671e22278f78e3d966e61c3d5",
+        "signature": "fd66af21a98b7b2bf5fdf6791129719661fd80ab6a2f86df07edcf7f0d7e5e72"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts": {
+        "version": "5990af7533c7e282f3a0c53a55070d21dc10e16a709bdea296f0ab9cd4f69f41",
+        "signature": "b4d8b018ae6ff3b6d28fb6bf0cf86a9bf51e608a39cbfbd8a790cd46dce044c3"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/facelump.ts": {
+        "version": "8a1a34a39c6c18496914890b7ebe39a84400ae3a220ed2be535d38d3a6c89c73",
+        "signature": "1648aacf3780ca282b83f6d28aa3250202284e860b18bf255e8a0aa1fb68195a"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/originalfacelump.ts": {
+        "version": "379a534b47aa2f7d2934375217030de50af432a9bedf820a08072e8cc1a84580",
+        "signature": "f1c378bbb1a9df4c7a050ebddf9e18293c262e2e94ebed50e7a4766b7162ca03"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/enums.ts": {
+        "version": "0f7163919ba1146b3a1f73f81fa384af7fc3bd2ccb6990b1019b331e82245d5d",
+        "signature": "ace815d28e0a207c337a2c716f19597a73f08ca32b1b86695669739c4156fed1"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/brush.ts": {
+        "version": "bd0459fdf3613e241db213b8357107fb2bba1747c3f789c7e3c16de87d48156f",
+        "signature": "e9c4df0e1de306acad730441d29d5a691673e1bfda9096fbd36a6eb7b9b68615"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/brushlump.ts": {
+        "version": "df4bbba9a88d0e2ed40f91a262c930de1c2ec77c89b38ecc8f2d39b97888a1a7",
+        "signature": "233052d889d98230221c60bc825d4a5ffad9cecc152c841c89c4bb99007b6097"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/brushside.ts": {
+        "version": "ce29003182c160eaf852ed5aa1ffe8a2423cbb389bc9233fae5d75aa8bf0ac18",
+        "signature": "f7fd3ce6c2e9b7371cf321dbcd287e31a477401b7b2578e8fcb84113955904af"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/brushsidelump.ts": {
+        "version": "d361f868147407e66dd9b363ce69e781e50531da9aaa506fdc9f410f6e05373c",
+        "signature": "81c35b4ba2bc1022a3fc33a30ef271aab3073ddf785bcaf0b7c177ec15f66a23"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/node.ts": {
+        "version": "050e122425eca1f017806636760b109c02eb4a016d16e54416cc5cdf7214be17",
+        "signature": "71cdcad7a10a33f312cdbd36cea420b8b25e9d7ffc98f4eb223237612267ce8b"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/nodelump.ts": {
+        "version": "4561a1341f590eb818f97e5ebfebbffc78a83d118417c9257740d7a735d24ec9",
+        "signature": "d3a4673430af7d2cfed3152c38daf247bed84954c54c87ba6e2b69a5d907ccc5"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leaf.ts": {
+        "version": "8eea6d8e6c75f94dad1d32b5fa4740974d6caa2761cf03a849e81c16361cc560",
+        "signature": "99f10fb008fe1cb2d8836ec681d756499f2e026c1adde017078f9422f230355b"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leaflump.ts": {
+        "version": "bc98659b035c5770069f6df809babbe67c8295875292f590d7f3d4b0988cac61",
+        "signature": "de67a507da17c61f74bcede6d39dd12b8036b9a8c6f3a55e3a8bd271c6ba4dd2"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leaffacelump.ts": {
+        "version": "ea984bd9182a46691e7282ded471f4dae40c0757e96c94b73d497de2ac6d1941",
+        "signature": "930b5b622eca5c43dbd5d9d97784081cb69081e182325dc86aad1c4e24fb1d00"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafbrushlump.ts": {
+        "version": "af54071751642d7cff1d7f841f07657d0201daad5900263ba06a965dfc8808b3",
+        "signature": "be25348c39fed81c3692c9a7a771ce53dea5a5413c5d8f5229ba167a5ab43f90"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texinfo.ts": {
+        "version": "6a9eed94ec9958a9a98617eb61dfd5dbebb1c9847f2408a1149c571b3757c008",
+        "signature": "4205bd2a8115016d833b0065f456b78745bdc1ddc01035d9146861930a774e9f"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texinfolump.ts": {
+        "version": "f36f523de9c096be3f59eb01c11d4c3641f33dbd5f3406f94a78a07bd5d9ca3b",
+        "signature": "0860a4ca0d7de35de8ac038ac58bfd418aa54e675d3f142e0df9ef3b9d1cd869"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texdata.ts": {
+        "version": "58d7f2132fcc8630ab90d65571cbec0a4b9bab0da449040aaa20fbd1181ed909",
+        "signature": "59552b6a2a286d96dcf55582543f66a63bf91d4d8515f947b2b392bd2ad1e6ae"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatalump.ts": {
+        "version": "88b0311c9ffbce04007c3ba0d124e6fc1374a3f0e405155575b9e7e113b29252",
+        "signature": "02a87600c68f857b9a5a36470f1b40e2dcfac6e7eac4375fa51bf67e9ee5c3c7"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatastringtablelump.ts": {
+        "version": "688a81e84f323f7677f2eeae3221bbae74086d250953d6ddc2f852ccf4e783ba",
+        "signature": "15365e1a3dcc128ef9ea7115616ac353b97c2f08cacad5c3dc6a731f9e28e3e3"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatastringdatalump.ts": {
+        "version": "7a00fa0313e1eb101073415e2183316de809e36199559a3eac8ecc8c2c6ddf8a",
+        "signature": "84ef7a4427fa899f52c5ebea729c52905c30cc362069f8b81b9870f8722ab46c"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/model.ts": {
+        "version": "fe350586f82fc5d0da8ab09c93320cf849226205d184366f1c1efa0947c1beca",
+        "signature": "0394a09968e45d6747dbc7fcc817d9ca64046c0093ec628f42b8c19cfd6299b5"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/modellump.ts": {
+        "version": "2905083ef6e54706ab33b86f1e5027bd81652913140ab5586583928bb770a649",
+        "signature": "a4bb8cfb7637cb81195892c06f639cf1e0714850f750046c6f7a76588e33fe20"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/entitylump.ts": {
+        "version": "c219264e787a5a505f7fa025407ece213d3ca0c87bd6f39e98656ad50e377072",
+        "signature": "ac346ee84af711bd6269e65063d101441e070815931bf41f5cfc9e6adeeaccfe"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/gamelumpstruct.ts": {
+        "version": "d2b204b40fd297315f547acedeb24dc82215ec540bedd4fe1855d69dc50cb10a",
+        "signature": "f8802f339a538d0cd27a417d08091a7a2bae3e1a235ac659336a1fbed3f86c1a"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/gamelump.ts": {
+        "version": "6efa63bbbbaf83c4f3e18d167d9f49bf8f86ae63e1ea67c36feff8671965b1bb",
+        "signature": "60ab16c88867a47c78b75850df98058147865ae10688d3a84959e3f8bd1c2d94"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/cubemap.ts": {
+        "version": "10d181e1523a2eaa750a2ef70ff070009a8e5bdfc882d5d95fae5c7d451bcd4c",
+        "signature": "fe59a7b9efdf13c7a177003c49fe6592fb971ffbd1056eaefc3abf4f23b9c077"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/cubemaplump.ts": {
+        "version": "898cfd9e947a13b5c51574c961637631ef6c7e8e6fd850f96b1af9983495efb8",
+        "signature": "e05cd62f021c9ee56e679eb2c54769e29266a067e98646aae9411e0fb68e3eaf"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/colorrgbexp32.ts": {
+        "version": "3bc3b25db83883820b17d107a0ad147d27f12a9b5b984c8ab26a9e37b654eddf",
+        "signature": "607013c1135b5227049f34cf794313595845198b2f8812f699f1535000930485"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lightinglump.ts": {
+        "version": "f5395e151c8c30457734ed8ef37b564dcc36c1dadd390bdd0745d4b197f9543a",
+        "signature": "9605b9546c2ee69f655ab093313246a3f256843a99c22915d2e06310b4951459"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/compressedlightcube.ts": {
+        "version": "00a7f528500c284d009debe36cb80cb3b08b50f1c97113de3685f59d4033aacb",
+        "signature": "6227c7718c8650858c409e8d25b2eaec9e885fd5a021afe67adbb6a2e6e17354"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leafambientlighting.ts": {
+        "version": "0eef74eb497dba06d784a633d7af30cd199da74fdfba517c544505454eb50194",
+        "signature": "cec7f4f0272302a9477d22881a05511cedaf844f22339b29da9505f4b316a643"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientlightinglump.ts": {
+        "version": "3ec1cafc589f5ba7d8aa9652dd7cbd8c438c8f2eac83457f5efb853148fb8c4d",
+        "signature": "2a1df35733c46e829006605c1de61fb6afc06d7b33228c0226125ed244adfa66"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leafambientindex.ts": {
+        "version": "e6660d5b4583b6d62a3773f8733fc5900561d12daeea9b8483a59d0f17abb679",
+        "signature": "d80087f30fdeacb4a287eb71ecb89ee21847f05b1987ad3dd2978ef8f3be20a1"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientindexlump.ts": {
+        "version": "674a863d36063256679ab0b88a665a79b8d66ce57d8ccc8b4e66c644c853707d",
+        "signature": "74b5bc4cb2b8701ccbbc28b337961b68ca32ed47738e8076e4d1b889dd87514b"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientindexhdrlump.ts": {
+        "version": "09007d23899f51f83fb30a98e13dd4f11caed1b0d8605e45bf1d9af48a5e3b61",
+        "signature": "b2398bc8dfccf865cdcc87fc944c813d86d1f873a8eaf169c8fd6ce5448eee52"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispsubneighbor.ts": {
+        "version": "6d6074e78e019c13b8afa67caa7b659032799e6c9d8cd37fb26d67e51a41f875",
+        "signature": "f06969f7b4bd2b97e6df0a8ff8159b750ecd1cc1e65f44504070eb72d625df45"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispneighbor.ts": {
+        "version": "813c6483eec1aba716f72431bcf8bbe2545505fede331d4b4c932dd47010bf86",
+        "signature": "c7beedcaacf5ce6a8cbab69f01edb7ec63ca9bdc1033514409185e43fdfa1af2"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispcornerneighbor.ts": {
+        "version": "f34ff3ee2260ec0e6dd8da732b787ed53b9d4a4a9aeb9b43f26ef6e4bc0b84aa",
+        "signature": "835798e1741dc8ff97c7ddf73160ce81f6d09998423964834bc7b06c8f9f216e"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispinfo.ts": {
+        "version": "2fbc3227304d948e2b9c7415e2d1e50d99f18c05bdcc11265c04384e36d21a51",
+        "signature": "5be678d0944853e28c16cf4e93695987f86cca7d9fca8dcb30c4fa9c99df40f5"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispinfolump.ts": {
+        "version": "1a74d5dddd0cd344699e2eeb54a750874f4cfefd9fb750ed847daf3cb55e3b12",
+        "signature": "5eceb6b941265ac1ac8dd8f2db3c5b502283a037ca9a01b7ce31c874cce15f6c"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispvert.ts": {
+        "version": "63516ca698789c6fecf108799388d8307aaf422e95db2e2f0dbb26a55f50e5f1",
+        "signature": "04794fdca4caefc63fa521f9ebc691d1f7bce621894b5a368c0511952d2d65d4"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispvertlump.ts": {
+        "version": "7c1e23cfb0d3d23736114a810b1ab2a72e6f25479f9d3318f27dbaeae69da754",
+        "signature": "3632dd3d2c3dc9ccca38155a9cfea5002b44b98344daf152f323f2917b5726c0"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/disptrislump.ts": {
+        "version": "f210c353e38e33e140f9d6f996b55cbd02f3b8f1895898af466288c7c779c82d",
+        "signature": "9c556a6f624975e355d2b18893f0b656e86e387471eee0ee8265374862ad0b25"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/visibilitylump.ts": {
+        "version": "0f478da54cb1a0f1957ae55b4de7bc186bc06417cb75b544bf17a6177f63a6d3",
+        "signature": "98477016fbacda9b3cdec6a51ca27f26b0a4d8e70a74033bdd8eea425a1d667e"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts": {
+        "version": "0ae8bf764105c61b423c82ff2b3050b4c2b9fd535f9db1254e6bfa58065e164c",
+        "signature": "ca1dc5c6f93257d644a123cf897eea351764748d201cfd88f055a7914067d710"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts": {
+        "version": "733cb00a82a647c8ff879614adc12b786c9218c71030b6e82f63933735b9ee75",
+        "signature": "fc39ce5eb7c6fc906bf657494cba4050bc0ffcfff1f0e60e23f619850473486c"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspface.ts": {
+        "version": "09b834e45b623a93c0f4378fc2510ff9839376c8089d570a2f5c443d6a1d7648",
+        "signature": "2edf2b8ea1cfe7feee62831760f8364865b595825af7fb81523bbf6b0d96c802"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/ibsptree.ts": {
+        "version": "3396029b33b2ea1831cd834a94c7ea576ac268722cdc0877076390da99a0a4be",
+        "signature": "2a96310716bef358bff614d6c41293fafcbb538d1321c61974f256024466e26f"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bspleaf.ts": {
+        "version": "91609f1dc52028591830622558fc397e69ac63e4914c30845df3890b73d09fca",
+        "signature": "6a881ba605032da52258cf438c6c9799e80839618ab193d5d34e16f8f3c94243"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bspnode.ts": {
+        "version": "8865854607048a30042909d0fc0ed26858448ca8631c4b9179f7ca874528e395",
+        "signature": "8120838e5b932e576a0fe32123f0e1ef2b99fc43f1a81f5c428f9a69323c9aab"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspmodel.ts": {
+        "version": "d6ed8d2bbed5b654b317b08d48b52295f4ffe7a3bec10f35556177deb62f66dd",
+        "signature": "529ed5d9eab7e55ef7427b311d3037ad59ffa3ba134b77ef7b181f5dbdd66b79"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspmesh.ts": {
+        "version": "f56dd6892ab8bb793c2d027202daf87ce456108ac2b94686a00ae1e3ebca42f6",
+        "signature": "b177248e4f72ea7561b42f1b894b3efd825e73384b7ef2b0863067afa778e499"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/main.ts": {
+        "version": "c72ef68ba5d19ee5791c5a58e95944ce228a9f160857fe23027f451ec9a399b4",
+        "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginestate.ts": {
+        "version": "1c34a35e98e41e0f69e5b75cc4a702665e541647a2b0478cc604e57133a38662",
+        "signature": "7f27dce1e86b9dcc5c413c50e645b1f91c8ad46f060302dbf3b7102404ba67cf"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/orthocamera.ts": {
+        "version": "82c8e1cd6fbc98aad04c4f427193ab87df175db1ab5d98280cdc5cc9c3c6dbdb",
+        "signature": "1328423c8f7813ba969a324adef0df23ed5138763e4e8d371b3f8f4e75db19e6"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bsptree.ts": {
+        "version": "c655662ec5497327d024715e6bd23a6b45c12e916e33549665c32e0cab31f281",
+        "signature": "87e1f47c4665c93441086f718206728a285fcd2b86a69b84d4b574ea98cb5835"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/ziparray.ts": {
+        "version": "01209f806a608f523972e4b2fb52482728f924940f4566731099474b55a466e3",
+        "signature": "d42d800b48c3ac0a9b4e4a1f963c7e0921bdc481519755f2a066fbdb98d62ea6"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/lzma/lzma.ts": {
+        "version": "4cf846ae0c9ccbca9888f47a4f49eafcd168c3885758cbd6b3a931922b02288d",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/webgl-ext/index.d.ts": {
+        "version": "49febed15cc962e5823a8b0781f0fcd8f5f63f6bcadcdda5e30e4d173ce738d4",
+        "signature": "49febed15cc962e5823a8b0781f0fcd8f5f63f6bcadcdda5e30e4d173ce738d4"
+      },
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/webgl2/index.d.ts": {
+        "version": "725f24d7faecf5518db239e45abcf07bb34049e6a28b23db8cb693e969467cc8",
+        "signature": "725f24d7faecf5518db239e45abcf07bb34049e6a28b23db8cb693e969467cc8"
+      }
+    },
+    "options": {
+      "target": 2,
+      "module": 1,
+      "noImplicitAny": false,
+      "incremental": true,
+      "sourceMap": true,
+      "isolatedModules": false,
+      "strict": true,
+      "typeRoots": [
+        "c:/Users/10zil/OneDrive/Documents/Visual Studio 2017/Projects/Web/WebGL BSP/node_modules/@types/"
+      ],
+      "esModuleInterop": true,
+      "project": "c:\\Users\\10zil\\OneDrive\\Documents\\Visual Studio 2017\\Projects\\Web\\WebGL BSP\\tsconfig.json",
+      "configFilePath": "c:/Users/10zil/OneDrive/Documents/Visual Studio 2017/Projects/Web/WebGL BSP/tsconfig.json"
+    },
+    "referencedMap": {
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/icamera.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shader.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shadersource.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/structs/vertex.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/renderobject.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/structs/vertex.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/layoutlocations.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/mousehandler.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/icamera.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginecore.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/keypress.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/perspectivecamera.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/wrapangle.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/limitangle.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginecore.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/icamera.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texture.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texturedictionary.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texture.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/addrange.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/messagequeue.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginecore.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shadersource.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/icamera.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/renderobject.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/keyboardlistener.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/mousehandler.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/perspectivecamera.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/meshfactory.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texture.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/uniformlocations.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texturedictionary.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/messagequeue.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/keypress.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/keyboardlistener.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/icamera.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginecore.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/messagequeue.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/keypress.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/edgelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/edge.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/genericlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/vertexlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/edge.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/planelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/surfedgelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/edgelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/vertexlump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/facelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/originalfacelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/brush.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/enums.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/brushlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/brush.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/brushsidelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/brush.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/brushside.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/nodelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/node.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leaf.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/enums.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leaflump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leaf.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leaffacelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafbrushlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texinfo.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/enums.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texinfolump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texinfo.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texdata.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatalump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texinfo.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texdata.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatastringtablelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texinfo.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatastringdatalump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texinfo.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/model.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/modellump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leaf.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/model.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/entitylump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/gamelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/gamelumpstruct.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/cubemaplump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/cubemap.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lightinglump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leaf.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/colorrgbexp32.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/compressedlightcube.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/colorrgbexp32.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leafambientlighting.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/compressedlightcube.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientlightinglump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leaf.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/colorrgbexp32.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leafambientlighting.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/compressedlightcube.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientindexlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leafambientindex.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientindexhdrlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leafambientindex.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispsubneighbor.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/enums.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispneighbor.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispsubneighbor.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispcornerneighbor.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispsubneighbor.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispneighbor.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispinfo.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispneighbor.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispsubneighbor.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispcornerneighbor.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispinfolump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispinfo.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispneighbor.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispsubneighbor.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispcornerneighbor.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispvert.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispvertlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispvert.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/disptrislump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispvert.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/enums.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/visibilitylump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/edge.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/addrange.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/edgelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/genericlump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/vertexlump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/planelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/surfedgelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/facelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/originalfacelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/brushlump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/brushsidelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/nodelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leaflump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leaffacelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafbrushlump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texinfolump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatalump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatastringtablelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatastringdatalump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/modellump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/entitylump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/gamelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/cubemaplump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lightinglump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientlightinglump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientindexlump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientindexhdrlump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispinfolump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispvertlump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/disptrislump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/visibilitylump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/uniformlocations.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texturedictionary.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shadersource.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspface.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/structs/vertex.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texinfolump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/planelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/vertexlump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatalump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/surfedgelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/edgelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/addrange.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/enums.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispvertlump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/disptrislump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispinfo.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispinfolump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatastringdatalump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatastringtablelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texture.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texturedictionary.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginecore.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/ibsptree.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bspleaf.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/ibsptree.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leaf.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/structs/vertex.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspface.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/addrange.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/facelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leaffacelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/layoutlocations.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shadersource.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/visibilitylump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bspnode.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/ibsptree.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspface.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/node.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/nodelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/planelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leaflump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bspleaf.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspmodel.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/structs/vertex.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspface.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/model.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/facelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/addrange.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bspnode.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/nodelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/ibsptree.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/node.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leaf.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspmesh.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/layoutlocations.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/facelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/addrange.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspface.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texture.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/uniformlocations.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texturedictionary.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/modellump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspmodel.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/main.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginecore.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/meshfactory.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/renderobject.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/structs/vertex.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspmesh.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispinfolump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/facelump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispvert.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispvertlump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/disptrislump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leaflump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/visibilitylump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginestate.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/orthocamera.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/icamera.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/limitangle.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/wrapangle.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bsptree.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bspnode.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/node.ts"
+      ]
+    },
+    "exportedModulesMap": {
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/icamera.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shader.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shadersource.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/structs/vertex.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/renderobject.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/structs/vertex.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/mousehandler.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginecore.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/perspectivecamera.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/icamera.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texture.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texturedictionary.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texture.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/messagequeue.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginecore.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/messagequeue.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/icamera.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/keyboardlistener.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/mousehandler.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/keyboardlistener.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginecore.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/edgelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/edge.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/genericlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/vertexlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/planelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/surfedgelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/facelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/originalfacelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/brush.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/enums.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/brushlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/brush.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/brushsidelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/brushside.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/nodelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/node.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leaf.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/enums.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leaflump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leaf.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leaffacelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafbrushlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texinfo.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/enums.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texinfolump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texinfo.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texdata.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatalump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texdata.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatastringtablelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatastringdatalump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/model.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/modellump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/model.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/entitylump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/gamelump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/gamelumpstruct.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/cubemaplump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/cubemap.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lightinglump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/colorrgbexp32.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/compressedlightcube.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/colorrgbexp32.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leafambientlighting.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/compressedlightcube.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientlightinglump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leafambientlighting.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientindexlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leafambientindex.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientindexhdrlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leafambientindex.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispsubneighbor.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/enums.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispneighbor.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispsubneighbor.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispinfo.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispneighbor.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispcornerneighbor.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispinfolump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispinfo.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispvert.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispvertlump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispvert.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/disptrislump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/enums.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/visibilitylump.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texturedictionary.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/uniformlocations.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shadersource.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspface.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/structs/vertex.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispinfo.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texture.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/ibsptree.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bspleaf.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leaf.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/ibsptree.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bspnode.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/node.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/ibsptree.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspmodel.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/model.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bspnode.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/ibsptree.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspmesh.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/orthocamera.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/icamera.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts"
+      ],
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bsptree.ts": [
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/node.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+        "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bspnode.ts"
+      ]
+    },
+    "semanticDiagnosticsPerFile": [
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es6.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es5.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.dom.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.dom.iterable.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.scripthost.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.core.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.collection.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.generator.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.promise.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/gl-matrix/index.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/message.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/ienginecomponent.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/camerastate.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/icamera.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shadersource.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/shader.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/structs/vertex.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/irenderable.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/layoutlocations.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/renderobject.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/keypress.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/mousehandler.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/wrapangle.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/limitangle.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/perspectivecamera.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/meshfactory.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texture.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/shaders/uniformlocations.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/addrange.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/textures/texturedictionary.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/messaging/messagequeue.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginecore.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/keyboardlistener.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/utils/binaryreader.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumptype.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lumpheader.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/edge.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/edgelump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/genericlump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/vertexlump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/plane.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/planelump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/surfedgelump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/face.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/facelump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/originalfacelump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/enums.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/brush.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/brushlump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/brushside.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/brushsidelump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/node.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/nodelump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leaf.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leaflump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leaffacelump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafbrushlump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texinfo.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texinfolump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/texdata.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatalump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatastringtablelump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/texdatastringdatalump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/model.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/modellump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/entitylump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/gamelumpstruct.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/gamelump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/cubemap.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/cubemaplump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/colorrgbexp32.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/lightinglump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/compressedlightcube.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leafambientlighting.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientlightinglump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/leafambientindex.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientindexlump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/leafambientindexhdrlump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispsubneighbor.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispneighbor.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispcornerneighbor.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispinfo.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispinfolump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/structs/dispvert.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/dispvertlump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/disptrislump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/lumps/visibilitylump.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/bsp/bsp.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bspresourcemanager.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspface.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/ibsptree.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bspleaf.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bspnode.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspmodel.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/bspmesh.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/main.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/enginestate.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/camera/orthocamera.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/rendering/renderobjects/bsp/tree.ts/bsptree.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/ziparray.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/src/utils/lzma/lzma.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/webgl-ext/index.d.ts",
+      "c:/users/10zil/onedrive/documents/visual studio 2017/projects/web/webgl bsp/node_modules/@types/webgl2/index.d.ts"
+    ]
+  },
+  "version": "3.5.2"
+}

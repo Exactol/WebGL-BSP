@@ -1,13 +1,13 @@
 import {ShaderSource} from "./ShaderSource";
 
 // export class ShaderProgram {
-    
+
 // }
 
 export function CreateShaderProgram(gl: WebGL2RenderingContext, sourceShaders: ShaderSource[]): WebGLProgram | null {
     console.log("--Initializing Shaders--");
     console.log("   Number of shaders: " + sourceShaders.length);
-    
+
     const compiledShaders: WebGLShader[] = [];
 
     // compile each shader and filter out those that failed
@@ -20,6 +20,10 @@ export function CreateShaderProgram(gl: WebGL2RenderingContext, sourceShaders: S
 
     // attach shaders to the program
     const shaderProgram = gl.createProgram();
+    if (!shaderProgram) {
+        console.error("Failed to create Shader Program");
+        return null;
+    }
     compiledShaders.forEach((shader) => {
         gl.attachShader(shaderProgram, shader);
     });
@@ -42,7 +46,9 @@ export function CreateShaderProgram(gl: WebGL2RenderingContext, sourceShaders: S
 
 export function LoadShader(gl: WebGL2RenderingContext, shaderSource: ShaderSource): WebGLShader | null {
     const shader: WebGLShader | null = gl.createShader(shaderSource.type);
-
+    if (!shader) {
+        return null;
+    }
     // compile shader
     gl.shaderSource(shader, shaderSource.source);
     gl.compileShader(shader);

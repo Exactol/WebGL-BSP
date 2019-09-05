@@ -5,18 +5,18 @@ const gulp      = require("gulp"),
     tsc         = require("gulp-typescript"),
     sourcemaps  = require("gulp-sourcemaps"),
     uglify      = require("gulp-uglify-es").default,
-	runSequence = require("run-sequence").use(gulp),
 	clean 		= require("gulp-clean"),
 	gutil 		= require("gulp-util"),
-	plumber		= require("gulp-plumber")
-	debug		= require("gulp-debug")
-	print		= require("gulp-print").default
-	watchify	= require("watchify")
-	watch		= require("gulp-watch")
-	browserSync	= require("browser-sync");
+	plumber		= require("gulp-plumber"),
+	debug		= require("gulp-debug"),
+	print		= require("gulp-print").default,
+	watchify	= require("watchify"),
+	watch		= require("gulp-watch"),
+	browserSync	= require("browser-sync"),
+	path		= require("path");
 
 
-const path = {
+const paths = {
 	src: "src/**/*.ts",
 	typeSrc: "@types/**/*.ts",
 	jsDest: ".tmp/",
@@ -40,14 +40,16 @@ var bundler = watchify(browserify({
 bundler.on("update", watchBundleUglify);
 
 gulp.task("build", function() {
-	return gulp.src([path.src, path.typeSrc])
+	return gulp.src([paths.src, paths.typeSrc])
+		.pipe(sourcemaps.init())
 		.pipe(tsProject())
+		.pipe(sourcemaps.write({sourceRoot: "."}))
 		.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
-		.pipe(gulp.dest(path.jsDest));
+		.pipe(gulp.dest(paths.jsDest, {sourcemaps: true}));
 });
 
 gulp.task("bundle-uglify", () => {
-	var mainJsFile = path.jsDest + "/main.js";
+	var mainJsFile = paths.jsDest + "/main.js";
 	var outputFileName = libraryName + ".js";
 
 	var bundler = browserify({
@@ -64,11 +66,11 @@ gulp.task("bundle-uglify", () => {
 		.pipe(uglify())
 		.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
 		.pipe(sourcemaps.write("./"))
-		.pipe(gulp.dest(path.finalDest));
+		.pipe(gulp.dest(paths.finalDest));
 });
 
 function watchBundleUglify() {
-	var mainJsFile = path.jsDest + "/main.js";
+	var mainJsFile = paths.jsDest + "/main.js";
 	var outputFileName = libraryName + ".js";
 
 	return bundler.add(mainJsFile)
@@ -79,27 +81,26 @@ function watchBundleUglify() {
 		.pipe(uglify())
 		.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
 		.pipe(sourcemaps.write("./"))
-		.pipe(gulp.dest(path.finalDest));
+		.pipe(gulp.dest(paths.finalDest));
 }
 
 gulp.task("clean", function() {
 	return (
-		gulp.src([path.jsDest, path.finalDest], {read: false})
+		gulp.src([paths.jsDest, paths.finalDest], {read: false, allowEmpty: true})
 		.pipe(clean()));
 });
 
-gulp.task("build-and-bundle", function() {
-	runSequence("clean", "build", "bundle-uglify")
-});
+gulp.task("build-and-bundle", gulp.series("clean", "build", "bundle-uglify"));
 
 gulp.task("watch", () => {
+	gulp.series("clean", "build", "bundle-uglify");
 	browserSync.init({
 		server: {
 			baseDir: "./",
 			injectChanges: true,
 		}
 	});
-	watch(path.src, (file) => {
+	watch(paths.src, (file) => {
 		// for some reason gulp dest will not send output file to it's subdirectory, so it needs to be calculated
 		const subPath = getSubDirPath(file.path);
 		console.log(subPath);
@@ -108,7 +109,7 @@ gulp.task("watch", () => {
 				.pipe(debug({title: "Compiling:"}))
 				.pipe(tsWatchProject())
 				.on("error", function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
-				.pipe(gulp.dest(path.jsDest + subPath))
+				.pipe(gulp.dest(paths.jsDest + subPath))
 				.pipe(print((filepath) => `Compiled: ${filepath}`));
 		watchBundleUglify();
 		browserSync.reload();
@@ -131,4 +132,4 @@ function getSubDirPath(fullFilePath) {
 	return fileSplit.pop();
 }
 
-gulp.task("default", ["build-and-bundle"]);
+gulp.task("default", gulp.series("build-and-bundle"));

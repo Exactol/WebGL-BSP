@@ -2,6 +2,8 @@ import { Vertex } from "../../Structs/Vertex";
 import { IRenderable, Visibility } from "./IRenderable";
 import { POSITION_ATTRIB_LOCATION } from "../Shaders/LayoutLocations";
 import { CameraState } from "../Camera/CameraState";
+import { VertShader, FragShader, SimpleFragShader, SimpleVertShader } from "../Shaders/ShaderSource";
+import { UniformLocations } from "../Shaders/UniformLocations";
 
 export class RenderObject implements IRenderable {
 	public visibility = Visibility.Visible;
@@ -11,9 +13,12 @@ export class RenderObject implements IRenderable {
 	private verticeCount: number;
 	private initialized = false;
 	private renderType = WebGL2RenderingContext.POINTS;
+	private program!: WebGLProgram | null;
+	private uniformLocations!: UniformLocations;
 
-	constructor(gl: WebGL2RenderingContext, vertices: Vertex[]) {
+	constructor(gl: WebGL2RenderingContext, vertices: Vertex[], renderType: number = WebGL2RenderingContext.POINTS) {
 		this.verticeCount = vertices.length;
+		this.renderType = renderType;
 
 		// create buffers
 		const _vbo = gl.createBuffer();
@@ -55,14 +60,32 @@ export class RenderObject implements IRenderable {
 			0						  // offset (start at beginnng of buffer)
 		);
 
+		this.program = gl.createProgram();
+		if (this.program === null) {
+			throw new Error("Failed to create shader program");
+		}
+
+		const vShader = SimpleVertShader.compileShader(gl);
+		if (vShader) {
+			gl.attachShader(this.program, vShader);
+		}
+		const fShader = SimpleFragShader.compileShader(gl);
+		if (fShader) {
+			gl.attachShader(this.program, fShader);
+		}
+
+		gl.linkProgram(this.program);
+		// check for errors
+		if (!gl.getProgramParameter(this.program, gl.LINK_STATUS)) {
+			console.log("Unable to initialize shader program: " + gl.getProgramInfoLog(this.program));
+			return;
+		}
+
+		this.uniformLocations = new UniformLocations(gl, this.program);
 		this.initialized = true;
 	}
 
-	public bind(gl: WebGL2RenderingContext) {
-		
-	}
-
-	public draw(gl: WebGL2RenderingContext, cameraState?: CameraState, renderTypeOverride?: number) {
+	public draw(gl: WebGL2RenderingContext, cameraState: CameraState, renderTypeOverride?: number) {
 		if (!this.initialized) {
 			console.log("Cannot render object, not initialized");
 			return;
@@ -71,9 +94,25 @@ export class RenderObject implements IRenderable {
 			return;
 		}
 
-		gl.bindVertexArray(this.VAO);
+		gl.useProgram(this.program);
 
-		if (renderTypeOverride != null) {
+		// upload uniforms
+		gl.uniformMatrix4fv(this.uniformLocations.uModelMatLocation,
+			false,
+			cameraState.modelMatrix);
+
+		gl.uniformMatrix4fv(this.uniformLocations.uViewMatLocation,
+			false,
+			cameraState.viewMatrix);
+
+		gl.uniformMatrix4fv(this.uniformLocations.uProjectionMatrixLocation,
+			false,
+			cameraState.projectionMatrix);
+
+		gl.bindVertexArray(this.VAO);
+		gl.bindBuffer(gl.ARRAY_BUFFER, this.VBO);
+
+		if (renderTypeOverride) {
 			gl.drawArrays(renderTypeOverride, 0, this.verticeCount);
 		} else {
 			gl.drawArrays(this.renderType, 0, this.verticeCount);

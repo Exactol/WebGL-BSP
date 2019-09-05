@@ -9,11 +9,14 @@ export class ShaderSource {
 
 	public compileShader(gl: WebGL2RenderingContext) {
 		const shader = gl.createShader(this.type);
-
+		if (!shader) {
+			console.error("Failed to create shader: ", this.source);
+			return;
+		}
 		// compile shader
 		gl.shaderSource(shader, this.source);
 		gl.compileShader(shader);
-	
+
 		// check for errors
 		if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
 			console.log("----------Failed to compile shader----------\n" + this.source);
@@ -21,7 +24,7 @@ export class ShaderSource {
 			gl.deleteShader(shader);
 			throw new Error("Failed to compile shader");
 		}
-	
+
 		return shader;
 	}
 }
@@ -102,3 +105,32 @@ void main() {
 	// 	// fragColor = v_fallbackColor + color;
 	// }
 }`, WebGLRenderingContext.FRAGMENT_SHADER);
+
+
+
+
+export const SimpleFragShader: ShaderSource = new ShaderSource(
+`#version 300 es
+precision mediump float;
+
+out vec4 fragColor;
+
+void main() {
+	fragColor = vec4(0, .2, 1.0, 0.6);
+}`, WebGLRenderingContext.FRAGMENT_SHADER);
+
+export const SimpleVertShader: ShaderSource = new ShaderSource(
+	`#version 300 es
+
+	layout (location = 0) in vec4 a_position;
+
+	uniform mat4 u_model_mat;
+	uniform mat4 u_view_mat;
+	uniform mat4 u_projection_mat;
+
+	void main() {
+		gl_Position = u_projection_mat * u_view_mat * u_model_mat * a_position;
+
+		//temp
+		gl_PointSize = 20.0;
+	}`, WebGLRenderingContext.VERTEX_SHADER);

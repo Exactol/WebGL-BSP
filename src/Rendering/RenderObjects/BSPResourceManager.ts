@@ -51,7 +51,10 @@ export class BSPResourceManager {
 
 	public addShaders(index: number, shaders: ShaderSource[]) {
 		shaders.forEach((shader) => {
-			this.gl.attachShader(this.shaderPrograms[index], shader.compileShader(this.gl));
+			const compiled = shader.compileShader(this.gl);
+			if (compiled) {
+				this.gl.attachShader(this.shaderPrograms[index], compiled);
+			}
 		});
 
 		this.gl.linkProgram(this.shaderPrograms[index]);
@@ -60,6 +63,6 @@ export class BSPResourceManager {
 			console.log("Unable to initialize shader program: " + this.gl.getProgramInfoLog(this.shaderPrograms[index]));
 			return null;
 		}
-	
+
 	}
 }

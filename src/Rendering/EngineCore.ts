@@ -48,6 +48,10 @@ export class EngineCore implements IEngineComponent {
 	private deltaTime = 0;
 	public renderFrame = false;
 
+	private numFrames = 0;
+	private timeBase = 0;
+	private timePassed = 0;
+
 	constructor(gl: WebGL2RenderingContext) {
 		console.log("--Initializing Core--");
 
@@ -55,7 +59,7 @@ export class EngineCore implements IEngineComponent {
 		this.gl = gl;
 
 		this.messageQueue = new MessageQueue();
-		
+
 		this.gl.clearColor(0.0, 0, 0, 1.0);
 		this.gl.clearDepth(1.0);
 		this.gl.enable(this.gl.CULL_FACE);
@@ -67,7 +71,7 @@ export class EngineCore implements IEngineComponent {
 		// setup default camera
 		this.cameras = [new PerspectiveCamera(this.gl.canvas.clientWidth, this.gl.canvas.clientHeight)];
 		this.activeCamera = this.cameras[0];
-		
+
 		// setup keyboard listener
 		this.keyboardListener = new KeyboardListener(this);
 		this.mouseHandler = new MouseHandler(this);
@@ -85,8 +89,8 @@ export class EngineCore implements IEngineComponent {
 
 	public main(currentTime = 0) {
 		window.requestAnimationFrame(this.main.bind(this));
-		
-		// poll keyboard 
+
+		// poll keyboard
 		this.keyboardListener.pollKeyboard(this);
 
 		// dispatch messages
@@ -95,9 +99,21 @@ export class EngineCore implements IEngineComponent {
 		// convert dTime to seconds
 		this.deltaTime = (currentTime - this.previousTime) / 1000;
 		this.previousTime = currentTime;
-		
+		this.numFrames++;
+
 		if (this.renderFrame) {
 			this.render();
+		}
+		this.computeFPS(currentTime);
+	}
+
+	public computeFPS(currentTime: number) {
+		this.timePassed += this.deltaTime;
+		if (this.timePassed - this.timeBase > 0.25 && this.numFrames > 10) {
+			window.dispatchEvent(new CustomEvent("fpsUpdate", { detail: (this.numFrames / (this.timePassed - this.timeBase)).toFixed(2) }));
+
+			this.timeBase = this.timePassed;
+			this.numFrames = 0;
 		}
 	}
 
@@ -111,6 +127,10 @@ export class EngineCore implements IEngineComponent {
 
 		// render all objects
 		const cameraState = this.activeCamera.getCameraState();
+
+		window.dispatchEvent(new CustomEvent("camUpdate", {detail: cameraState}));
+
+
 		this.renderObjects.forEach((renderObject) => {
 			// renderObject.draw(this.gl, this.gl.POINTS);
 			renderObject.draw(this.gl, cameraState);
@@ -127,7 +147,7 @@ export class EngineCore implements IEngineComponent {
 			this.gl.canvas.width = width;
 			this.gl.canvas.height = height;
 
-			this.activeCamera.updateAspectRatio(width, height); 
+			this.activeCamera.updateAspectRatio(width, height);
 		}
 	}
 
@@ -147,7 +167,7 @@ export class EngineCore implements IEngineComponent {
 			// 	this.mouseHandler.active = message.data
 
 			case MessageType.ToggleRender:
-				// if there is no movement, no need to keep rendering 
+				// if there is no movement, no need to keep rendering
 				// TODO: disable this once brush ents / moving things are working
 				this.renderFrame = message.data;
 				break;
@@ -158,7 +178,7 @@ export class EngineCore implements IEngineComponent {
 
 			case MessageType.MouseMove:
 				// add deltatime to the vec2 containing (dx, dy)
-				this.activeCamera.onMessage(new Message(this.activeCamera, this, MessageType.MouseMove, 
+				this.activeCamera.onMessage(new Message(this.activeCamera, this, MessageType.MouseMove,
 					vec3.fromValues(message.data[0], message.data[1], this.deltaTime)));
 				break;
 
@@ -184,7 +204,7 @@ export class EngineCore implements IEngineComponent {
 									this.activeCamera.mulitplier = 1.0;
 								}
 								break;
-							
+
 							default:
 								break;
 						}
